@@ -5,8 +5,6 @@ Command: npx gltfjsx@6.2.5 .\public\models\649daa5512a3f1019d5da92a.glb
 
 import React, { useEffect, useRef } from "react";
 import { useAnimations, useFBX, useGLTF } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
-import { useControls } from "leva";
 
 export function Avatar(props) {
   const { animation } = props;
@@ -43,7 +41,7 @@ export function Avatar(props) {
   // });
 
   useEffect(() => {
-    actions[animation].reset().fadeIn(0.5).play();
+    actions[animation].reset().play();
 
     return () => {
       actions[animation].reset().fadeOut(0.5);
@@ -52,9 +50,9 @@ export function Avatar(props) {
 
   return (
     <group
+      {...props}
       scale={0.9}
       position={[0, 0, 0.1]}
-      {...props}
       ref={group}
       dispose={null}
     >

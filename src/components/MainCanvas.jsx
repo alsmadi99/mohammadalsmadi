@@ -1,15 +1,31 @@
-import {
-  ContactShadows,
-  Environment,
-  OrbitControls,
-  Sky,
-} from "@react-three/drei";
+import { ContactShadows, Environment, Sky } from "@react-three/drei";
 import { Avatar } from "./Avatar";
-import { useControls } from "leva";
-import { Chair } from "./Chair";
 import { Setup } from "./Setup";
-import { KeyboardMouse } from "./KeyboardMouse";
-import { Image2 } from "./Image";
+
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { extend, useThree, useFrame } from "@react-three/fiber";
+import { Suspense, useRef } from "react";
+
+extend({ OrbitControls });
+
+const CameraControls = () => {
+  const { camera, gl } = useThree();
+  const controlsRef = useRef();
+
+  useFrame(() => controlsRef.current.update());
+
+  return (
+    <orbitControls
+      ref={controlsRef}
+      args={[camera, gl.domElement]}
+      enableZoom={false}
+      enableRotate
+      enablePan={false}
+      rotateSpeed={0.1}
+      maxPolarAngle={Math.PI / 2} // Limit vertical rotation to 90 degrees (horizontal rotation only)
+    />
+  );
+};
 
 export const MainCanvas = () => {
   // const { animation } = useControls({
@@ -19,12 +35,8 @@ export const MainCanvas = () => {
   //   },
   // });
   return (
-    <>
-      <OrbitControls
-        enableZoom={
-          !process.env.NODE_ENV || process.env.NODE_ENV === "development"
-        }
-      />
+    <Suspense fallback={null}>
+      <CameraControls />
       <Sky />
       <Environment preset="sunset" />
       <group position-y={-1}>
@@ -37,15 +49,12 @@ export const MainCanvas = () => {
           color="#000000"
         />
         <Setup />
-
-        <KeyboardMouse />
         <Avatar animation={"Typing"} />
-        <Chair />
         <mesh scale={5} rotation-x={-Math.PI * 0.5} position-y={-0.001}>
           <planeGeometry />
           <meshStandardMaterial color="lightgreen" />
         </mesh>
       </group>
-    </>
+    </Suspense>
   );
 };
