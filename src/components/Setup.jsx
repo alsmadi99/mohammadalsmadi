@@ -4,10 +4,12 @@ Command: npx gltfjsx@6.2.5 ./public/models/all_setup.glb
 */
 
 import React, { useRef } from "react";
-import { useGLTF } from "@react-three/drei";
+import { useGLTF, useVideoTexture } from "@react-three/drei";
+import { MeshBasicMaterial } from "three";
 
 export function Setup(props) {
   const { nodes, materials } = useGLTF("/models/all_setup.glb");
+  const texture = useVideoTexture("/textures/coding.mp4");
   return (
     <group {...props} dispose={null} scale={1.1} position={[0, 0, 0.1]}>
       <group position={[-0.437, 0, 0]} rotation={[-Math.PI / 2, 0, 0]}>
@@ -41,10 +43,11 @@ export function Setup(props) {
         />
         <mesh
           geometry={nodes.Object_6.geometry}
-          material={materials["Part1Mtl.002"]}
+          // material={new MeshBasicMaterial({ color: "red" })}
+          // material={materials["Material.004"]}
+          material={new MeshBasicMaterial({ map: texture })}
           position={[0.42, -0.8, 0.902]}
           rotation={[0, 0, 3.121]}
-          scale={0.094}
         />
         <mesh
           geometry={nodes.Object_7.geometry}
