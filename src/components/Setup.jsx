@@ -43,9 +43,112 @@ export function Setup(props) {
         />
         <mesh
           geometry={nodes.Object_6.geometry}
-          // material={new MeshBasicMaterial({ color: "red" })}
+          material={materials["Material.004"]}
+          position={[0.42, -0.8, 0.902]}
+          rotation={[0, 0, 3.121]}
+        />
+        <mesh
+          geometry={nodes.Object_6003.geometry}
+          material={materials["Material.004"]}
+          position={[0.42, -0.8, 0.902]}
+          rotation={[0, 0, 3.121]}
+        />
+        <mesh
+          geometry={nodes.Object_6004.geometry}
           // material={materials["Material.004"]}
           material={new MeshBasicMaterial({ map: texture })}
+          position={[0.42, -0.8, 0.902]}
+          rotation={[0, 0, 3.121]}
+        />
+        <mesh
+          geometry={nodes.Object_6005.geometry}
+          material={materials["Material.004"]}
+          position={[0.42, -0.8, 0.902]}
+          rotation={[0, 0, 3.121]}
+        />
+        <mesh
+          geometry={nodes.Object_6006.geometry}
+          material={materials["Material.004"]}
+          position={[0.42, -0.8, 0.902]}
+          rotation={[0, 0, 3.121]}
+        />
+        <mesh
+          geometry={nodes.Object_6007.geometry}
+          material={materials["Material.004"]}
+          position={[0.42, -0.8, 0.902]}
+          rotation={[0, 0, 3.121]}
+        />
+        <mesh
+          geometry={nodes.Object_6008.geometry}
+          material={materials["Material.004"]}
+          position={[0.42, -0.8, 0.902]}
+          rotation={[0, 0, 3.121]}
+        />
+        <mesh
+          geometry={nodes.Object_6009.geometry}
+          material={materials["Material.004"]}
+          position={[0.42, -0.8, 0.902]}
+          rotation={[0, 0, 3.121]}
+        />
+        <mesh
+          geometry={nodes.Object_6010.geometry}
+          // material={materials["Material.004"]}
+          material={new MeshBasicMaterial({ map: texture })}
+          position={[0.42, -0.8, 0.902]}
+          rotation={[0, 0, 3.121]}
+        />
+        <mesh
+          geometry={nodes.Object_6011.geometry}
+          material={materials["Material.004"]}
+          position={[0.42, -0.8, 0.902]}
+          rotation={[0, 0, 3.121]}
+        />
+        <mesh
+          geometry={nodes.Object_6012.geometry}
+          material={materials["Material.004"]}
+          position={[0.42, -0.8, 0.902]}
+          rotation={[0, 0, 3.121]}
+        />
+        <mesh
+          geometry={nodes.Object_6013.geometry}
+          material={materials["Material.004"]}
+          position={[0.42, -0.8, 0.902]}
+          rotation={[0, 0, 3.121]}
+        />
+        <mesh
+          geometry={nodes.Object_6014.geometry}
+          material={materials["Material.004"]}
+          position={[0.42, -0.8, 0.902]}
+          rotation={[0, 0, 3.121]}
+        />
+        <mesh
+          geometry={nodes.Object_6015.geometry}
+          material={materials["Material.004"]}
+          position={[0.42, -0.8, 0.902]}
+          rotation={[0, 0, 3.121]}
+        />
+        <mesh
+          geometry={nodes.Object_6016.geometry}
+          // material={materials["Material.004"]}
+          material={new MeshBasicMaterial({ map: texture })}
+          position={[0.42, -0.8, 0.902]}
+          rotation={[0, 0, 3.121]}
+        />
+        <mesh
+          geometry={nodes.Object_6017.geometry}
+          material={materials["Material.004"]}
+          position={[0.42, -0.8, 0.902]}
+          rotation={[0, 0, 3.121]}
+        />
+        <mesh
+          geometry={nodes.Object_6018.geometry}
+          material={materials["Material.004"]}
+          position={[0.42, -0.8, 0.902]}
+          rotation={[0, 0, 3.121]}
+        />
+        <mesh
+          geometry={nodes.Object_6019.geometry}
+          material={materials["Material.004"]}
           position={[0.42, -0.8, 0.902]}
           rotation={[0, 0, 3.121]}
         />
