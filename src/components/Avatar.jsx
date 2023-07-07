@@ -16,19 +16,10 @@ export function Avatar(props) {
   const { nodes, materials } = useGLTF("models/me.glb");
 
   const { animations: typingAnimation } = useFBX("animations/Typing.fbx");
-  const { animations: standingAnimation } = useFBX(
-    "animations/Standing_Idle.fbx"
-  );
-  const { animations: fallingAnimation } = useFBX("animations/Falling.fbx");
 
   typingAnimation[0].name = "Typing";
-  standingAnimation[0].name = "Standing";
-  fallingAnimation[0].name = "Falling";
 
-  const { actions } = useAnimations(
-    [typingAnimation[0], standingAnimation[0], fallingAnimation[0]],
-    group
-  );
+  const { actions } = useAnimations([typingAnimation[0]], group);
 
   // useFrame((state) => {
   //   if (headFollow) {
@@ -125,5 +116,4 @@ export function Avatar(props) {
   );
 }
 
-useGLTF.preload("models/chair.glb");
 useGLTF.preload("models/me.glb");
