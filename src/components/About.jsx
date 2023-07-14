@@ -10,14 +10,14 @@ import { fadeIn, textVariant } from "../utils/motion";
 
 const About = () => {
   return (
-    <>
+    <motion.div style={{ height: "100%" }}>
       <motion.div variants={textVariant()}>
         <h2 className={styles.sectionHeadText}>Introduction.</h2>
       </motion.div>
 
       <motion.p
         variants={fadeIn("", "", 0.1, 1)}
-        className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
+        className="mt-4 text-secondary flex w-full text-sm md:text-base lg:text-lg leading-normal md:leading-relaxed"
       >
         I am a dedicated and skilled full-stack developer with expertise in
         React-based web development and Node.js. With a strong background in
@@ -39,15 +39,8 @@ const About = () => {
         integrate with various APIs. My work on these applications demonstrates
         my ability to adapt to different project requirements and deliver
         high-quality solutions.<br></br>
-        <br></br>
-        In addition to my technical skills, I prioritize maintaining a healthy
-        work-life balance and focusing on personal growth. Staying updated with
-        the latest trends and technologies in the development field is a
-        constant pursuit for me, enabling me to bring innovative solutions to
-        the table.<br></br>
-        <br></br>
       </motion.p>
-    </>
+    </motion.div>
   );
 };
 

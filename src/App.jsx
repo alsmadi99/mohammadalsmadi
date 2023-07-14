@@ -102,12 +102,8 @@ const App = () => {
       <ScrollToTop />
       <div className="relative z-0 bg-primary">
         <Navbar />
-        <section>
-          <Hero />
-        </section>
-        <section>
-          <About />
-        </section>
+        <Hero />
+        <About />
       </div>
       <LofiPlayer />
     </BrowserRouter>

@@ -7,13 +7,15 @@ const LofiPlayer = () => {
 
   console.log({ isPlaying });
   return (
-    <ReactPlayer
-      url={`lofi.mp3`}
-      playing={true}
-      volume={0.1}
-      loop
-      muted={!isPlaying}
-    />
+    <div style={{ display: "none" }}>
+      <ReactPlayer
+        url={`lofi.mp3`}
+        playing={true}
+        volume={0.1}
+        loop
+        muted={!isPlaying}
+      />
+    </div>
   );
 };
 

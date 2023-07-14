@@ -7,11 +7,12 @@ const StarWrapper = (Component, idName) =>
   function HOC() {
     return (
       <motion.section
+        style={{ height: "100vh" }}
         variants={staggerContainer()}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.25 }}
-        className={`${styles.padding} max-w-7xl mx-auto mt-10 relative z-0`}
+        className={`${styles.section} mx-auto mt-10 relative z-0`}
       >
         <span className="hash-span" id={idName}>
           &nbsp;
