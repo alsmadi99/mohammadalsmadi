@@ -42,7 +42,7 @@ export function Avatar(props) {
   return (
     <group
       {...props}
-      scale={0.9}
+      scale={props.scale || 0.7}
       position={[0, 0, 0.1]}
       ref={group}
       dispose={null}
