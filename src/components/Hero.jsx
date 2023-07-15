@@ -21,13 +21,13 @@ const Hero = () => {
 
     return roundedYears;
   };
+
   return (
     <section className="relative w-full h-screen mx-auto">
-      <div
-        className={`${styles.paddingX} absolute inset-0 top-[120px] max-w-7xl mx-auto flex flex-row items-start gap-5`}
-      >
-        <div className="flex flex-col justify-center items-center mt-5"></div>
-        <div>
+      <div className={`flex flex-col justify-between h-screen`}>
+        <div
+          className={`px-5 flex flex-col justify-center w-full items-center mt-16`}
+        >
           <h1 className={`${styles.heroHeadText} text-white`}>
             Hi, my name is <span className="text-secondary"> Mohammad</span>
           </h1>
@@ -36,8 +36,10 @@ const Hero = () => {
             web and mobile applications.
           </p>
         </div>
+        <div className="h-2/3">
+          <MainCanvas />
+        </div>
       </div>
-      <MainCanvas />
       {/* This is the gif wheel to scroll*/}
       <div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center">
         <a href="#about">

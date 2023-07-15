@@ -39,40 +39,42 @@ export const MainCanvas = () => {
   // });
   const isMobile = useIsMobile();
   return (
-    <Canvas
-      shadows
-      camera={{
-        position: [0, 2, 5],
-        fov: 30,
-      }}
-    >
-      <Suspense fallback={<CanvasLoader />}>
-        <CameraControls />
-        <Environment preset="sunset" />
-        <group position-y={-1}>
-          <ContactShadows
-            opacity={0.42}
-            scale={10}
-            blur={1}
-            far={10}
-            resolution={256}
-            color="#000000"
-          />
+    <div className="h-full w-screen">
+      <Canvas
+        shadows
+        camera={{
+          position: [0, 2, 5],
+          fov: 40,
+        }}
+      >
+        <Suspense fallback={<CanvasLoader />}>
+          <CameraControls />
+          <Environment preset="sunset" />
+          <group position-y={-1}>
+            <ContactShadows
+              opacity={0.42}
+              scale={10}
+              blur={1}
+              far={10}
+              resolution={256}
+              color="#000000"
+            />
 
-          <Setup scale={isMobile ? 0.65 : 0.85} />
-          <Avatar scale={isMobile ? 0.5 : 0.7} animation={"Typing"} />
-          <mesh
-            scale={isMobile ? 1 : 1.5}
-            rotation-x={-Math.PI * 0.5}
-            position-y={-0.001}
-            position-z={0.5}
-          >
-            <circleGeometry />
-            <meshStandardMaterial color="darkgrey" />
-          </mesh>
-        </group>
-        <Preload all />
-      </Suspense>
-    </Canvas>
+            <Setup scale={isMobile ? 1.8 : 2} />
+            <Avatar scale={isMobile ? 1.7 : 1.9} animation={"Typing"} />
+            <mesh
+              scale={isMobile ? 4.5 : 5}
+              rotation-x={-Math.PI * 0.5}
+              position-y={-0.001}
+              position-z={0.5}
+            >
+              <circleGeometry />
+              <meshStandardMaterial color="darkgrey" />
+            </mesh>
+          </group>
+          <Preload all />
+        </Suspense>
+      </Canvas>
+    </div>
   );
 };
