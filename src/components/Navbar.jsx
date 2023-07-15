@@ -33,9 +33,9 @@ const Navbar = () => {
           <img
             src={icon}
             alt="logo"
-            className={`w-14 h-14 object-contain rounded-full border-secondary border-2`}
+            className={`w-10 h-10 md:w-14 md:h-14 object-contain rounded-full border-secondary border-2`}
           />
-          <p className="text-white text-[17px] font-bold cursor-pointer flex pb-0">
+          <p className="text-white text-xs md:text-lg font-bold cursor-pointer flex pb-0">
             Mohammad Alsmadi
           </p>
         </a>
