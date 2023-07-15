@@ -2,11 +2,11 @@ import { ContactShadows, Environment, Preload, Sky } from "@react-three/drei";
 import { Avatar } from "./Avatar";
 import { Setup } from "./Setup";
 import CanvasLoader from "./Loader";
-
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { extend, useThree, useFrame, Canvas } from "@react-three/fiber";
-import { Suspense, useRef } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import useIsMobile from "../hooks/useIsMobile";
+import { Setup2 } from "./Setup2";
 
 extend({ OrbitControls });
 
@@ -14,13 +14,20 @@ const CameraControls = () => {
   const { camera, gl } = useThree();
   const controlsRef = useRef();
 
+  // Update the camera's target position to focus higher along the y-axis
+  useEffect(() => {
+    camera.position.set(0, 10, 0); // Set the camera position to a higher y-value (adjust as needed)
+    camera.lookAt(0, 0, 0); // Set the camera's target to the center of the scene (adjust as needed)
+  }, []);
   useFrame(() => controlsRef.current.update());
 
   return (
     <orbitControls
       ref={controlsRef}
       args={[camera, gl.domElement]}
-      enableZoom={false}
+      enableZoom={true}
+      minDistance={3}
+      maxDistance={6}
       enableRotate
       enablePan={false}
       rotateSpeed={0.1}
@@ -31,12 +38,6 @@ const CameraControls = () => {
 };
 
 export const MainCanvas = () => {
-  // const { animation } = useControls({
-  //   animation: {
-  //     value: "Typing",
-  //     options: ["Typing", "Falling", "Standing"],
-  //   },
-  // });
   const isMobile = useIsMobile();
   return (
     <div className="h-full w-screen">
@@ -60,8 +61,8 @@ export const MainCanvas = () => {
               color="#000000"
             />
 
-            <Setup scale={isMobile ? 1.8 : 2} />
-            <Avatar scale={isMobile ? 1.7 : 1.9} animation={"Typing"} />
+            <Setup2 scale={isMobile ? 1.8 : 2} />
+            <Avatar scale={isMobile ? 1.4 : 1.6} animation={"Typing"} />
             <mesh
               scale={isMobile ? 4.5 : 5}
               rotation-x={-Math.PI * 0.5}

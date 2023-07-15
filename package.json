@@ -8,7 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "createModelComponent": "npx gltfjsx",
-    "compressModel":"npx gltf-pipeline -i ./public/all_setup2.glb --draco.compressionLevel 10 -o ./public/compressed.glb"
+    "compressModel":"npx gltf-pipeline -i all_setup2.glb --draco.compressionLevel 10 -o compressed.glb"
   },
   "dependencies": {
     "@emailjs/browser": "^3.10.0",

@@ -28,6 +28,10 @@ const App = () => {
       const delta = Math.sign(event.wheelDelta || -event.detail);
       const sections = ["", "about"]; // Add more sections if needed
 
+      // Skip touch move if user is in the first section
+      if (window.location.hash === "#" || !window.location.hash) {
+        return;
+      }
       if (delta > 0) {
         // Scrolling up
         const currentSectionIndex = sections.indexOf(
@@ -58,7 +62,6 @@ const App = () => {
       const touchDelta = touchEndY - touchStartY;
       const sections = ["", "about"]; // Add more sections if needed
 
-      console.log("#", window.location.hash);
       // Skip touch move if user is in the first section
       if (window.location.hash === "#" || !window.location.hash) {
         return;

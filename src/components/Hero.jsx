@@ -32,30 +32,41 @@ const Hero = () => {
             Hi, my name is <span className="text-secondary"> Mohammad</span>
           </h1>
           <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-            I have over {`${getYearsOfExp()}`} years of experience in building
-            web and mobile applications.
+            I love building unique web and mobile applications.
           </p>
         </div>
-        <div className="h-2/3">
+        <div className="h-full">
           <MainCanvas />
         </div>
       </div>
       {/* This is the gif wheel to scroll*/}
-      <div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center">
+      <div className="pr-5 absolute xs:bottom-10 bottom-10 w-full flex justify-end items-end">
         <a href="#about">
-          <div className="w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
-            <motion.div
-              animate={{
-                y: [0, 24, 0],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                repeatType: "loop",
-              }}
-              className="w-3 h-3 rounded-full bg-secondary mb-1"
-            />
-          </div>
+          <motion.div
+            initial={{ y: 0 }}
+            animate={{ y: [0, 10, 0] }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              repeatType: "loop",
+            }}
+            className="w-[64px] h-[64px] rounded-3xl border-4 border-white bg-secondary flex justify-center items-start p-2"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-full h-full text-white transform rotate-270"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </motion.div>
         </a>
       </div>
     </section>

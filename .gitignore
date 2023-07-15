@@ -12,6 +12,8 @@ dist
 dist-ssr
 *.local
 
+public/models/all_setup.glb
+public/models/all_setup2.glb
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
