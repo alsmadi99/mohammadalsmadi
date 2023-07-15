@@ -32,8 +32,12 @@ const Navbar = () => {
             window.scrollTo(0, 0);
           }}
         >
-          <img src={icon} alt="logo" className={`w-12 h-12 object-contain`} />
-          <p className="text-white text-[17px] font-bold cursor-pointer flex mt-auto pb-0 mb-2">
+          <img
+            src={icon}
+            alt="logo"
+            className={`w-14 h-14 object-contain rounded-full border-secondary border-2`}
+          />
+          <p className="text-white text-[17px] font-bold cursor-pointer flex pb-0">
             Mohammad Alsmadi
           </p>
         </a>

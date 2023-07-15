@@ -43,7 +43,7 @@ export const MainCanvas = () => {
       shadows
       camera={{
         position: [0, 2, 5],
-        fov: 35,
+        fov: 30,
       }}
     >
       <Suspense fallback={<CanvasLoader />}>
