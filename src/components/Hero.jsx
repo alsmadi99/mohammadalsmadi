@@ -42,7 +42,7 @@ const Hero = () => {
         </div>
       </div>
       {/* This is the gif wheel to scroll*/}
-      <div className="pr-5 absolute xs:bottom-20 bottom-20 w-full flex justify-end items-end">
+      <div className="pr-5 absolute md:bottom-20 bottom-40 w-full flex justify-end items-end">
         <a href="#about">
           <motion.div
             initial={{ y: 0 }}
