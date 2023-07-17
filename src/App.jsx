@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import * as THREE from "three";
 import { BrowserRouter } from "react-router-dom";
 import { About, Hero, Navbar, LofiPlayer } from "./components";
+import Projects from "./components/Projects";
 
 if (!("THREE" in window) || !window.THREE) {
   window.THREE = THREE;
@@ -26,7 +27,7 @@ const App = () => {
     let touchStartY = 0;
     const handleScroll = (event) => {
       const delta = Math.sign(event.wheelDelta || -event.detail);
-      const sections = ["", "about"]; // Add more sections if needed
+      const sections = ["", "about", "projects"]; // Add more sections if needed
 
       // Skip touch move if user is in the first section
       if (window.location.hash === "#" || !window.location.hash) {
@@ -60,7 +61,7 @@ const App = () => {
     const handleTouchMove = (event) => {
       const touchEndY = event.touches[0].clientY;
       const touchDelta = touchEndY - touchStartY;
-      const sections = ["", "about"]; // Add more sections if needed
+      const sections = ["", "about", "projects"]; // Add more sections if needed
 
       // Skip touch move if user is in the first section
       if (window.location.hash === "#" || !window.location.hash) {
@@ -107,6 +108,7 @@ const App = () => {
         <Navbar />
         <Hero />
         <About />
+        <Projects />
       </div>
       <LofiPlayer />
     </BrowserRouter>

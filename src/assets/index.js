@@ -8,6 +8,7 @@ import menu from "./menu.svg";
 import close from "./close.svg";
 
 import icon from "./icon.png";
+import tamm from "./tamm.jpg";
 
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
@@ -26,4 +27,5 @@ export {
   carrent,
   jobit,
   tripguide,
+  tamm,
 };
