@@ -55,18 +55,27 @@ const App = () => {
     };
 
     const handleTouchStart = (event) => {
-      touchStartY = event.touches[0].clientY;
-    };
-
-    const handleTouchMove = (event) => {
-      const touchEndY = event.touches[0].clientY;
-      const touchDelta = touchEndY - touchStartY;
-      const sections = ["", "about", "projects"]; // Add more sections if needed
-
       // Skip touch move if user is in the first section
       if (window.location.hash === "#" || !window.location.hash) {
         return;
       }
+      touchStartY = event.touches[0].clientY;
+    };
+
+    let touchMoveTimeoutId = null;
+    const handleTouchMove = (event) => {
+      // If there is an existing timeout, return and do nothing
+      if (touchMoveTimeoutId !== null) {
+        return;
+      }
+      // Skip touch move if user is in the first section
+      if (window.location.hash === "#" || !window.location.hash) {
+        return;
+      }
+      const touchEndY = event.touches[0].clientY;
+      const touchDelta = touchEndY - touchStartY;
+      const sections = ["", "about", "projects"]; // Add more sections if needed
+
       if (touchDelta > 0) {
         // Scrolling up
         const currentSectionIndex = sections.indexOf(
@@ -86,6 +95,10 @@ const App = () => {
           window.location.hash = `#${nextSection}`;
         }
       }
+      // Set a new timeout to prevent further function calls for a certain delay
+      touchMoveTimeoutId = setTimeout(() => {
+        touchMoveTimeoutId = null; // Reset timeout ID after the function call
+      }, 500); // Adjust the delay (in milliseconds) as needed
     };
 
     window.addEventListener("mousewheel", handleScroll);

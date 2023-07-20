@@ -37,7 +37,7 @@ const Hero = () => {
             I love building unique web and mobile applications.
           </p>
         </div>
-        <div className="h-full">
+        <div className="h-full absolute -bottom-20">
           <MainCanvas />
         </div>
       </div>

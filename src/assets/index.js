@@ -9,6 +9,10 @@ import close from "./close.svg";
 
 import icon from "./icon.png";
 import tamm from "./tamm.jpg";
+import carers from "./carers.png";
+import caterthumb from "./caterthumb.png";
+import neom from "./neom.jpg";
+import sta from "./sta.png";
 
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
@@ -28,4 +32,8 @@ export {
   jobit,
   tripguide,
   tamm,
+  carers,
+  caterthumb,
+  neom,
+  sta,
 };
