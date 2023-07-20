@@ -1,5 +1,6 @@
 {
-  "name": "r3f-vite-starter",
+  "name": "my-portfolio",
+  "description": "I'm Mohammad Alsmadi, a Full-Stack Developer with experience in Node.js, React.js, React Native, MongoDB, and Postgresql. Check out my portfolio!",
   "private": true,
   "version": "1.0.0",
   "type": "module",
