@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSpring, animated } from "react-spring";
-import { AiOutlineLink } from "react-icons/AI";
+import { AiOutlineLink } from "react-icons/ai";
 
 const Card = ({ imagen, title, description, link }) => {
   const [show, setShown] = useState(false);
