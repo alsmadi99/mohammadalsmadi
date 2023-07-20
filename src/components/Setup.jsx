@@ -125,13 +125,6 @@ export function Setup(props) {
           rotation={[0, 0, 3.121]}
           scale={0.094}
         />
-        <mesh
-          geometry={nodes.Object_8.geometry}
-          material={materials["Union2Mtl.001"]}
-          position={[0.519, -0.717, 0.519]}
-          rotation={[0, 0, 3.121]}
-          scale={0.094}
-        />
       </group>
       <group
         position={[0.168, 0.359, -0.064]}
@@ -421,82 +414,6 @@ export function Setup(props) {
         rotation={[Math.PI / 2, 0, 0]}
         scale={0.038}
       />
-      <group position={[0, -0.129, 0.55]} rotation={[-Math.PI / 2, 0, 3.085]}>
-        <group rotation={[Math.PI / 2, 0, 0]}>
-          <group
-            position={[0.129, 0.755, 0.06]}
-            rotation={[0.117, 0, 0]}
-            scale={0.001}
-          >
-            <mesh
-              geometry={nodes.Object_10.geometry}
-              material={materials["Keyboard_body_3DShaker.008"]}
-            />
-            <mesh
-              geometry={nodes.Object_9002.geometry}
-              material={materials["Keys_3DShaker.001"]}
-            />
-          </group>
-          <group position={[0.223, 0.753, -0.01]} scale={0.001}>
-            <mesh
-              geometry={nodes.Object_4001.geometry}
-              material={materials["Mouse_Body_3DShaker.001"]}
-            />
-            <mesh
-              geometry={nodes.Object_5002.geometry}
-              material={materials["Keyboard_body_3DShaker.011"]}
-            />
-            <mesh
-              geometry={nodes.Object_6002.geometry}
-              material={materials["Mouse_body_lower_3DShaker..003"]}
-            />
-            <mesh
-              geometry={nodes.Object_7001.geometry}
-              material={materials["Mouse_sliders_3DShaker.003"]}
-            />
-          </group>
-          <mesh
-            geometry={nodes.Object_14001.geometry}
-            material={materials["Keyboard_body_3DShaker.006"]}
-            position={[0.14, 0.759, -0.046]}
-            rotation={[1.574, 0, Math.PI / 2]}
-            scale={0.001}
-          />
-          <mesh
-            geometry={nodes.Object_16001.geometry}
-            material={materials["Keyboard_body_3DShaker.007"]}
-            position={[-0.139, 0.759, -0.046]}
-            rotation={[1.574, 0, Math.PI / 2]}
-            scale={0.001}
-          />
-          <mesh
-            geometry={nodes.Object_18.geometry}
-            material={materials["Keyboard_body_3DShaker.009"]}
-            position={[0.14, 0.76, -0.047]}
-            rotation={[1.574, 0, Math.PI / 2]}
-            scale={0.001}
-          />
-          <mesh
-            geometry={nodes.Object_20001.geometry}
-            material={materials["Mouse_body_lower_3DShaker..002"]}
-            position={[0.223, 0.753, -0.01]}
-            scale={0.001}
-          />
-          <mesh
-            geometry={nodes.Object_12.geometry}
-            material={materials["Keyboard_body_3DShaker.010"]}
-            position={[0.223, 0.753, -0.01]}
-            scale={0.001}
-          />
-          <mesh
-            geometry={nodes.Object_22001.geometry}
-            material={materials["Mouse_sliders_3DShaker.002"]}
-            position={[0.246, 0.75, 0.013]}
-            rotation={[-Math.PI, 0, 0]}
-            scale={0.001}
-          />
-        </group>
-      </group>
       <group position={[-0.437, 0, 0]} rotation={[-Math.PI / 2, 0, 0]}>
         <mesh
           geometry={nodes.Object_2001.geometry}
@@ -509,13 +426,6 @@ export function Setup(props) {
           geometry={nodes.Object_3001.geometry}
           material={materials["Part7Mtl.003"]}
           position={[0.942, -0.582, 0.132]}
-          rotation={[0, 0, 3.121]}
-          scale={0.094}
-        />
-        <mesh
-          geometry={nodes.Object_4002.geometry}
-          material={materials["Part8Mtl.003"]}
-          position={[0.423, -0.707, 0.601]}
           rotation={[0, 0, 3.121]}
           scale={0.094}
         />
@@ -911,77 +821,37 @@ export function Setup(props) {
       <group position={[0, -0.129, 0.55]} rotation={[-Math.PI / 2, 0, 3.085]}>
         <group rotation={[Math.PI / 2, 0, 0]}>
           <group
-            position={[0.129, 0.755, 0.06]}
-            rotation={[0.117, 0, 0]}
-            scale={0.001}
-          >
-            <mesh
-              geometry={nodes.Object_10001.geometry}
-              material={materials["Keyboard_body_3DShaker.014"]}
-            />
-            <mesh
-              geometry={nodes.Object_9005.geometry}
-              material={materials["Keys_3DShaker.002"]}
-            />
-          </group>
-          <group position={[0.223, 0.753, -0.01]} scale={0.001}>
-            <mesh
-              geometry={nodes.Object_4003.geometry}
-              material={materials["Mouse_Body_3DShaker.002"]}
-            />
-            <mesh
-              geometry={nodes.Object_5005.geometry}
-              material={materials["Keyboard_body_3DShaker.017"]}
-            />
-            <mesh
-              geometry={nodes.Object_6039.geometry}
-              material={materials["Mouse_body_lower_3DShaker..005"]}
-            />
-            <mesh
-              geometry={nodes.Object_7003.geometry}
-              material={materials["Mouse_sliders_3DShaker.005"]}
-            />
-          </group>
-          <mesh
-            geometry={nodes.Object_14003.geometry}
-            material={materials["Keyboard_body_3DShaker.012"]}
-            position={[0.14, 0.759, -0.046]}
-            rotation={[1.574, 0, Math.PI / 2]}
-            scale={0.001}
-          />
-          <mesh
-            geometry={nodes.Object_16003.geometry}
-            material={materials["Keyboard_body_3DShaker.013"]}
             position={[-0.139, 0.759, -0.046]}
             rotation={[1.574, 0, Math.PI / 2]}
             scale={0.001}
-          />
-          <mesh
-            geometry={nodes.Object_18001.geometry}
-            material={materials["Keyboard_body_3DShaker.015"]}
-            position={[0.14, 0.76, -0.047]}
-            rotation={[1.574, 0, Math.PI / 2]}
-            scale={0.001}
-          />
-          <mesh
-            geometry={nodes.Object_20003.geometry}
-            material={materials["Mouse_body_lower_3DShaker..004"]}
-            position={[0.223, 0.753, -0.01]}
-            scale={0.001}
-          />
-          <mesh
-            geometry={nodes.Object_12001.geometry}
-            material={materials["Keyboard_body_3DShaker.016"]}
-            position={[0.223, 0.753, -0.01]}
-            scale={0.001}
-          />
-          <mesh
-            geometry={nodes.Object_22003.geometry}
-            material={materials["Mouse_sliders_3DShaker.004"]}
-            position={[0.246, 0.75, 0.013]}
-            rotation={[-Math.PI, 0, 0]}
-            scale={0.001}
-          />
+          >
+            <group position={[10.09, 176.882, -0.036]}>
+              <mesh
+                geometry={nodes.Mesh_69002.geometry}
+                material={materials["Keyboard_body_3DShaker.013"]}
+              />
+              <mesh
+                geometry={nodes.Mesh_69002_1.geometry}
+                material={materials["Keys_3DShaker.001"]}
+              />
+            </group>
+          </group>
+          <group position={[0.223, 0.753, -0.01]} scale={0.001}>
+            <group position={[-1.398, 0, -25.495]}>
+              <mesh
+                geometry={nodes.Mesh_73002.geometry}
+                material={materials["Mouse_body_lower_3DShaker..004"]}
+              />
+              <mesh
+                geometry={nodes.Mesh_73002_1.geometry}
+                material={materials["Mouse_sliders_3DShaker.002"]}
+              />
+              <mesh
+                geometry={nodes.Mesh_73002_2.geometry}
+                material={materials["Mouse_Body_3DShaker.001"]}
+              />
+            </group>
+          </group>
         </group>
       </group>
     </group>

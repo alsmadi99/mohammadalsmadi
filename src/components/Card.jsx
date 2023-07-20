@@ -19,10 +19,13 @@ const Card = ({ imagen, title, description, link }) => {
       onMouseEnter={() => setShown(true)}
       onMouseLeave={() => setShown(false)}
     >
-      <img src={imagen} alt="" className="rounded-xl -mt-10" />
-      <h2 className="text-lg font-bold mt-2">{title}</h2>
-      <p className="mt-2 text-sm w-full">{description}</p>
-
+      <div>
+        <img src={imagen} alt="" className="rounded-xl -mt-10" />
+        <div className="mt-5 h-full">
+          <h2 className="text-lg font-bold mt-2">{title}</h2>
+          <p className="mt-2 text-sm w-full">{description}</p>
+        </div>
+      </div>
       <button
         onClick={() => {
           window.open(link, "_blank");

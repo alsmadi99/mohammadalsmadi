@@ -12,7 +12,7 @@ import { carers, caterthumb, neom, sta, tamm } from "../assets";
 import Card from "./Card";
 import CarouselComponent from "./Carousel";
 
-let cards = [
+const projects = [
   {
     key: "1",
     content: (
@@ -42,7 +42,8 @@ let cards = [
         imagen={caterthumb}
         link="https://www.caterthumb.com/"
         title="CaterThumb"
-        description="Cater Thumb is the first end-to-end online SAAS E-procurement solution; connecting Hotels and Restaurants buyers and suppliers within an online platform serving as a fully-fledged marketplace for F&B and non-food services and supplies and equipment."
+        description="
+        Cater Thumb is an all-in-one SAAS E-procurement platform connecting Hotel and Restaurant buyers with suppliers, offering a marketplace for F&B services, non-food supplies, and equipment."
       />
     ),
   },
@@ -82,7 +83,7 @@ const Projects = () => {
 
       <motion.div className="mb-5 h-1/2">
         <CarouselComponent
-          cards={cards}
+          cards={projects}
           className="h-1/2 w-4/5 m-auto"
           offset={2}
           showArrows={false}

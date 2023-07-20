@@ -6,7 +6,6 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { extend, useThree, useFrame, Canvas } from "@react-three/fiber";
 import { Suspense, useEffect, useRef } from "react";
 import useIsMobile from "../hooks/useIsMobile";
-import { Setup2 } from "./Setup2";
 
 extend({ OrbitControls });
 
@@ -61,7 +60,7 @@ export const MainCanvas = () => {
               color="#000000"
             />
 
-            <Setup2 scale={isMobile ? 1.8 : 2} />
+            <Setup scale={isMobile ? 1.8 : 2} />
             <Avatar scale={isMobile ? 1.4 : 1.6} animation={"Typing"} />
             <mesh
               scale={isMobile ? 4.5 : 5}

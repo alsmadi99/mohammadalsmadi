@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import * as THREE from "three";
 import { BrowserRouter } from "react-router-dom";
@@ -24,8 +24,13 @@ const ScrollToTop = () => {
 
 const App = () => {
   useEffect(() => {
+    let touchMoveTimeoutId = null;
     let touchStartY = 0;
+
     const handleScroll = (event) => {
+      if (touchMoveTimeoutId !== null) {
+        return;
+      }
       const delta = Math.sign(event.wheelDelta || -event.detail);
       const sections = ["", "about", "projects"]; // Add more sections if needed
 
@@ -52,6 +57,10 @@ const App = () => {
           window.location.hash = `#${nextSection}`;
         }
       }
+
+      touchMoveTimeoutId = setTimeout(() => {
+        touchMoveTimeoutId = null;
+      }, 200);
     };
 
     const handleTouchStart = (event) => {
@@ -62,7 +71,6 @@ const App = () => {
       touchStartY = event.touches[0].clientY;
     };
 
-    let touchMoveTimeoutId = null;
     const handleTouchMove = (event) => {
       // If there is an existing timeout, return and do nothing
       if (touchMoveTimeoutId !== null) {
@@ -95,17 +103,16 @@ const App = () => {
           window.location.hash = `#${nextSection}`;
         }
       }
-      // Set a new timeout to prevent further function calls for a certain delay
+
       touchMoveTimeoutId = setTimeout(() => {
-        touchMoveTimeoutId = null; // Reset timeout ID after the function call
-      }, 500); // Adjust the delay (in milliseconds) as needed
+        touchMoveTimeoutId = null;
+      }, 200);
     };
 
     window.addEventListener("mousewheel", handleScroll);
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("touchstart", handleTouchStart);
     window.addEventListener("touchmove", handleTouchMove);
-
     return () => {
       window.removeEventListener("mousewheel", handleScroll);
       window.removeEventListener("scroll", handleScroll);
