@@ -2,12 +2,20 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import * as THREE from "three";
 import { BrowserRouter } from "react-router-dom";
-import { About, Hero, Navbar, LofiPlayer } from "./components";
-import Projects from "./components/Projects";
+import {
+  About,
+  Hero,
+  Navbar,
+  LofiPlayer,
+  Projects,
+  Contact,
+} from "./components";
 
 if (!("THREE" in window) || !window.THREE) {
   window.THREE = THREE;
 }
+
+const sections = ["", "about", "projects", "contact"];
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -32,7 +40,6 @@ const App = () => {
         return;
       }
       const delta = Math.sign(event.wheelDelta || -event.detail);
-      const sections = ["", "about", "projects"]; // Add more sections if needed
 
       // Skip touch move if user is in the first section
       if (window.location.hash === "#" || !window.location.hash) {
@@ -82,7 +89,6 @@ const App = () => {
       }
       const touchEndY = event.touches[0].clientY;
       const touchDelta = touchEndY - touchStartY;
-      const sections = ["", "about", "projects"]; // Add more sections if needed
 
       if (touchDelta > 0) {
         // Scrolling up
@@ -129,6 +135,7 @@ const App = () => {
         <Hero />
         <About />
         <Projects />
+        <Contact />
       </div>
       <LofiPlayer />
     </BrowserRouter>

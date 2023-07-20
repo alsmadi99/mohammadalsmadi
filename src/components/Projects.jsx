@@ -77,11 +77,11 @@ const Projects = () => {
       style={{ height: "100%" }}
       className="flex flex-col h-full justify-between"
     >
-      <motion.div variants={textVariant()}>
+      <motion.div variants={textVariant()} className="mt-12">
         <h1 className={styles.sectionHeadText}>Projects I have worked on.</h1>
       </motion.div>
 
-      <motion.div className="mb-5 h-1/2">
+      <motion.div className="h-1/2">
         <CarouselComponent
           cards={projects}
           className="h-1/2 w-4/5 m-auto"
