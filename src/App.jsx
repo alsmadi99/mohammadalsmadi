@@ -31,12 +31,14 @@ const ScrollToTop = () => {
 };
 
 const App = () => {
+  const [isMouseOverContact, setIsMouseOverContact] = useState(false);
+
   useEffect(() => {
     let touchMoveTimeoutId = null;
     let touchStartY = 0;
 
     const handleScroll = (event) => {
-      if (touchMoveTimeoutId !== null) {
+      if (touchMoveTimeoutId !== null || isMouseOverContact) {
         return;
       }
       const delta = Math.sign(event.wheelDelta || -event.detail);
@@ -80,7 +82,7 @@ const App = () => {
 
     const handleTouchMove = (event) => {
       // If there is an existing timeout, return and do nothing
-      if (touchMoveTimeoutId !== null) {
+      if (touchMoveTimeoutId !== null || isMouseOverContact) {
         return;
       }
       // Skip touch move if user is in the first section
@@ -125,7 +127,7 @@ const App = () => {
       window.removeEventListener("touchstart", handleTouchStart);
       window.removeEventListener("touchmove", handleTouchMove);
     };
-  }, []);
+  }, [isMouseOverContact]);
 
   return (
     <BrowserRouter>
@@ -135,7 +137,7 @@ const App = () => {
         <Hero />
         <About />
         <Projects />
-        <Contact />
+        <Contact setIsMouseOverContact={setIsMouseOverContact} />
       </div>
       <LofiPlayer />
     </BrowserRouter>

@@ -7,7 +7,7 @@ import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
 import { AiOutlineMail } from "react-icons/ai";
 
-const Contact = () => {
+const Contact = ({ setIsMouseOverContact }) => {
   const formRef = useRef();
   const [form, setForm] = useState({
     name: "",
@@ -29,6 +29,9 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (form.message.length < 100) {
+      return;
+    }
     setLoading(true);
 
     emailjs
@@ -68,7 +71,7 @@ const Contact = () => {
     <div className={`flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}>
       <motion.div
         variants={slideIn("left", "tween", 0.2, 1)}
-        className="flex-[0.75] bg-secondary p-8 rounded-2xl"
+        className="flex-[0.5] bg-secondary p-8 rounded-2xl"
       >
         <p className={styles.sectionSubText}>Get in touch</p>
         <h3 className={styles.sectionHeadText}>Contact me.</h3>
@@ -85,6 +88,7 @@ const Contact = () => {
               name="name"
               value={form.name}
               onChange={handleChange}
+              required
               placeholder="What's your good name?"
               className="bg-primary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
             />
@@ -96,6 +100,7 @@ const Contact = () => {
               name="email"
               value={form.email}
               onChange={handleChange}
+              required
               placeholder="What's your email address?"
               className="bg-primary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
             />
@@ -103,18 +108,24 @@ const Contact = () => {
           <label className="flex flex-col">
             <span className="text-white font-medium mb-4">Your Message</span>
             <textarea
-              rows={7}
+              onMouseEnter={() => setIsMouseOverContact(true)}
+              onMouseOut={() => setIsMouseOverContact(false)}
+              rows={6}
               name="message"
               value={form.message}
+              required
               onChange={handleChange}
               placeholder="How can I help?"
-              className="bg-primary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
+              className="bg-primary resize-none py-4 px-6 min-h-[200px] max-h-[200px] placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
             />
+            <p className="ml-2 mt-2 text-sm text-primary">
+              Make sure the message is at least 100 characters long.
+            </p>
           </label>
 
           <button
             type="submit"
-            className="w-[150px] shadow-black shadow-md mt-4 flex flex-row justify-between items-center bg-primary hover:bg-blue-500 text-white font-bold py-2 px-4 border-b-4 border-white hover:white rounded"
+            className="w-[150px] mt-4 flex flex-row justify-between items-center bg-primary hover:bg-blue-500 text-white font-bold py-2 px-4 border-b-4 border-white hover:white rounded"
           >
             {loading ? "Sending..." : "Send"}
             <AiOutlineMail />

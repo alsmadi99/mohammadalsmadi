@@ -84,8 +84,8 @@ export function Setup(props) {
         />
         <mesh
           geometry={nodes.Object_6013.geometry}
-          position={[0.41, -0.97, 0.902]}
-          rotation={[3.14, 0.01, 3.21]}
+          position={[0.41, -0.97, 0.91]}
+          rotation={[3.15, 0.04, 3.13]}
           material={new MeshBasicMaterial({ map: texture })}
         />
         <mesh
