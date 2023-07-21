@@ -16,6 +16,19 @@ if (!("THREE" in window) || !window.THREE) {
   window.THREE = THREE;
 }
 
+const ScrollToTop = () => {
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    const sectionElement = document.getElementById(hash.split("#")[1]);
+    if (sectionElement) {
+      sectionElement.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [hash]);
+
+  return null;
+};
+
 const App = () => {
   const [isMouseOverContact, setIsMouseOverContact] = useState(false);
 
@@ -59,6 +72,9 @@ const App = () => {
     };
 
     const handleTouchStart = (event) => {
+      if (touchMoveTimeoutId !== null || isMouseOverContact) {
+        return;
+      }
       // Skip touch move if user is in the first section
       if (window.location.hash === "#" || !window.location.hash) {
         return;
@@ -118,7 +134,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      {/* <ScrollToTop /> */}
+      <ScrollToTop />
       <div className="relative z-0 bg-primary overflow-hidden">
         <Navbar />
         <Hero />
