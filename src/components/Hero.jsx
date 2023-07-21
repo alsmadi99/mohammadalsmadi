@@ -26,7 +26,7 @@ const Hero = () => {
     <section className="relative w-full h-screen mx-auto">
       <div className={`flex flex-col justify-between h-screen`}>
         <div
-          className={`px-5 flex flex-col justify-center w-full items-center mt-16`}
+          className={`px-5 flex flex-col justify-center w-full items-center mt-28`}
         >
           <h1 className={`${styles.heroHeadText} text-white text-center`}>
             Hi, my name is <span className="text-secondary"> Mohammad</span>

@@ -73,7 +73,7 @@ const Contact = ({ setIsMouseOverContact }) => {
       variants={slideIn("left", "tween", 0.2, 0.5)}
       className={`mt-12 w-full flex flex-col md:flex-row justify-between`}
     >
-      <div className="flex-[1] md:flex-[0.5] flex-col bg-secondary p-8 rounded-2xl">
+      <div className="flex-[1] md:flex-[0.5] flex-col bg-secondary p-4 md:p-8 rounded-2xl">
         <p className={styles.sectionSubText}>Get in touch</p>
         <h3 className={styles.sectionHeadText}>Contact me.</h3>
 
@@ -126,7 +126,7 @@ const Contact = ({ setIsMouseOverContact }) => {
               className="bg-primary resize-none py-2 md:py-4 px-4 md:px-6 min-h-[150px] max-h-[150px] md:min-h-[200px] md:max-h-[200px] placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium text-sm md:text-lg"
             />
 
-            <p className="text-xs text-secondary absolute bottom-7 right-2 select-none">
+            <p className="text-xs text-secondary absolute bottom-10 right-2 select-none">
               {form.message.length}
             </p>
             <p className="ml-2 mt-2 text-primary text-xs md:text-sm">
@@ -152,7 +152,7 @@ const Contact = ({ setIsMouseOverContact }) => {
               onClick={() => {
                 window.open(item.link, "_blank");
               }}
-              className="w-[150px] mt-4 flex flex-row justify-between items-center bg-secondary hover:bg-white text-primary font-bold py-2 px-4 border-b-4 border-white hover:border-secondary hover:white rounded"
+              className="w-[150px] mt-2 md:mt-4 flex flex-row justify-between items-center bg-secondary hover:bg-white text-primary font-bold py-2 px-4 border-b-4 border-white hover:border-secondary hover:white rounded"
             >
               {item.text}
               {item.icon}

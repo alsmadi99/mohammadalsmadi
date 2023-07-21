@@ -10,25 +10,11 @@ import {
   Projects,
   Contact,
 } from "./components";
+import { sections } from "./constants";
 
 if (!("THREE" in window) || !window.THREE) {
   window.THREE = THREE;
 }
-
-const sections = ["", "about", "projects", "contact"];
-
-const ScrollToTop = () => {
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    const sectionElement = document.getElementById(pathname.slice(1));
-    if (sectionElement) {
-      sectionElement.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [pathname]);
-
-  return null;
-};
 
 const App = () => {
   const [isMouseOverContact, setIsMouseOverContact] = useState(false);
@@ -89,6 +75,7 @@ const App = () => {
       if (window.location.hash === "#" || !window.location.hash) {
         return;
       }
+      console.log({ event });
       const touchEndY = event.touches[0].clientY;
       const touchDelta = touchEndY - touchStartY;
 
@@ -131,8 +118,8 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <ScrollToTop />
-      <div className="relative z-0 bg-primary">
+      {/* <ScrollToTop /> */}
+      <div className="relative z-0 bg-primary overflow-hidden">
         <Navbar />
         <Hero />
         <About />

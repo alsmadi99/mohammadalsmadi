@@ -10,10 +10,14 @@ import { styles } from "../styles/";
 import { icon } from "../assets/";
 import { FaVolumeHigh, FaVolumeXmark } from "react-icons/fa6";
 import useIsMobile from "../hooks/useIsMobile";
+import { sections } from "../constants";
+import { useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const { setIsPlaying, isPlaying } = useContext(LofiPlayerContext);
   const isMobile = useIsMobile();
+
+  const location = useLocation();
 
   return (
     <nav
@@ -39,20 +43,35 @@ const Navbar = () => {
             Mohammad Alsmadi
           </p>
         </a>
-        <ul className="list-none sm:flex flex-row gap-10">
-          <div
-            className="p-2 bg-secondary border-white rounded-md border-4 cursor-pointer"
-            onClick={() => {
-              setIsPlaying((val) => !val);
-            }}
-          >
-            {isPlaying ? (
-              <FaVolumeHigh color="#FFFFFF" size={isMobile ? 15 : 30} />
-            ) : (
-              <FaVolumeXmark color="#FFFFFF" size={isMobile ? 15 : 30} />
-            )}
+        {!isMobile && (
+          <div className="flex flex-row justify-center gap-10 w-[40%]">
+            {sections.filter(Boolean).map((item, index) => (
+              <p
+                onClick={() => {
+                  window.location.hash = `#${item}`;
+                }}
+                key={index}
+                className={`cursor-pointer ${
+                  location.hash.includes(item) ? "text-secondary" : ""
+                }`}
+              >
+                {item}
+              </p>
+            ))}
           </div>
-        </ul>
+        )}
+        <div
+          className="p-2 bg-secondary border-white rounded-md border-4 cursor-pointer"
+          onClick={() => {
+            setIsPlaying((val) => !val);
+          }}
+        >
+          {isPlaying ? (
+            <FaVolumeHigh color="#FFFFFF" size={isMobile ? 15 : 30} />
+          ) : (
+            <FaVolumeXmark color="#FFFFFF" size={isMobile ? 15 : 30} />
+          )}
+        </div>
       </div>
     </nav>
   );

@@ -2,7 +2,7 @@ import { AiOutlineMail, AiFillLinkedin, AiFillGithub } from "react-icons/ai";
 import { carers, caterthumb, neom, sta, taadhod, tamm } from "../assets";
 import Card from "../components/Card";
 
-const socials = [
+export const socials = [
   {
     link: "https://www.linkedin.com/in/smadixd/",
     icon: <AiFillLinkedin size={23} />,
@@ -20,7 +20,7 @@ const socials = [
   },
 ];
 
-const projects = [
+export const projects = [
   {
     key: "1",
     content: (
@@ -97,4 +97,4 @@ const projects = [
   },
 ];
 
-export { projects, socials };
+export const sections = ["", "about", "projects", "contact"];
