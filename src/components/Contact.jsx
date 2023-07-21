@@ -73,7 +73,7 @@ const Contact = ({ setIsMouseOverContact }) => {
   return (
     <motion.div
       variants={slideIn("left", "tween", 0.2, 0.5)}
-      className={`mt-6 md:mt-12 w-full flex flex-col md:flex-row justify-between h-full`}
+      className={`mt-12 w-full flex flex-col md:flex-row justify-between h-full`}
     >
       <div className="flex-[1] md:flex-[0.5] flex-col bg-secondary p-4 md:p-8 rounded-2xl">
         <p className={styles.sectionSubText}>Get in touch</p>
@@ -147,7 +147,7 @@ const Contact = ({ setIsMouseOverContact }) => {
           </div>
         </form>
       </div>
-      <div className="flex-[1] md:flex-[0.5] flex flex-row md:flex-col md:justify-center justify-around items-center">
+      <div className="flex-[1] md:flex-[0.5] flex flex-row md:flex-col md:justify-center justify-around items-start">
         {!isMobile && <h3 className={styles.sectionHeadText}>My Socials.</h3>}
         <div
           className={
