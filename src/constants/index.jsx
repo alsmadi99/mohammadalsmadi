@@ -78,7 +78,7 @@ export const projects = [
           "https://apps.apple.com/qa/app/al-taadhod-%D9%85%D8%AC%D9%85%D9%88%D8%B9%D8%A9-%D8%A7%D9%84%D8%AA%D8%B9%D8%A7%D8%B6%D8%AF/id1486671642"
         }
         title="Al-Ta'adhod"
-        description="Al-Taadhod Mobile application offers you a new experience to buy Gree air conditioner at the best prices in Qatar with smart purchase control and request installation or maintenance services."
+        description="Al-Taadhod Mobile application offers you a new experience to buy Gree air conditioner at the best prices in Qatar."
       />
     ),
   },

@@ -28,7 +28,9 @@ const Hero = () => {
         <div
           className={`px-5 flex flex-col justify-center w-full items-center mt-28`}
         >
-          <h1 className={`${styles.heroHeadText} text-white text-center`}>
+          <h1
+            className={`${styles.heroHeadText} text-white text-center text-lg md:text-xl`}
+          >
             Hi, my name is <span className="text-secondary"> Mohammad</span>
           </h1>
           <p

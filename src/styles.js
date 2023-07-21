@@ -7,10 +7,10 @@ const styles = {
   heroHeadText:
     "font-black text-white lg:text-[80px] sm:text-[60px] xs:text-[50px] text-[40px] lg:leading-[98px] mt-2",
   heroSubText:
-    "text-[#dfd9ff] font-light lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[16px] lg:leading-[40px]",
+    "text-[#dfd9ff] font-light lg:text-[30px] sm:text-[16px] xs:text-[10px] text-[16px] lg:leading-[40px]",
 
   sectionHeadText:
-    "mt-2 text-white font-black md:text-[50px] sm:text-[40px] xs:text-[30px] text-[20px]",
+    "mt-2 text-white font-black md:text-[40px] sm:text-[30px] xs:text-[20px] text-[15px]",
   sectionSubText:
     "sm:text-[18px] text-[14px] text-primary uppercase tracking-wider",
 };
