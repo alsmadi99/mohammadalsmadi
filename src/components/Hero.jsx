@@ -32,7 +32,7 @@ const Hero = () => {
             Hi, my name is <span className="text-secondary"> Mohammad</span>
           </h1>
           <p
-            className={`${styles.heroSubText} mt-2 text-white-100 text-xs md:text-lg text-center`}
+            className={`${styles.heroSubText} mt-2 text-white-100 text-xs md:text-lg text-center leading-7`}
           >
             I love building unique web and mobile applications.
           </p>
