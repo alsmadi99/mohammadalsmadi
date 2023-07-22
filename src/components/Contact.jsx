@@ -147,7 +147,7 @@ const Contact = ({ setIsMouseOverContact }) => {
           </div>
         </form>
       </div>
-      <div className="flex-[1] md:flex-[0.5] flex flex-row md:flex-col md:justify-center justify-around items-start">
+      <div className="flex-[1] md:flex-[0.5] flex flex-row md:flex-col md:justify-center justify-around items-start md:items-center">
         {!isMobile && <h3 className={styles.sectionHeadText}>My Socials.</h3>}
         <div
           className={
