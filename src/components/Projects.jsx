@@ -16,7 +16,9 @@ const Projects = () => {
       className="flex flex-col h-full justify-between"
     >
       <motion.div variants={textVariant()} className="mt-12">
-        <h1 className={styles.sectionHeadText}>Projects I have worked on.</h1>
+        <h1 className={styles.sectionHeadText}>
+          Some of the projects I have worked on.
+        </h1>
       </motion.div>
 
       <motion.div className="h-1/2">
