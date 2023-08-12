@@ -11,17 +11,14 @@ import { projects } from "../constants";
 
 const Projects = () => {
   return (
-    <motion.div
-      style={{ height: "100%" }}
-      className="flex flex-col h-full justify-between"
-    >
-      <motion.div variants={textVariant()} className="mt-12">
+    <motion.div style={{ height: "100%" }}>
+      <motion.div variants={textVariant()} className="mt-[50px]">
         <h1 className={styles.sectionHeadText}>
           Some of the projects I have worked on.
         </h1>
       </motion.div>
 
-      <motion.div className="h-1/2">
+      <motion.div className="flex flex-col w-full gap-1 md:gap-5 h-full mt-[5vh]">
         <CarouselComponent
           cards={projects}
           className="h-1/2 w-4/5 m-auto"

@@ -19,6 +19,7 @@ const Navbar = () => {
 
   const location = useLocation();
 
+  console.log(location.hash);
   return (
     <nav
       className={`${styles.paddingX} w-full flex items-center py-3 fixed top-0 z-20 bg-primary`}
@@ -45,17 +46,20 @@ const Navbar = () => {
         </a>
         {!isMobile && (
           <div className="flex flex-row justify-center gap-10 w-[40%]">
-            {sections.filter(Boolean).map((item, index) => (
+            {sections.map((item, index) => (
               <p
                 onClick={() => {
                   window.location.hash = `#${item}`;
                 }}
                 key={index}
                 className={`cursor-pointer ${
-                  location.hash.includes(item) ? "text-secondary" : ""
+                  (!!item && location.hash.includes(item)) ||
+                  (index === 0 && !location.hash)
+                    ? "text-white"
+                    : "text-secondary"
                 }`}
               >
-                {item}
+                {!!item ? item : "me"}
               </p>
             ))}
           </div>

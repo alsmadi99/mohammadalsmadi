@@ -42,7 +42,7 @@ const About = () => {
           variants={fadeIn("", "", 0.1, 1)}
           className="text-secondary flex w-full md:w-2/3 text-[11px] md:text-xl leading-normal md:leading-relaxed"
         >
-          includes developing cross-platform mobile applications using React
+          Includes developing cross-platform mobile applications using React
           Native. I have experience in building apps from the ground up,
           utilizing React Native's capabilities to create intuitive user
           interfaces and integrate with various APIs. My work on these

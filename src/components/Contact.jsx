@@ -9,7 +9,7 @@ import { socials } from "../constants";
 import { AiOutlineMail } from "react-icons/ai";
 import useIsMobile from "../hooks/useIsMobile";
 
-const Contact = ({ setIsMouseOverContact }) => {
+const Contact = ({}) => {
   const formRef = useRef();
   const [form, setForm] = useState({
     name: "",
@@ -73,9 +73,9 @@ const Contact = ({ setIsMouseOverContact }) => {
   return (
     <motion.div
       variants={slideIn("left", "tween", 0.2, 0.5)}
-      className={`mt-12 w-full flex flex-col md:flex-row justify-between h-full`}
+      className={`mt-[200px] w-full flex flex-col md:flex-row justify-between h-full`}
     >
-      <div className="flex-[1] md:flex-[0.5] flex-col bg-secondary p-4 md:p-8 rounded-2xl">
+      <div className="flex-[1] md:flex-[0.5] flex-col bg-secondary p-4 md:p-8 rounded-md overflow-y-scroll">
         <p className={styles.sectionSubText}>Get in touch</p>
         <h3 className={styles.sectionHeadText}>Contact me.</h3>
 
@@ -117,8 +117,6 @@ const Contact = ({ setIsMouseOverContact }) => {
               Your Message
             </span>
             <textarea
-              onMouseEnter={() => setIsMouseOverContact(true)}
-              onMouseOut={() => setIsMouseOverContact(false)}
               rows={6}
               name="message"
               value={form.message}

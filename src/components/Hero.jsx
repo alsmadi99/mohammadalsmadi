@@ -5,23 +5,9 @@
 import { motion } from "framer-motion";
 import { styles } from "../styles/";
 import { MainCanvas } from "./MainCanvas";
+import { SectionWrapper } from "../hoc";
 
 const Hero = () => {
-  const getYearsOfExp = () => {
-    var currentDate = new Date(); // Get the current date
-    var august2021 = new Date(2020, 7, 1); // August is the 8th month (index 7), so we subtract 1 from the year
-
-    var diffInMonths =
-      (currentDate.getFullYear() - august2021.getFullYear()) * 12;
-    diffInMonths -= august2021.getMonth(); // Subtract the month index of August 2021
-    diffInMonths += currentDate.getMonth(); // Add the month index of the current date
-
-    var diffInYears = diffInMonths / 12;
-    var roundedYears = Math.ceil(diffInYears); // Round to the nearest highest integer
-
-    return roundedYears;
-  };
-
   return (
     <section className="relative w-full h-screen mx-auto">
       <div className={`flex flex-col justify-between h-screen`}>
@@ -77,4 +63,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default SectionWrapper(Hero, "");
