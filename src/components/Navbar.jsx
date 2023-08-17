@@ -11,15 +11,14 @@ import { icon } from "../assets/";
 import { FaVolumeHigh, FaVolumeXmark } from "react-icons/fa6";
 import useIsMobile from "../hooks/useIsMobile";
 import { sections } from "../constants";
-import { useLocation } from "react-router-dom";
+import { useGlobalContext } from "../hooks/GlobalContext";
 
 const Navbar = () => {
   const { setIsPlaying, isPlaying } = useContext(LofiPlayerContext);
   const isMobile = useIsMobile();
 
-  const location = useLocation();
+  const { currentHash, setCurrentHash } = useGlobalContext();
 
-  console.log(location.hash);
   return (
     <nav
       className={`${styles.paddingX} w-full flex items-center py-3 fixed top-0 z-20 bg-primary`}
@@ -53,10 +52,7 @@ const Navbar = () => {
                 }}
                 key={index}
                 className={`cursor-pointer ${
-                  (!!item && location.hash.includes(item)) ||
-                  (index === 0 && !location.hash)
-                    ? "text-white"
-                    : "text-secondary"
+                  currentHash?.includes(item) ? "text-white" : "text-secondary"
                 }`}
               >
                 {!!item ? item : "me"}

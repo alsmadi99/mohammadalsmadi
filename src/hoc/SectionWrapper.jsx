@@ -1,19 +1,18 @@
 import { motion } from "framer-motion";
-import { styles } from "../styles";
 import { staggerContainer } from "../utils/motion";
 import { useEffect, useRef } from "react";
+import { useGlobalContext } from "../hooks/GlobalContext";
 
 const StarWrapper = (Component, idName) =>
   function HOC(props) {
     const sectionRef = useRef(null);
-    const debounceTimer = useRef(null);
+    const { setCurrentHash } = useGlobalContext();
 
     useEffect(() => {
       const handleIntersection = (entries) => {
         entries.forEach((entry) => {
-          console.log({ entry, idName });
           if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
-            window.location.hash = idName;
+            setCurrentHash(idName);
           }
         });
       };
@@ -38,13 +37,15 @@ const StarWrapper = (Component, idName) =>
     return (
       <motion.section
         ref={sectionRef}
-        style={{ height: "100vh" }}
+        style={{ minHeight: "100vh" }} // Ensure at least full viewport height
         variants={staggerContainer()}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.25 }}
         className={
-          !!idName ? `sm:px-12 px-4 sm:py-12 py-7 mx-auto relative z-0` : ""
+          !!idName
+            ? `sm:px-12 px-4 sm:py-12 py-7 mx-auto relative z-0 flex flex-col justify-center items-center`
+            : ""
         }
       >
         <span id={idName}>&nbsp;</span>

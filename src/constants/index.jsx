@@ -97,4 +97,9 @@ export const projects = [
   },
 ];
 
-export const sections = ["", "about", "projects", "contact"];
+export const sections = [
+  // "",
+  "about",
+  "projects",
+  "contact",
+];

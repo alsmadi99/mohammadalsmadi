@@ -10,11 +10,10 @@ import {
   Projects,
   Contact,
 } from "./components";
-
 if (!("THREE" in window) || !window.THREE) {
   window.THREE = THREE;
 }
-
+import { GlobalProvider } from "./hooks/GlobalContext";
 const ScrollToTop = () => {
   const { hash } = useLocation();
 
@@ -30,15 +29,16 @@ const ScrollToTop = () => {
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <Navbar />
-      <Hero />
-      <About />
-      <Projects />
-      <Contact />
-      <LofiPlayer />
-    </BrowserRouter>
+    <GlobalProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <Navbar />
+        <About />
+        <Projects />
+        <Contact />
+        <LofiPlayer />
+      </BrowserRouter>
+    </GlobalProvider>
   );
 };
 
