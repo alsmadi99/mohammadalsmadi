@@ -1,41 +1,27 @@
-import logo from "./logo.svg";
-import backend from "./backend.png";
-import creator from "./creator.png";
-import mobile from "./mobile.png";
-import web from "./web.png";
-import github from "./github.png";
-import menu from "./menu.svg";
-import close from "./close.svg";
-
 import icon from "./icon.png";
+
 import tamm from "./tamm.jpg";
 import carers from "./carers.png";
 import caterthumb from "./caterthumb.png";
 import neom from "./neom.jpg";
 import sta from "./sta.png";
-
-import carrent from "./carrent.png";
-import jobit from "./jobit.png";
-import tripguide from "./tripguide.png";
 import taadhod from "./taadhod.png";
 
+import azure from "./azure.png";
+import neo4j from "./neo4j.png";
+import udemy from "./udemy.png";
+import kubicle from "./kubicle.png";
+
 export {
-  logo,
-  backend,
-  creator,
-  mobile,
-  web,
-  github,
-  menu,
-  close,
   icon,
-  carrent,
-  jobit,
-  tripguide,
   tamm,
   carers,
   caterthumb,
   neom,
   sta,
   taadhod,
+  azure,
+  neo4j,
+  udemy,
+  kubicle,
 };

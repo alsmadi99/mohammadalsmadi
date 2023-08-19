@@ -37,7 +37,7 @@ const StarWrapper = (Component, idName) =>
     return (
       <motion.section
         ref={sectionRef}
-        style={{ minHeight: "100vh" }} // Ensure at least full viewport height
+        style={{ minHeight: "100vh" }}
         variants={staggerContainer()}
         initial="hidden"
         whileInView="show"
@@ -48,7 +48,9 @@ const StarWrapper = (Component, idName) =>
             : ""
         }
       >
-        <span id={idName}>&nbsp;</span>
+        <span id={idName} className="select-none mb-10">
+          &nbsp;
+        </span>
 
         <Component {...props} />
       </motion.section>

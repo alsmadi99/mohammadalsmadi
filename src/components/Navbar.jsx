@@ -17,7 +17,7 @@ const Navbar = () => {
   const { setIsPlaying, isPlaying } = useContext(LofiPlayerContext);
   const isMobile = useIsMobile();
 
-  const { currentHash, setCurrentHash } = useGlobalContext();
+  const { currentHash } = useGlobalContext();
 
   return (
     <nav
@@ -28,7 +28,7 @@ const Navbar = () => {
     >
       <div className="w-full flex justify-between items-center mx-auto">
         <a
-          href="#"
+          href="#about"
           className="flex items-center gap-4"
           onClick={() => {
             window.scrollTo(0, 0);
