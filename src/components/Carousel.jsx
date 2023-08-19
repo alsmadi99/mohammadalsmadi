@@ -1,7 +1,6 @@
 import Carousel from "react-spring-3d-carousel";
 import { useState, useEffect } from "react";
 import { config } from "react-spring";
-import { motion } from "framer-motion";
 
 const CarouselComponent = (props) => {
   const table = props.cards.map((element, index) => {
@@ -19,7 +18,7 @@ const CarouselComponent = (props) => {
   }, [props.offset, props.showArrows]);
 
   return (
-    <motion.div className={props.className}>
+    <div className={props.className}>
       <Carousel
         slides={cards}
         goToSlide={goToSlide}
@@ -27,7 +26,7 @@ const CarouselComponent = (props) => {
         showNavigation={showArrows}
         animationConfig={config.gentle}
       />
-    </motion.div>
+    </div>
   );
 };
 

@@ -1,5 +1,13 @@
 import { AiOutlineMail, AiFillLinkedin, AiFillGithub } from "react-icons/ai";
-import { carers, caterthumb, neom, sta, taadhod, tamm } from "../assets";
+import {
+  carers,
+  caterthumb,
+  taadhod,
+  azure,
+  neo4j,
+  udemy,
+  kubicle,
+} from "../assets";
 import Card from "../components/Card";
 
 export const socials = [
@@ -19,6 +27,69 @@ export const socials = [
     text: "E-Mail",
   },
 ];
+
+export const duplicateCertificates = (certificates, copies) => {
+  const fullCopies = Math.floor(copies);
+  const partialCopyCount = Math.floor(
+    (copies - fullCopies) * certificates.length
+  );
+  let result = [];
+
+  // Add full copies
+  for (let i = 0; i < fullCopies; i++) {
+    result = result.concat(certificates);
+  }
+
+  // Add partial copy
+  result = result.concat(certificates.slice(0, partialCopyCount));
+
+  return result;
+};
+
+export const originalCertificates = [
+  {
+    name: "Microsoft Certified: Azure Fundamentals",
+    image: azure,
+    link: "https://www.credly.com/badges/d955a26a-63a0-4af7-9a5c-9785d8a5ce1e/public_url",
+  },
+  {
+    name: "The Complete Guide to Advanced React Component Patterns",
+    image: udemy,
+    link: "https://www.udemy.com/certificate/UC-230ad6fd-eeab-4b28-87ca-7bdfadd7d8d2/",
+  },
+  {
+    name: "Cypher Fundamentals",
+    image: neo4j,
+    link: "https://graphacademy.neo4j.com/c/97778f33-e8b3-4134-b210-77d350ac7f9c/",
+  },
+  {
+    name: "Applying Visual Data Skills in Visualization Fundamentals",
+    image: kubicle,
+    link: "",
+  },
+  {
+    name: "Building Neo4j Applications with TypeScript",
+    image: neo4j,
+    link: "https://graphacademy.neo4j.com/c/9ce1fc4d-9cc0-4eb6-a6b4-db71799b7ad8/",
+  },
+  {
+    name: "The Complete SQL Bootcamp 2022: Go from Zero to Hero",
+    image: udemy,
+    link: "https://www.udemy.com/certificate/UC-5c3b95d5-dbd2-4619-8c66-dc7ea5474e10/",
+  },
+  {
+    name: "Visual Data Thinking in Visualization Fundamentals",
+    image: kubicle,
+    link: "",
+  },
+  {
+    name: "Neo4j Fundamentals",
+    image: neo4j,
+    link: "https://graphacademy.neo4j.com/c/c26a1ddf-2570-49d5-bf0f-2e1a7e4c1096/",
+  },
+];
+
+export const certificates = duplicateCertificates(originalCertificates, 3.75);
 
 export const projects = [
   // {
@@ -97,4 +168,9 @@ export const projects = [
   },
 ];
 
-export const sections = ["", "about", "projects", "contact"];
+export const sections = [
+  // "",
+  "about",
+  "projects",
+  "contact",
+];

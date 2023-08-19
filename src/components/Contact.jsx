@@ -19,6 +19,7 @@ const Contact = ({}) => {
 
   const isMobile = useIsMobile();
   const [loading, setLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const handleChange = (e) => {
     const { target } = e;
@@ -33,10 +34,11 @@ const Contact = ({}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (form.message.length < 100) {
+      setIsError(true);
       return;
     }
+    setIsError(false);
     setLoading(true);
-
     emailjs
       .send(
         import.meta.env.VITE_SERVICE_KEY,
@@ -73,7 +75,7 @@ const Contact = ({}) => {
   return (
     <motion.div
       variants={slideIn("left", "tween", 0.2, 0.5)}
-      className={`mt-[200px] w-full flex flex-col md:flex-row justify-between h-full`}
+      className={`w-full flex flex-col md:flex-row justify-between h-full`}
     >
       <div className="flex-[1] md:flex-[0.5] flex-col bg-secondary p-4 md:p-8 rounded-md overflow-y-scroll">
         <p className={styles.sectionSubText}>Get in touch</p>
@@ -112,7 +114,7 @@ const Contact = ({}) => {
               className="bg-primary py-2 md:py-4 px-4 md:px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium text-xs md:text-lg"
             />
           </label>
-          <label className="flex flex-col relative">
+          <div className="flex flex-col relative">
             <span className="text-white font-medium text-xs md:text-lg mb-2 md:mb-4">
               Your Message
             </span>
@@ -123,16 +125,22 @@ const Contact = ({}) => {
               required
               onChange={handleChange}
               placeholder="How can I help?"
-              className="bg-primary resize-none py-2 md:py-4 px-4 md:px-6 min-h-[130px] max-h-[150px] md:min-h-[200px] md:max-h-[200px] placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium text-xs md:text-lg"
+              className={`bg-primary resize-none py-2 md:py-4 px-4 md:px-6 min-h-[130px] max-h-[150px] md:min-h-[200px] md:max-h-[200px] placeholder:text-secondary text-white rounded-lg outline-none font-medium text-xs md:text-lg ${
+                isError ? "border-red-700 border-2 vibrate" : ""
+              }`}
             />
 
-            <p className="text-xs text-secondary absolute bottom-10 right-2 select-none">
+            <p
+              className={`text-xs text-secondary absolute bottom-2 right-2 select-none `}
+            >
               {form.message.length}
             </p>
-            <p className="ml-2 mt-2 text-primary text-[10px] md:text-sm">
+          </div>
+          {isError && (
+            <p className="ml-2 text-red-700 text-[10px] md:text-sm">
               Make sure the message is at least 100 characters long.
             </p>
-          </label>
+          )}
 
           <div className="flex flex-row items-center justify-between w-full">
             <button

@@ -1,20 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import * as THREE from "three";
 import { BrowserRouter } from "react-router-dom";
-import {
-  About,
-  Hero,
-  Navbar,
-  LofiPlayer,
-  Projects,
-  Contact,
-} from "./components";
+import { About, Navbar, LofiPlayer, Projects, Contact } from "./components";
+import { GlobalProvider } from "./hooks/GlobalContext";
 
 if (!("THREE" in window) || !window.THREE) {
   window.THREE = THREE;
 }
-
 const ScrollToTop = () => {
   const { hash } = useLocation();
 
@@ -30,15 +23,16 @@ const ScrollToTop = () => {
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <Navbar />
-      <Hero />
-      <About />
-      <Projects />
-      <Contact />
-      <LofiPlayer />
-    </BrowserRouter>
+    <GlobalProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <Navbar />
+        <About />
+        <Projects />
+        <Contact />
+        <LofiPlayer />
+      </BrowserRouter>
+    </GlobalProvider>
   );
 };
 
