@@ -13,27 +13,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Build and push Docker image
+      - name: Login to Docker Hub
+        run: echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
+
+      - name: Build and Push Docker image
         run: |
-          docker build -t smadixd/portfolio .
-          docker save smadixd/portfolio > portfolio.tar
-
-      - name: Copy Docker image to Hetzner
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.HETZNER_IP }}
-          username: ${{ secrets.HETZNER_USERNAME }}
-          key: ${{ secrets.HETZNER_SSH_KEY }}
-          source: "portfolio.tar"
-          target: "/tmp/portfolio.tar"
-
-      - name: Debug list files in /tmp
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HETZNER_IP }}
-          username: ${{ secrets.HETZNER_USERNAME }}
-          key: ${{ secrets.HETZNER_SSH_KEY }}
-          script: ls /tmp
+          docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/portfolio .
+          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/portfolio
 
       - name: SSH and deploy on Hetzner
         uses: appleboy/ssh-action@master
@@ -42,7 +28,7 @@ jobs:
           username: ${{ secrets.HETZNER_USERNAME }}
           key: ${{ secrets.HETZNER_SSH_KEY }}
           script: |
-            docker load < /tmp/portfolio.tar || echo "Failed to load Docker image"
+            docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/portfolio
             docker stop portfolio-container || true
             docker rm portfolio-container || true
-            docker run -d --name portfolio-container -p 8080:80 smadixd/portfolio
+            docker run -d --name portfolio-container -p 8080:80 ${{ secrets.DOCKER_HUB_USERNAME }}/portfolio
