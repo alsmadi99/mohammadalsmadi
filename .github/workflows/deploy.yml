@@ -27,6 +27,14 @@ jobs:
           source: "portfolio.tar"
           target: "/tmp/portfolio.tar"
 
+      - name: Debug list files in /tmp
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HETZNER_IP }}
+          username: ${{ secrets.HETZNER_USERNAME }}
+          key: ${{ secrets.HETZNER_SSH_KEY }}
+          script: ls /tmp
+
       - name: SSH and deploy on Hetzner
         uses: appleboy/ssh-action@master
         with:
@@ -34,7 +42,7 @@ jobs:
           username: ${{ secrets.HETZNER_USERNAME }}
           key: ${{ secrets.HETZNER_SSH_KEY }}
           script: |
-            docker load < /tmp/portfolio.tar
+            docker load < /tmp/portfolio.tar || echo "Failed to load Docker image"
             docker stop portfolio-container || true
             docker rm portfolio-container || true
             docker run -d --name portfolio-container -p 8080:80 smadixd/portfolio

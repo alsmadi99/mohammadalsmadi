@@ -1,5 +1,5 @@
 # Use an official Node runtime as the base image
-FROM node:20
+FROM node:20 AS build
 
 # Set the working directory
 WORKDIR /app
@@ -13,7 +13,3 @@ COPY . .
 
 # Build the app
 RUN npm run build
-
-# Use Nginx to serve the build
-FROM nginx:alpine
-COPY --from=0 /app/dist /usr/share/nginx/html
