@@ -12,10 +12,12 @@ RUN npm run build
 # Run stage
 FROM node:20
 
-# Install serve
+WORKDIR /app
+
+# Install serve or any static file server you prefer
 RUN npm install -g serve
 
-# Copy build files
+# Copy build files from the build stage
 COPY --from=build /app/dist /app
 
 # Expose the serve port
