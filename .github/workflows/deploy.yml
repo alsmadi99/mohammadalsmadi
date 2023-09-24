@@ -1,0 +1,40 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - removed-3d-model
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build and push Docker image
+        run: |
+          docker build -t smadixd/portfolio .
+          docker save smadixd/portfolio > portfolio.tar
+
+      - name: Copy Docker image to Hetzner
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HETZNER_IP }}
+          username: ${{ secrets.HETZNER_USERNAME }}
+          key: ${{ secrets.HETZNER_SSH_KEY }}
+          source: "portfolio.tar"
+          target: "/tmp/portfolio.tar"
+
+      - name: SSH and deploy on Hetzner
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HETZNER_IP }}
+          username: ${{ secrets.HETZNER_USERNAME }}
+          key: ${{ secrets.HETZNER_SSH_KEY }}
+          script: |
+            docker load < /tmp/portfolio.tar
+            docker stop portfolio-container || true
+            docker rm portfolio-container || true
+            docker run -d --name portfolio-container -p 8080:80 smadixd/portfolio
