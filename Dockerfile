@@ -16,7 +16,7 @@ FROM node:20
 RUN npm install -g serve
 
 # Copy build files
-COPY --from=build /app/build /app
+COPY --from=build /app/dist /app
 
 # Expose the serve port
 EXPOSE 5000
