@@ -13,14 +13,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Login to Docker Hub
-        run: echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
-
-      - name: Build and Push Docker image
-        run: |
-          docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/portfolio .
-          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/portfolio
-
       - name: SSH and deploy on Hetzner
         uses: appleboy/ssh-action@master
         with:
@@ -28,7 +20,9 @@ jobs:
           username: ${{ secrets.HETZNER_USERNAME }}
           key: ${{ secrets.HETZNER_SSH_KEY }}
           script: |
-            docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/portfolio
+            git clone git@github.com:smadixd/my-portfolio.git || git -C my-portfolio pull origin removed-3d-model
+            cd my-portfolio
+            docker build -t portfolio .
             docker stop portfolio-container || true
             docker rm portfolio-container || true
-            docker run -d --name portfolio-container -p 5000:5000 ${{ secrets.DOCKER_HUB_USERNAME }}/portfolio
+            docker run -d --name portfolio-container -p 5000:5000 portfolio
