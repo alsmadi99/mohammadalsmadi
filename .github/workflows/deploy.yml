@@ -27,3 +27,4 @@ jobs:
             docker stop portfolio-container || true
             docker rm portfolio-container || true
             docker run -d --name portfolio-container -p 5000:5000 portfolio
+            docker network connect my-network portfolio-container || true
