@@ -20,11 +20,11 @@ jobs:
           username: ${{ secrets.HETZNER_USERNAME }}
           key: ${{ secrets.HETZNER_SSH_KEY }}
           script: |
-            git clone git@github.com:smadixd/my-portfolio.git || git -C my-portfolio pull origin removed-3d-model
+            sudo git clone git@github.com:smadixd/my-portfolio.git || git -C my-portfolio pull origin removed-3d-model
             cd my-portfolio
-            git checkout removed-3d-model
-            docker build -t portfolio .
-            docker stop portfolio-container || true
-            docker rm portfolio-container || true
-            docker run -d --name portfolio-container -p 127.0.0.1:5000:5000 portfolio
-            docker network connect my-network portfolio-container || true
+            sudo git checkout removed-3d-model
+            sudo docker build -t portfolio .
+            sudo docker stop portfolio-container || true
+            sudo docker rm portfolio-container || true
+            sudo docker run -d --name portfolio-container -p 127.0.0.1:5000:5000 portfolio
+            sudo docker network connect my-network portfolio-container || true
