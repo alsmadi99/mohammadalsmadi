@@ -19,6 +19,7 @@ jobs:
           host: ${{ secrets.HETZNER_IP }}
           username: ${{ secrets.HETZNER_USERNAME }}
           key: ${{ secrets.HETZNER_SSH_KEY }}
+          port: ${{ secrets.HETZNER_PORT }}
           script: |
             sudo git clone git@github.com:smadixd/my-portfolio.git || git -C my-portfolio pull origin removed-3d-model
             cd my-portfolio
