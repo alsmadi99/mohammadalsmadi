@@ -21,9 +21,9 @@ jobs:
           key: ${{ secrets.HETZNER_SSH_KEY }}
           port: ${{ secrets.HETZNER_PORT }}
           script: |
-            sudo git clone git@github.com:smadixd/my-portfolio.git || git -C my-portfolio pull origin removed-3d-model
+            git clone git@github.com:smadixd/my-portfolio.git || git -C my-portfolio pull origin removed-3d-model
             cd my-portfolio
-            sudo git checkout removed-3d-model
+            git checkout removed-3d-model
             sudo docker build -t portfolio .
             sudo docker stop portfolio-container || true
             sudo docker rm portfolio-container || true
