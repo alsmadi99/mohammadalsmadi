@@ -3,8 +3,6 @@
 */
 import React from "react";
 import { motion } from "framer-motion";
-
-import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import { fadeIn, textVariant } from "../utils/motion";
 
@@ -20,23 +18,23 @@ const About = () => {
   };
 
   return (
-    <div style={{ height: "100%" }}>
+    <div className="h-full flex flex-col">
       <div variants={textVariant()}>
         <h1
-          className={`${styles.heroHeadText} text-white text-center text-lg md:text-xl`}
+          className={`text-white text-center md:text-6xl text-2xl font-black`}
         >
           Hi, my name is <span className="text-secondary"> Mohammad</span>
         </h1>
 
         <p
-          className={`${styles.heroSubText} mt-2 text-white-100 text-xs md:text-lg text-center leading-7`}
+          className={`mt-2 text-white-100 md:text-2xl text-lg text-center leading-7`}
         >
           I love building unique web and mobile applications.
         </p>
       </div>
 
-      <div className="flex flex-col justify-between w-full gap-1 md:gap-4 h-[60vh] mt-10">
-        <div className="flex flex-col w-full gap-1 md:gap-5">
+      <div className="flex flex-col justify-between w-full gap-4 h-[60vh] mt-10">
+        <div className="flex flex-col w-full gap-5">
           <motion.p
             variants={fadeIn("", "", 0.1, 1)}
             className="mt-4 text-secondary flex w-full md:w-full text-[11px] md:text-xl leading-normal md:leading-relaxed"

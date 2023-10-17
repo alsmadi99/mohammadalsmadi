@@ -75,7 +75,7 @@ const Contact = ({}) => {
   return (
     <motion.div
       variants={slideIn("left", "tween", 0.2, 0.5)}
-      className={`w-full flex flex-col md:flex-row justify-between h-full`}
+      className={`w-full flex flex-col justify-between h-full`}
     >
       <div className="flex-[1] md:flex-[0.5] flex-col bg-secondary p-4 md:p-8 rounded-md overflow-y-scroll">
         <p className={styles.sectionSubText}>Get in touch</p>
@@ -153,28 +153,20 @@ const Contact = ({}) => {
           </div>
         </form>
       </div>
-      <div className="flex-[1] md:flex-[0.5] flex flex-row md:flex-col md:justify-center justify-around items-start md:items-center">
-        {!isMobile && <h3 className={styles.sectionHeadText}>My Socials.</h3>}
-        <div
-          className={
-            isMobile
-              ? "flex flex-row w-full justify-around mt-2 md:flex-col"
-              : ""
-          }
-        >
-          {socials.map((item, index) => (
-            <button
-              key={index}
-              onClick={() => {
-                window.open(item.link, "_blank");
-              }}
-              className="w-[50px] h-[50px] md:w-[150px] px-3 mt-2 md:mt-4 flex flex-row justify-between items-center bg-secondary hover:bg-white text-primary font-bold md:py-2 md:px-4 md:border-b-4 md:border-0 border-4 border-white hover:border-secondary hover:white rounded-full md:rounded"
-            >
-              {!isMobile ? item.text : null}
-              {item.icon}
-            </button>
-          ))}
-        </div>
+      <div className={"flex flex-row w-full justify-around items-center mt-4"}>
+        <h3 className={"text-3xl font-black"}>My Socials.</h3>
+        {socials.map((item, index) => (
+          <button
+            key={index}
+            onClick={() => {
+              window.open(item.link, "_blank");
+            }}
+            className="w-[50px] h-[50px] md:w-[150px] px-3 flex flex-row justify-between items-center bg-secondary hover:bg-white text-primary font-bold md:py-2 md:px-4 md:border-b-4 md:border-0 border-4 border-white hover:border-secondary hover:white rounded-full md:rounded"
+          >
+            {!isMobile ? item.text : null}
+            {item.icon}
+          </button>
+        ))}
       </div>
     </motion.div>
   );

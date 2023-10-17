@@ -11,8 +11,8 @@ import CertificatesCarousel from "./CertificatesCarousel";
 
 const Projects = () => {
   return (
-    <>
-      <div style={{ height: "100%" }}>
+    <div className="flex flex-col">
+      <div className="h-full  w-3/4 m-auto">
         <div variants={textVariant()}>
           <h1 className={styles.sectionHeadText}>
             Some of the projects I have worked on.
@@ -20,7 +20,7 @@ const Projects = () => {
         </div>
         <CarouselComponent
           cards={projects}
-          className="h-[70vh] w-[90vw] m-auto"
+          className="h-[70vh]"
           offset={2}
           showArrows={false}
         />
@@ -28,7 +28,7 @@ const Projects = () => {
       <div className="w-[100vw]">
         <CertificatesCarousel certificates={certificates} />
       </div>
-    </>
+    </div>
   );
 };
 

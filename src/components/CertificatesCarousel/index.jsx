@@ -1,6 +1,7 @@
 import { Slider } from "infinite-react-carousel";
 import React, { useMemo } from "react";
 import useIsMobile from "../../hooks/useIsMobile";
+import "./style.css";
 
 const CertificatesCarousel = ({ certificates }) => {
   const isMobile = useIsMobile();
@@ -39,13 +40,13 @@ const CertificatesCarousel = ({ certificates }) => {
           onMouseDown={handleMouseDown}
           onMouseUp={(e) => handleMouseUp(e, cert.link)}
         >
-          <div className="flex flex-col items-center justify-center">
+          <div className="flex flex-col items-center justify-center transition-transform duration-300 ease-in-out hover:scale-110">
             <img
               src={cert.image}
               alt={cert.name}
-              className="h-[60px] md:h-[80px] w-auto mb-2 rounded-sm"
+              className="image-overlay w-[20%] md:w-[50%] shadow-3xl"
             />
-            <div className="text-center mt-2 text-xs md:text-base">
+            <div className="text-center mt-2 text-sm md:text-base">
               <p className="mt-2">{cert.name}</p>
             </div>
           </div>

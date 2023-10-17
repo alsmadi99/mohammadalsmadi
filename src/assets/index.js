@@ -12,6 +12,8 @@ import neo4j from "./neo4j.png";
 import udemy from "./udemy.png";
 import kubicle from "./kubicle.png";
 
+import code from "./code.png";
+
 export {
   icon,
   tamm,
@@ -24,4 +26,5 @@ export {
   neo4j,
   udemy,
   kubicle,
+  code,
 };
