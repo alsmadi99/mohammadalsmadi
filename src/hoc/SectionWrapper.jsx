@@ -47,7 +47,7 @@ const StarWrapper = (Component, idName) =>
             : ""
         }
       >
-        <span id={idName} className="select-none mb-10">
+        <span id={idName} className="select-none mb-16">
           &nbsp;
         </span>
 

@@ -1,10 +1,8 @@
 import React, { useRef, useState } from "react";
-import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
-import { slideIn } from "../utils/motion";
 import { socials } from "../constants";
 import { AiOutlineMail } from "react-icons/ai";
 import useIsMobile from "../hooks/useIsMobile";
@@ -73,11 +71,8 @@ const Contact = ({}) => {
   };
 
   return (
-    <motion.div
-      variants={slideIn("left", "tween", 0.2, 0.5)}
-      className={`w-full flex flex-col justify-between h-full`}
-    >
-      <div className="flex-[1] md:flex-[0.5] flex-col bg-secondary p-4 md:p-8 rounded-md overflow-y-scroll">
+    <div className={`w-full flex flex-col justify-between h-full `}>
+      <div className="contact-linear flex-[1] md:flex-[0.5] flex-col bg-secondary p-4 md:p-8 rounded-md overflow-y-scroll shadow-2xl">
         <p className={styles.sectionSubText}>Get in touch</p>
         <h3 className={styles.sectionHeadText}>Contact me.</h3>
 
@@ -168,7 +163,7 @@ const Contact = ({}) => {
           </button>
         ))}
       </div>
-    </motion.div>
+    </div>
   );
 };
 

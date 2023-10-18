@@ -61,15 +61,15 @@ const Navbar = () => {
           </div>
         )}
         <div
-          className="p-2 bg-secondary border-white rounded-md border-4 cursor-pointer"
+          className="p-2 bg-secondary border-white rounded-md border-2 cursor-pointer"
           onClick={() => {
             setIsPlaying((val) => !val);
           }}
         >
           {isPlaying ? (
-            <FaVolumeHigh color="#FFFFFF" size={isMobile ? 15 : 30} />
+            <FaVolumeHigh color="#FFFFFF" size={"1.5vw"} />
           ) : (
-            <FaVolumeXmark color="#FFFFFF" size={isMobile ? 15 : 30} />
+            <FaVolumeXmark color="#FFFFFF" size={"1.5vw"} />
           )}
         </div>
       </div>

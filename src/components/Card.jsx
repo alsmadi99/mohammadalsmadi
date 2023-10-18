@@ -18,7 +18,7 @@ const Card = ({ imagen, title, description, link, android, ios }) => {
   const isMobile = useIsMobile();
   return (
     <animated.div
-      className="flex flex-col justify-between bg-secondary w-[10rem] md:w-[18rem] p-4 md:p-8 pt-0 h-[350px] md:h-[500px] shadow-lg rounded-md cursor-pointer"
+      className="project-card flex flex-col justify-between bg-secondary w-[10rem] md:w-[18rem] p-4 md:p-8 pt-0 h-[350px] md:h-[500px] shadow-lg rounded-md cursor-pointer"
       style={props3}
       onMouseEnter={() => setShown(true)}
       onMouseLeave={() => setShown(false)}

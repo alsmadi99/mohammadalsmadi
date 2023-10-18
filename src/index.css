@@ -47,6 +47,16 @@
   outline: none;
 }
 
+.contact-linear {
+  background: rgb(117,194,246);
+  background: linear-gradient(90deg, rgba(117,194,246,1) 0%, rgba(80,146,190,1) 100%);
+}
+
+.project-card {
+  background: rgb(117,194,246);
+  background: linear-gradient(184deg, rgba(117,194,246,1) 0%, rgba(80,146,190,1) 100%);
+}
+
 .shadow-linear {
   background: -moz-linear-gradient(90deg, rgba(29,93,155,1) 0%, rgba(19,56,93,1) 100%);
   background: -webkit-linear-gradient(90deg, rgba(29,93,155,1) 0%, rgba(19,56,93,1) 100%);
