@@ -118,15 +118,16 @@ const Contact = ({}) => {
               name="message"
               value={form.message}
               required
+              maxLength={2500}
               onChange={handleChange}
               placeholder="How can I help?"
-              className={`bg-primary resize-none py-2 md:py-4 px-4 md:px-6 min-h-[130px] max-h-[150px] md:min-h-[200px] md:max-h-[200px] placeholder:text-secondary text-white rounded-lg outline-none font-medium text-xs md:text-lg ${
+              className={`bg-primary resize-none py-2 md:py-4 px-4 md:px-4 min-h-[130px] max-h-[150px] md:min-h-[200px] md:max-h-[200px] placeholder:text-secondary text-white rounded-lg outline-none font-medium text-xs md:text-lg ${
                 isError ? "border-red-700 border-2 vibrate" : ""
               }`}
             />
 
             <p
-              className={`text-xs text-secondary absolute bottom-2 right-2 select-none `}
+              className={`text-sm font-black text-primary absolute bottom-[-20px] right-1 select-none`}
             >
               {form.message.length}
             </p>
@@ -140,6 +141,7 @@ const Contact = ({}) => {
           <div className="flex flex-row items-center justify-between w-full">
             <button
               type="submit"
+              disabled={loading}
               className="w-[120px] md:w-[150px] mt-2 md:mt-4 flex flex-row justify-between items-center bg-primary hover:bg-blue-500 text-white font-bold py-2 px-4 border-b-4 border-white hover:white rounded text-sm md:text-lg"
             >
               {loading ? "Sending..." : "Send"}
@@ -156,7 +158,7 @@ const Contact = ({}) => {
             onClick={() => {
               window.open(item.link, "_blank");
             }}
-            className="w-[50px] h-[50px] md:w-[150px] px-3 flex flex-row justify-between items-center bg-secondary hover:bg-white text-primary font-bold md:py-2 md:px-4 md:border-b-4 md:border-0 border-4 border-white hover:border-secondary hover:white rounded-full md:rounded"
+            className="w-[50px] h-[50px] md:w-[150px] px-3 flex flex-row justify-between items-center bg-secondary hover:bg-white text-primary font-bold md:py-2 md:px-4 md:border-b-4 md:border-0 border-4 border-white hover:border-secondary hover:white rounded-full md:rounded shadow-2xl"
           >
             {!isMobile ? item.text : null}
             {item.icon}
