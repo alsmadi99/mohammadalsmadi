@@ -18,6 +18,7 @@ const CertificatesCarousel = ({ certificates }) => {
     };
   }, [isMobile]);
 
+  
   let startX = 0;
 
   const handleMouseDown = (e) => {

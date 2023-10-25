@@ -47,6 +47,23 @@
   outline: none;
 }
 
+.news-slider {
+  overflow: hidden;
+  white-space: nowrap;
+  background-color: #0044cc;
+}
+
+.items {
+  display: flex;
+}
+
+.item {
+  padding: 15px 30px;
+  display: inline-block;
+  color: white;
+  font-size: 24px;
+}
+
 .contact-linear {
   background: rgb(117,194,246);
   background: linear-gradient(90deg, rgba(117,194,246,1) 0%, rgba(80,146,190,1) 100%);
