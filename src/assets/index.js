@@ -11,6 +11,7 @@ import azure from "./azure.png";
 import neo4j from "./neo4j.png";
 import udemy from "./udemy.png";
 import kubicle from "./kubicle.png";
+import quds from "./quds.jpg";
 
 import code from "./code.png";
 
@@ -27,4 +28,5 @@ export {
   udemy,
   kubicle,
   code,
+  quds,
 };

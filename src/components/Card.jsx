@@ -50,7 +50,7 @@ const Card = ({ imagen, title, description, link, android, ios }) => {
           <div className="flex flex-row w-full justify-between mt-2">
             <button
               onClick={() => {
-                window.open(link, "_blank");
+                window.open(ios, "_blank");
               }}
               className="w-[45%] flex text-[9px] md:text-xs flex-row justify-between items-center bg-primary hover:bg-blue-500 py-1 px-1 md:py-2 md:px-2 border-b-4 border-white hover:white rounded"
             >
@@ -59,7 +59,7 @@ const Card = ({ imagen, title, description, link, android, ios }) => {
             </button>
             <button
               onClick={() => {
-                window.open(link, "_blank");
+                window.open(android, "_blank");
               }}
               className="w-[45%] flex text-[9px] md:text-xs flex-row justify-between items-center bg-primary hover:bg-blue-500 py-1 px-1 md:py-2 md:px-2 border-b-4 border-white hover:white rounded"
             >

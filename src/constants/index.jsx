@@ -10,7 +10,7 @@ import {
   neom,
   tamm,
   sta,
-  code,
+  quds,
 } from "../assets";
 import Card from "../components/Card";
 
@@ -141,6 +141,10 @@ export const projects = [
         imagen={carers}
         link="https://carers.care/"
         title="Carers"
+        android={
+          "https://play.google.com/store/apps/details?id=com.kensoftware.carers&hl=en&gl=US"
+        }
+        ios={"https://apps.apple.com/jo/app/carers/id1271137642"}
         description="Carers is a Home Care Digital Solution that provides reliable, affordable, and secure home care experiences for Care Receivers, Home Care Agencies, and Care Providers."
       />
     ),
@@ -149,8 +153,23 @@ export const projects = [
     key: "5",
     content: (
       <Card
+        imagen={quds}
+        link="https://qudspaints.com/"
+        android={
+          "https://play.google.com/store/apps/details?id=com.qudspaints.application"
+        }
+        ios={"https://apps.apple.com/jo/app/quds-paints/id1586441008"}
+        title="Quds Paints"
+        description="Quds Paints, established in 1993 in Jordan, started small but has become a key player in the paint industry. They focus on quality, eco-friendly products at fair prices, aiming for customer satisfaction and environmental responsibility."
+      />
+    ),
+  },
+  {
+    key: "6",
+    content: (
+      <Card
         imagen={taadhod}
-        link="https://apps.apple.com/qa/app/al-taadhod-%D9%85%D8%AC%D9%85%D9%88%D8%B9%D8%A9-%D8%A7%D9%84%D8%AA%D8%B9%D8%A7%D8%B6%D8%AF/id1486671642"
+        link="https://altaadhod.com/"
         android={
           "https://play.google.com/store/apps/details?id=com.altaadhodgroup.app&hl=en&gl=US"
         }
@@ -163,7 +182,7 @@ export const projects = [
     ),
   },
   {
-    key: "6",
+    key: "7",
     content: (
       <Card
         imagen={caterthumb}
@@ -177,9 +196,4 @@ export const projects = [
   },
 ];
 
-export const sections = [
-  // "",
-  "about",
-  "projects",
-  "contact",
-];
+export const sections = ["about", "projects", "contact"];

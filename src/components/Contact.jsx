@@ -151,7 +151,7 @@ const Contact = ({}) => {
         </form>
       </div>
       <div className={"flex flex-row w-full justify-around items-center mt-4"}>
-        <h3 className={"text-3xl font-black"}>My Socials.</h3>
+        <h3 className={"md:text-3xl text-sm font-black"}>My Socials.</h3>
         {socials.map((item, index) => (
           <button
             key={index}

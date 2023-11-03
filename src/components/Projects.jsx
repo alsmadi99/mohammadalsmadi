@@ -12,11 +12,9 @@ import CertificatesCarousel from "./CertificatesCarousel";
 const Projects = () => {
   return (
     <div className="flex flex-col">
-      <div className="h-full  w-3/4 m-auto">
+      <div className="h-full w-3/4 m-auto">
         <div variants={textVariant()}>
-          <h1 className={styles.sectionHeadText}>
-            Some of the projects I have worked on.
-          </h1>
+          <h1 className={styles.sectionHeadText}>Projects I have worked on.</h1>
         </div>
         <CarouselComponent
           cards={projects}
@@ -24,6 +22,10 @@ const Projects = () => {
           offset={2}
           showArrows={false}
         />
+      </div>
+
+      <div className="h-full w-3/4 m-auto">
+        <h1 className={styles.sectionHeadText}>Achievements.</h1>
       </div>
       <div className="w-[100vw]">
         <CertificatesCarousel certificates={certificates} />
