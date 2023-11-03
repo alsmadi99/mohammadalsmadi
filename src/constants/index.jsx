@@ -57,6 +57,11 @@ export const originalCertificates = [
     link: "https://www.credly.com/badges/d955a26a-63a0-4af7-9a5c-9785d8a5ce1e/public_url",
   },
   {
+    name: "Principles of Generative AI",
+    image: kubicle,
+    link: "https://app.kubicle.com/certificates/1351698?token=Ebf35tPDDvdSHP3LTFE8xsq6",
+  },
+  {
     name: "The Complete Guide to Advanced React Component Patterns",
     image: udemy,
     link: "https://www.udemy.com/certificate/UC-230ad6fd-eeab-4b28-87ca-7bdfadd7d8d2/",
