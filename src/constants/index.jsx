@@ -17,17 +17,17 @@ import Card from "../components/Card";
 export const socials = [
   {
     link: "https://www.linkedin.com/in/smadixd/",
-    icon: <AiFillLinkedin size={23} />,
+    icon: (props) => <AiFillLinkedin size={23} {...props} />,
     text: "Linkedin",
   },
   {
     link: "https://github.com/smadixd",
-    icon: <AiFillGithub size={23} />,
+    icon: (props) => <AiFillGithub size={23} {...props} />,
     text: "Github",
   },
   {
     link: "mailto:smadi.dev@gmail.com",
-    icon: <AiOutlineMail size={23} />,
+    icon: (props) => <AiOutlineMail size={23} {...props} />,
     text: "E-Mail",
   },
 ];

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import * as THREE from "three";
 import { BrowserRouter } from "react-router-dom";
-import { About, Navbar, LofiPlayer, Projects, Contact } from "./components";
+import { About, Navbar, Projects, Contact } from "./components";
 import { GlobalProvider } from "./hooks/GlobalContext";
 
 if (!("THREE" in window) || !window.THREE) {
@@ -30,7 +30,6 @@ const App = () => {
         <About />
         <Projects />
         <Contact />
-        <LofiPlayer />
       </BrowserRouter>
     </GlobalProvider>
   );

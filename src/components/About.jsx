@@ -13,12 +13,12 @@ const About = () => {
     const experienceInMilliseconds = currentDate - startDate;
     const experienceInYears =
       experienceInMilliseconds / (1000 * 60 * 60 * 24 * 365);
-    const experienceInWholeYears = Math.floor(experienceInYears);
+    const experienceInWholeYears = Math.ceil(experienceInYears);
     return experienceInWholeYears;
   };
 
   return (
-    <div className="h-full flex flex-col">
+    <div className="h-full flex flex-col pt-5">
       <div variants={textVariant()}>
         <h1
           className={`text-white text-center md:text-6xl text-2xl font-black`}
@@ -33,44 +33,41 @@ const About = () => {
         </p>
       </div>
 
-      <div className="flex flex-col justify-between w-full gap-4 h-[60vh] mt-10">
-        <div className="flex flex-col w-full gap-5">
+      <div className="flex flex-col justify-between w-full gap-4 h-[60vh] mt-5">
+        <div className="flex flex-col w-full gap-3">
           <motion.p
             variants={fadeIn("", "", 0.1, 1)}
-            className="mt-4 text-secondary flex w-full md:w-full text-[11px] md:text-xl leading-normal md:leading-relaxed"
+            className="mt-4 text-secondary flex w-full md:w-full text-[11px] md:text-lg leading-normal md:leading-relaxed"
           >
-            I'm a software engineer with over {getYearsOfExperience()} years of
-            hands-on experience. I'm all about diving into new tech and
-            tinkering with AI tools. I've mastered JavaScript and TypeScript,
-            working extensively with React, Node, and React Native. My portfolio
-            includes building applications using various database engines like
-            MongoDB and PostgreSQL.
+            I'm a software engineer based in Jordan with around
+            {" " + getYearsOfExperience()} years of hands-on experience. I've
+            mastered JavaScript and TypeScript, working extensively with React,
+            Node, and React Native. My portfolio includes building applications
+            using various database engines like MongoDB and PostgreSQL.
           </motion.p>
           <motion.p
             variants={fadeIn("", "", 0.1, 1)}
-            className="text-secondary flex w-full md:w-full text-[11px] md:text-xl leading-normal md:leading-relaxed"
+            className="text-secondary flex w-full md:w-full text-[11px] md:text-lg leading-normal md:leading-relaxed"
           >
             Team collaboration is something I truly enjoy, and I've had the
             privilege of working alongside incredibly talented individuals who
-            have enriched my knowledge over the years. Leading features and
-            projects, I've focused on constructing highly scalable, test-driven
-            code.
+            have enriched my knowledge over the years. As solo working on
+            projects isn't something that motivates me.
           </motion.p>
           <motion.p
             variants={fadeIn("", "", 0.1, 1)}
-            className="text-secondary flex w-full md:w-full text-[11px] md:text-xl leading-normal md:leading-relaxed"
+            className="text-secondary flex w-full md:w-full text-[11px] md:text-lg leading-normal md:leading-relaxed"
           >
-            When I'm not coding I like to play video games and work on personal
-            projects, as i like to work on unique projects as building standard
-            applications is not something i like to do in my free time, instead
-            i like to learn video game development as i have passion with video
-            games and like to enhance my skills there and include ai tools with
-            it.
+            Outside of coding, I enjoy playing video games and tackling
+            freelance projects. I'm not much into standard applications;
+            instead, I like taking on unique challenges. Learning new
+            development skills is a hobby of mine, and I'm keen on getting
+            involved in open-source projects.
           </motion.p>
         </div>
         <motion.p
           variants={fadeIn("", "", 0.1, 1)}
-          className="text-white flex w-full md:w-full text-[10px] md:text-lg"
+          className="text-white flex w-full md:w-full text-[10px] md:text-sm"
         >
           Feel free to explore my portfolio to see some of the exciting projects
           I've worked on. If you have any questions or just want to chat, don't

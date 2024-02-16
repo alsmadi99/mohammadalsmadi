@@ -4,17 +4,15 @@
  ! All navbar code is written in this file.
  ! Everything is ready till now.
  */
-import React, { useContext } from "react";
-import { LofiPlayerContext } from "./LofiPlayerProvider";
+import React from "react";
 import { styles } from "../styles/";
 import { icon } from "../assets/";
 import { FaVolumeHigh, FaVolumeXmark } from "react-icons/fa6";
 import useIsMobile from "../hooks/useIsMobile";
-import { sections } from "../constants";
+import { sections, socials } from "../constants";
 import { useGlobalContext } from "../hooks/GlobalContext";
 
 const Navbar = () => {
-  const { setIsPlaying, isPlaying } = useContext(LofiPlayerContext);
   const isMobile = useIsMobile();
 
   const { currentHash } = useGlobalContext();
@@ -64,20 +62,24 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div className="flex justify-end items-end flex-[1]">
-          <div
-            className="w-11 h-11 flex justify-center items-center bg-secondary border-white rounded-md border-2 cursor-pointer"
-            onClick={() => {
-              setIsPlaying((val) => !val);
-            }}
-          >
-            {isPlaying ? (
-              <FaVolumeHigh color="#FFFFFF" size={isMobile ? 20 : 30} />
-            ) : (
-              <FaVolumeXmark color="#FFFFFF" size={isMobile ? 20 : 30} />
-            )}
+        {!isMobile && (
+          <div className="flex justify-end items-end flex-[1]">
+            <div className="flex flex-row items-center gap-4">
+              {socials.map((item, index) => {
+                const Icon = item.icon;
+                return (
+                  <Icon
+                    key={index}
+                    onClick={() => {
+                      window.open(item.link, "_blank");
+                    }}
+                    className="h-7 w-7 opacity-50 transition-transform transform-gpu hover:scale-125 hover:opacity-100 cursor-pointer"
+                  />
+                );
+              })}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </nav>
   );

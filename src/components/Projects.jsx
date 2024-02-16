@@ -25,7 +25,7 @@ const Projects = () => {
       </div>
 
       <div className="h-full w-3/4 m-auto">
-        <h1 className={styles.sectionHeadText}>Achievements.</h1>
+        <h1 className={styles.sectionHeadText}>Certifications.</h1>
       </div>
       <div className="w-[100vw]">
         <CertificatesCarousel certificates={certificates} />

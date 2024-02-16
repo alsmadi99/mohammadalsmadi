@@ -150,21 +150,6 @@ const Contact = ({}) => {
           </div>
         </form>
       </div>
-      <div className={"flex flex-row w-full justify-around items-center mt-4"}>
-        <h3 className={"md:text-3xl text-sm font-black"}>My Socials.</h3>
-        {socials.map((item, index) => (
-          <button
-            key={index}
-            onClick={() => {
-              window.open(item.link, "_blank");
-            }}
-            className="w-[50px] h-[50px] md:w-[150px] px-3 flex flex-row justify-between items-center bg-secondary hover:bg-white text-primary font-bold md:py-2 md:px-4 md:border-b-4 md:border-0 border-4 border-white hover:border-secondary hover:white rounded-full md:rounded shadow-2xl"
-          >
-            {!isMobile ? item.text : null}
-            {item.icon}
-          </button>
-        ))}
-      </div>
     </div>
   );
 };
