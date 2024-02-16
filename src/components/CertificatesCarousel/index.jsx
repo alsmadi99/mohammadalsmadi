@@ -18,7 +18,6 @@ const CertificatesCarousel = ({ certificates }) => {
     };
   }, [isMobile]);
 
-  
   let startX = 0;
 
   const handleMouseDown = (e) => {
@@ -38,13 +37,13 @@ const CertificatesCarousel = ({ certificates }) => {
         <div
           key={index}
           className="flex flex-col items-center justify-center p-4 opacity-100 md:opacity-50 transition-opacity duration-500 ease-in-out cursor-pointer select-none h-[200px] outline-none hover:opacity-100"
-          onMouseDown={handleMouseDown}
+          onMouseDown={(e) => handleMouseDown(e)}
           onMouseUp={(e) => handleMouseUp(e, cert.link)}
         >
           <div className="flex flex-col items-center justify-center transition-transform duration-300 ease-in-out hover:scale-110">
             <img
               src={cert.image}
-              alt={cert.name}
+              alt={"cert name" + cert.name}
               className="image-overlay w-[20%] md:w-[50%] shadow-3xl"
             />
             <div className="text-center mt-2 text-sm md:text-base">

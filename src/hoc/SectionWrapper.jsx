@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-import { staggerContainer } from "../utils/motion";
 import { useEffect, useRef } from "react";
 import { useGlobalContext } from "../hooks/GlobalContext";
 
@@ -35,12 +33,8 @@ const StarWrapper = (Component, idName) =>
     }, []);
 
     return (
-      <motion.section
+      <section
         ref={sectionRef}
-        variants={staggerContainer()}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.25 }}
         className={
           !!idName
             ? `md:w-3/4 w-5/6 sm:py-12 py-7 mx-auto relative z-0 flex flex-col justify-center items-center`
@@ -52,7 +46,7 @@ const StarWrapper = (Component, idName) =>
         </span>
 
         <Component {...props} />
-      </motion.section>
+      </section>
     );
   };
 

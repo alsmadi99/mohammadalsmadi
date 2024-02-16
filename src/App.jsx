@@ -1,13 +1,13 @@
-import { useEffect } from "react";
+import React, { useEffect, lazy, Suspense } from "react";
 import { useLocation } from "react-router-dom";
-import * as THREE from "three";
 import { BrowserRouter } from "react-router-dom";
-import { About, Navbar, Projects, Contact } from "./components";
 import { GlobalProvider } from "./hooks/GlobalContext";
 
-if (!("THREE" in window) || !window.THREE) {
-  window.THREE = THREE;
-}
+const Navbar = lazy(() => import("./components/Navbar"));
+const About = lazy(() => import("./components/About"));
+const Projects = lazy(() => import("./components/Projects"));
+const Contact = lazy(() => import("./components/Contact"));
+
 const ScrollToTop = () => {
   const { hash } = useLocation();
 
@@ -26,10 +26,12 @@ const App = () => {
     <GlobalProvider>
       <BrowserRouter>
         <ScrollToTop />
-        <Navbar />
-        <About />
-        <Projects />
-        <Contact />
+        <Suspense fallback={<div></div>}>
+          <Navbar />
+          <About />
+          <Projects />
+          <Contact />
+        </Suspense>
       </BrowserRouter>
     </GlobalProvider>
   );

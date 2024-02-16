@@ -3,7 +3,7 @@
     <!-- Homepage -->
     <url>
         <loc>https://mohammadalsmadi.com/</loc>
-        <lastmod>2023-07-20</lastmod>
+        <lastmod>2024-02-16</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
@@ -11,7 +11,7 @@
     <!-- About Page -->
     <url>
         <loc>https://mohammadalsmadi.com/#about</loc>
-        <lastmod>2023-07-20</lastmod>
+        <lastmod>2024-02-16</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -19,7 +19,7 @@
     <!-- Projects Page -->
     <url>
         <loc>https://mohammadalsmadi.com/#projects</loc>
-        <lastmod>2023-07-20</lastmod>
+        <lastmod>2024-02-16</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>

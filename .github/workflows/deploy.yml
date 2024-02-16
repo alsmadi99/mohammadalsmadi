@@ -3,7 +3,7 @@ name: Deploy
 on:
   push:
     branches:
-      - removed-3d-model
+      - main
 
 jobs:
   deploy:
@@ -21,9 +21,9 @@ jobs:
           key: ${{ secrets.HETZNER_SSH_KEY }}
           port: ${{ secrets.HETZNER_PORT }}
           script: |
-            git clone git@github.com:smadixd/my-portfolio.git || git -C my-portfolio pull origin removed-3d-model
+            git clone git@github.com:smadixd/my-portfolio.git || git -C my-portfolio pull origin main
             cd my-portfolio
-            git checkout removed-3d-model
+            git checkout main
             sudo docker build \
             --build-arg VITE_SERVICE_KEY=${{ secrets.VITE_SERVICE_KEY }} \
             --build-arg VITE_TEMPLATE_ID=${{ secrets.VITE_TEMPLATE_ID }} \

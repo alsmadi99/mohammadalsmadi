@@ -4,7 +4,6 @@
 import React from "react";
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
-import { textVariant } from "../utils/motion";
 import CarouselComponent from "./Carousel";
 import { certificates, projects } from "../constants";
 import CertificatesCarousel from "./CertificatesCarousel";
@@ -13,7 +12,7 @@ const Projects = () => {
   return (
     <div className="flex flex-col">
       <div className="h-full w-3/4 m-auto">
-        <div variants={textVariant()}>
+        <div>
           <h1 className={styles.sectionHeadText}>Projects I have worked on.</h1>
         </div>
         <CarouselComponent

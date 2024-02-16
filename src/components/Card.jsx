@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { useSpring, animated } from "react-spring";
-import { AiOutlineLink, AiFillAndroid, AiFillApple } from "react-icons/ai";
+import {
+  AiOutlineLinkLazy,
+  AiFillAppleLazy,
+  AiFillAndroidLazy,
+} from "../constants/icons";
 
 import useIsMobile from "../hooks/useIsMobile";
 
@@ -44,7 +48,7 @@ const Card = ({ imagen, title, description, link, android, ios }) => {
           className="md:mt-4 mt-1 w-full flex flex-row justify-between items-center bg-primary hover:bg-blue-500 text-white md:font-bold font-normal py-1 px-2 md:py-2 md:px-4 border-b-4 border-white hover:white rounded text-[10px] md:text-lg"
         >
           View Website
-          <AiOutlineLink />
+          <AiOutlineLinkLazy />
         </button>
         {!!android && !!ios && (
           <div className="flex flex-row w-full justify-between mt-2">
@@ -55,7 +59,7 @@ const Card = ({ imagen, title, description, link, android, ios }) => {
               className="w-[45%] flex text-[9px] md:text-xs flex-row justify-between items-center bg-primary hover:bg-blue-500 py-1 px-1 md:py-2 md:px-2 border-b-4 border-white hover:white rounded"
             >
               iOS
-              <AiFillApple size={isMobile ? 10 : 17} />
+              <AiFillAppleLazy size={isMobile ? 10 : 17} />
             </button>
             <button
               onClick={() => {
@@ -64,7 +68,7 @@ const Card = ({ imagen, title, description, link, android, ios }) => {
               className="w-[45%] flex text-[9px] md:text-xs flex-row justify-between items-center bg-primary hover:bg-blue-500 py-1 px-1 md:py-2 md:px-2 border-b-4 border-white hover:white rounded"
             >
               Android
-              <AiFillAndroid size={isMobile ? 10 : 17} />
+              <AiFillAndroidLazy size={isMobile ? 10 : 17} />
             </button>
           </div>
         )}

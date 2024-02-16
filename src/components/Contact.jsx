@@ -4,8 +4,8 @@ import emailjs from "@emailjs/browser";
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import { socials } from "../constants";
-import { AiOutlineMail } from "react-icons/ai";
 import useIsMobile from "../hooks/useIsMobile";
+import { AiOutlineMailLazy } from "../constants/icons";
 
 const Contact = ({}) => {
   const formRef = useRef();
@@ -145,7 +145,7 @@ const Contact = ({}) => {
               className="w-[120px] md:w-[150px] mt-2 md:mt-4 flex flex-row justify-between items-center bg-primary hover:bg-blue-500 text-white font-bold py-2 px-4 border-b-4 border-white hover:white rounded text-sm md:text-lg"
             >
               {loading ? "Sending..." : "Send"}
-              <AiOutlineMail />
+              <AiOutlineMailLazy />
             </button>
           </div>
         </form>
@@ -154,19 +154,17 @@ const Contact = ({}) => {
         <div
           className={"flex flex-row w-full justify-around items-center mt-4"}
         >
-          <h3 className={"md:text-3xl text-sm font-black"}>My Socials.</h3>
+          <h3 className={"text-lg font-black"}>My Socials.</h3>
           {socials.map((item, index) => {
             const Icon = item.icon;
             return (
-              <button
+              <Icon
                 key={index}
                 onClick={() => {
                   window.open(item.link, "_blank");
                 }}
-                className="w-[50px] h-[50px] md:w-[150px] px-3 flex flex-row justify-between items-center bg-secondary hover:bg-white text-primary font-bold md:py-2 md:px-4 md:border-b-4 md:border-0 border-4 border-white hover:border-secondary hover:white rounded-full md:rounded shadow-2xl"
-              >
-                <Icon />
-              </button>
+                className="h-7 w-7 transition-transform transform-gpu hover:scale-150 cursor-pointer"
+              />
             );
           })}
         </div>

@@ -1,4 +1,3 @@
-import { AiOutlineMail, AiFillLinkedin, AiFillGithub } from "react-icons/ai";
 import {
   carers,
   caterthumb,
@@ -13,21 +12,25 @@ import {
   quds,
 } from "../assets";
 import Card from "../components/Card";
-
+import {
+  AiFillGithubLazy,
+  AiOutlineMailLazy,
+  AiFillLinkedinLazy,
+} from "./icons";
 export const socials = [
   {
     link: "https://www.linkedin.com/in/smadixd/",
-    icon: (props) => <AiFillLinkedin size={23} {...props} />,
+    icon: (props) => <AiFillLinkedinLazy size={23} {...props} />,
     text: "Linkedin",
   },
   {
     link: "https://github.com/smadixd",
-    icon: (props) => <AiFillGithub size={23} {...props} />,
+    icon: (props) => <AiFillGithubLazy size={23} {...props} />,
     text: "Github",
   },
   {
     link: "mailto:smadi.dev@gmail.com",
-    icon: (props) => <AiOutlineMail size={23} {...props} />,
+    icon: (props) => <AiOutlineMailLazy size={23} {...props} />,
     text: "E-Mail",
   },
 ];
