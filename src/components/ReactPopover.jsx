@@ -1,8 +1,12 @@
-// @flow strict
-"use client";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
-function ReactPopover({ children, content, trigger = "click" }) {
+function ReactPopover({
+  children,
+  content,
+  trigger = "click",
+  after = "",
+  before = "",
+}) {
   const [show, setShow] = useState(false);
   const wrapperRef = useRef(null);
 
@@ -18,29 +22,18 @@ function ReactPopover({ children, content, trigger = "click" }) {
     }
   };
 
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
-        setShow(false);
-      }
-    }
-
-    if (show) {
-      // Bind the event listener
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => {
-        // Unbind the event listener on clean up
-        document.removeEventListener("mousedown", handleClickOutside);
+  const calculatePosition = () => {
+    if (!wrapperRef.current) {
+      return {
+        top: 0,
+        left: 0,
       };
     }
-  }, [show, wrapperRef]);
-
-  const calculatePosition = () => {
     const rect = wrapperRef.current.getBoundingClientRect();
     const screenHeight = window.innerHeight;
     const screenWidth = window.innerWidth;
-    const popoverHeight = 200; // Set your popover height
-    const popoverWidth = 200; // Set your popover width
+    const popoverHeight = 1300; // Set your popover height
+    const popoverWidth = 1300; // Set your popover width
     let topPosition = rect.bottom;
     let leftPosition = rect.left;
 
@@ -56,22 +49,22 @@ function ReactPopover({ children, content, trigger = "click" }) {
   };
 
   return (
-    <div
-      ref={wrapperRef}
-      className="w-fit h-fit relative"
-      onMouseLeave={handleMouseLeft}
-    >
-      <div onClick={() => setShow(!show)} onMouseEnter={handleMouseOver}>
-        {children}
+    <div className={"w-fit h-fit relative"} onMouseLeave={handleMouseLeft}>
+      <div>
+        <span>{before + " "}</span>
+        <span onMouseEnter={handleMouseOver} ref={wrapperRef}>
+          {children}
+        </span>
+        <span>{" " + after}</span>
       </div>
       <div
-        className={`max-w-[800px] h-fit absolute z-50 transition-all ease-in-out duration-500 ${
-          show
-            ? `top-[${calculatePosition().top}] left-[${
-                calculatePosition().left
-              }] opacity-100`
-            : "opacity-0"
-        }`}
+        className={`max-w-[800px] h-fit absolute z-50 transition-all ease-in-out duration-500`}
+        style={{
+          top: 30,
+          left: calculatePosition().left,
+          opacity: show ? 1 : 0,
+          pointerEvents: show ? "auto" : "none",
+        }}
       >
         <div className="rounded border-white border-2 text-nowrap bg-primary p-3 shadow-[10px_30px_150px_rgba(46,38,92,0.25)] mb-[10px]">
           {content}

@@ -41,8 +41,7 @@ const About = () => {
 
       <div className="flex flex-col justify-between w-full gap-4 h-[60vh] mt-5">
         <div className="flex flex-row flex-wrap w-full gap-3">
-          <div className="mt-4 flex flex-row flex-wrap gap-1 text-secondary text-[11px] md:text-lg leading-normal md:leading-relaxed">
-            <span>I'm a software engineer based in Jordan with around</span>
+          <div className="mt-4 text-secondary text-[11px] md:text-lg leading-normal md:leading-relaxed">
             <ReactPopover
               trigger="hover"
               content={
@@ -65,12 +64,17 @@ const About = () => {
                       target="_blank"
                       className="text-secondary underline"
                     >
-                      PriceWaterhouseCoopers ( PwC )
+                      PriceWaterhouseCoopers (PwC)
                     </a>{" "}
                     as a Software Engineer
                   </p>
                 </div>
               }
+              before="I'm a software engineer based in Jordan with around"
+              after={`I've mastered JavaScript and TypeScript, working extensively with
+              React, Node, and React Native. My portfolio includes building
+              applications using various frameworks and technologies on top of
+              using database engines like MongoDB and PostgreSQL.`}
             >
               <span
                 className={
@@ -81,15 +85,9 @@ const About = () => {
                 {getYearsOfExperience()} years of hands-on experience.
               </span>
             </ReactPopover>
-            <span>I've mastered JavaScript</span>
-            <span>
-              and TypeScript, working extensively with React, Node, and React
-              Native. My portfolio includes building applications using various
-              frameworks and technologies on top of using database engines like
-              MongoDB and PostgreSQL.
-            </span>
+            <span></span>
           </div>
-          <div className="flex flex-row flex-wrap gap-1 text-secondary text-[11px] md:text-lg leading-normal md:leading-relaxed">
+          <div className="text-secondary text-[11px] md:text-lg leading-normal md:leading-relaxed">
             <span>
               Team collaboration is something I truly enjoy, and I've had the
               privilege of working alongside incredibly talented individuals who
@@ -98,7 +96,7 @@ const About = () => {
             </span>
           </div>
           <div className="flex flex-row flex-wrap gap-1 text-secondary text-[11px] md:text-lg leading-normal md:leading-relaxed">
-            <span> Outside of coding, I enjoy playing</span>
+            <span> </span>
             <ReactPopover
               trigger="hover"
               content={
@@ -111,6 +109,11 @@ const About = () => {
                   <small>{"and more :)"}</small>
                 </div>
               }
+              before="Outside of coding, I enjoy playing"
+              after="and tackling with freelance projects. I like taking on unique
+              challenges. Learning new development skills is a hobby of mine,
+              and I'm keen on getting involved in immersive open-source
+              projects."
             >
               <span
                 className={
@@ -121,14 +124,6 @@ const About = () => {
                 video games
               </span>
             </ReactPopover>
-            <span>
-              and tackling with freelance projects. I like taking on unique
-              challenges.
-            </span>
-            <span>
-              Learning new development skills is a hobby of mine, and I'm keen
-              on getting involved in immersive open-source projects.
-            </span>
           </div>
         </div>
         <p className="text-white text-[10px] md:text-sm">
