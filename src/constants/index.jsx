@@ -10,6 +10,7 @@ import {
   tamm,
   sta,
   quds,
+  janah,
 } from "../assets";
 import Card from "../components/Card";
 import {
@@ -101,7 +102,7 @@ export const originalCertificates = [
   },
 ];
 
-export const certificates = duplicateCertificates(originalCertificates, 3.75);
+export const certificates = duplicateCertificates(originalCertificates, 3.34);
 
 export const projects = [
   {
@@ -141,21 +142,6 @@ export const projects = [
     key: "4",
     content: (
       <Card
-        imagen={carers}
-        link="https://carers.care/"
-        title="Carers"
-        android={
-          "https://play.google.com/store/apps/details?id=com.kensoftware.carers&hl=en&gl=US"
-        }
-        ios={"https://apps.apple.com/jo/app/carers/id1271137642"}
-        description="Carers is a Home Care Digital Solution that provides reliable, affordable, and secure home care experiences for Care Receivers, Home Care Agencies, and Care Providers."
-      />
-    ),
-  },
-  {
-    key: "5",
-    content: (
-      <Card
         imagen={quds}
         link="https://qudspaints.com/"
         android={
@@ -168,7 +154,37 @@ export const projects = [
     ),
   },
   {
+    key: "5",
+    content: (
+      <Card
+        imagen={janah}
+        link="https://janahalaman.com/"
+        android={
+          "https://play.google.com/store/apps/details?id=com.janahalaman"
+        }
+        ios={"https://apps.apple.com/vn/app/janahalaman/id6473704324"}
+        title="Janah Al Aman"
+        description="A revolutionizing transportation solution in Riyadh, focusing on wheelchair accessibility and family-friendly travel."
+      />
+    ),
+  },
+  {
     key: "6",
+    content: (
+      <Card
+        imagen={carers}
+        link="https://carers.care/"
+        title="Carers"
+        android={
+          "https://play.google.com/store/apps/details?id=com.kensoftware.carers&hl=en&gl=US"
+        }
+        ios={"https://apps.apple.com/jo/app/carers/id1271137642"}
+        description="Carers is a Home Care Digital Solution that provides reliable, affordable, and secure home care experiences for Care Receivers, Home Care Agencies, and Care Providers."
+      />
+    ),
+  },
+  {
+    key: "7",
     content: (
       <Card
         imagen={taadhod}
@@ -185,7 +201,7 @@ export const projects = [
     ),
   },
   {
-    key: "7",
+    key: "8",
     content: (
       <Card
         imagen={caterthumb}
@@ -200,3 +216,5 @@ export const projects = [
 ];
 
 export const sections = ["about", "projects", "contact"];
+
+export const games = ["League of Legends", "Counter Strike", "Warframe"];

@@ -37,7 +37,7 @@ const StarWrapper = (Component, idName) =>
         ref={sectionRef}
         className={
           !!idName
-            ? `md:w-3/4 w-5/6 sm:py-12 py-7 mx-auto relative z-0 flex flex-col justify-center items-center`
+            ? `md:w-2/3 w-11/12 sm:py-12 py-7 mx-auto relative z-0 flex flex-col justify-center items-center`
             : ""
         }
       >
