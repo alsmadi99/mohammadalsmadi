@@ -16,7 +16,7 @@ export default ({ mode }) => {
   return defineConfig({
     // To access env vars here use process.env.TEST_VAR
     plugins: [react(), viteCompression()],
-    optimizeDeps: ["react-icons", "infinite-react-carousel"],
+    optimizeDeps: ["react-icons"],
     build: {
       cssMinify: true,
       minify: true,

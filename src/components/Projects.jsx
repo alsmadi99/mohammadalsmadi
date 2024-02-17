@@ -2,9 +2,9 @@ import React, { Suspense, lazy } from "react";
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import { certificates, projects } from "../constants";
+import MarqueeSlider from "./MarqueeSlider";
 
 const LazyCarouselComponent = lazy(() => import("./Carousel"));
-const LazyCertificatesCarousel = lazy(() => import("./CertificatesCarousel"));
 
 const Projects = () => {
   return (
@@ -27,9 +27,7 @@ const Projects = () => {
         <h1 className={styles.sectionHeadText}>Certifications.</h1>
       </div>
       <div className="w-[100vw]">
-        <Suspense fallback={<div>Loading Certificates Carousel...</div>}>
-          <LazyCertificatesCarousel certificates={certificates} />
-        </Suspense>
+        <MarqueeSlider data={certificates.concat(certificates)} />
       </div>
     </div>
   );

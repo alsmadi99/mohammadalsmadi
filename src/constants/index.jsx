@@ -56,11 +56,6 @@ export const duplicateCertificates = (certificates, copies) => {
 
 export const originalCertificates = [
   {
-    name: "Microsoft Certified: Azure Fundamentals",
-    image: azure,
-    link: "https://www.credly.com/badges/d955a26a-63a0-4af7-9a5c-9785d8a5ce1e/public_url",
-  },
-  {
     name: "Principles of Generative AI",
     image: kubicle,
     link: "https://app.kubicle.com/certificates/1351698?token=Ebf35tPDDvdSHP3LTFE8xsq6",
@@ -74,6 +69,11 @@ export const originalCertificates = [
     name: "Cypher Fundamentals",
     image: neo4j,
     link: "https://graphacademy.neo4j.com/c/97778f33-e8b3-4134-b210-77d350ac7f9c/",
+  },
+  {
+    name: "Microsoft Certified: Azure Fundamentals",
+    image: azure,
+    link: "https://www.credly.com/badges/d955a26a-63a0-4af7-9a5c-9785d8a5ce1e/public_url",
   },
   {
     name: "Applying Visual Data Skills in Visualization Fundamentals",
@@ -102,7 +102,8 @@ export const originalCertificates = [
   },
 ];
 
-export const certificates = duplicateCertificates(originalCertificates, 3.34);
+// export const certificates = duplicateCertificates(origindalCertificates, 3.34);
+export const certificates = originalCertificates;
 
 export const projects = [
   {
