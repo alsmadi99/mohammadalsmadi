@@ -23,9 +23,9 @@ This website showcases my projects, skills, and experience. It provides an overv
 
 To view the website locally, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/your-username/your-portfolio.git`
-2. Install the dependencies: `npm install`
-3. Start the development server: `npm start`
+1. Clone the repository: `git clone https://github.com/smadixd/my-portfolio.git`
+2. Install the dependencies: `yarn`
+3. Start the development server: `yarn dev`
 4. Open your browser and visit `http://localhost:3000`
 
 ## License
