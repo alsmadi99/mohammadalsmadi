@@ -11,7 +11,7 @@ const Projects = () => {
     <div className="flex flex-col">
       <div className="h-full w-3/4 m-auto">
         <div>
-          <h1 className={styles.sectionHeadText}>Projects Contributions.</h1>
+          <h1 className={styles.sectionHeadText}>Projects I worked on.</h1>
         </div>
         <Suspense fallback={<div>Loading Projects Carousel...</div>}>
           <LazyCarouselComponent

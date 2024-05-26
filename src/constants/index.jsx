@@ -218,4 +218,11 @@ export const projects = [
 
 export const sections = ["about", "projects", "contact"];
 
-export const games = ["League of Legends", "Counter Strike", "Warframe"];
+export const games = ["League of Legends", "Counter Strike 2", "Rust"];
+
+export const contributions = [
+  {
+    name: "Yail",
+    link: "https://github.com/programmer-network/yail",
+  },
+];

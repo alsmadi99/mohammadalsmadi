@@ -1,75 +1,39 @@
-import { useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import { Popover } from "react-tiny-popover";
 
-function ReactPopover({
-  children,
-  content,
-  trigger = "click",
-  after = "",
-  before = "",
-}) {
+function ReactPopover({ children, content, after = "", before = "" }) {
   const [show, setShow] = useState(false);
-  const wrapperRef = useRef(null);
+  const [newShow, setNewShow] = useState(false);
 
-  const handleMouseOver = () => {
-    if (trigger === "hover") {
-      setShow(true);
-    }
-  };
+  const handleMouseOver = () => setShow(true);
+  const handleMouseLeft = () => setShow(false);
 
-  const handleMouseLeft = () => {
-    if (trigger === "hover") {
-      setShow(false);
-    }
-  };
-
-  const calculatePosition = () => {
-    if (!wrapperRef.current) {
-      return {
-        top: 0,
-        left: 0,
-      };
-    }
-    const rect = wrapperRef.current.getBoundingClientRect();
-    const screenHeight = window.innerHeight;
-    const screenWidth = window.innerWidth;
-    const popoverHeight = 1300; // Set your popover height
-    const popoverWidth = 1300; // Set your popover width
-    let topPosition = rect.bottom;
-    let leftPosition = rect.left;
-
-    // Adjust position based on screen dimensions
-    if (topPosition + popoverHeight > screenHeight) {
-      topPosition = rect.top - popoverHeight;
-    }
-    if (leftPosition + popoverWidth > screenWidth) {
-      leftPosition = screenWidth - popoverWidth;
-    }
-
-    return { top: topPosition, left: leftPosition };
-  };
+  useEffect(() => {
+    setTimeout(() => {
+      setNewShow(show);
+    }, 100);
+  }, [show]);
 
   return (
-    <div className={"w-fit h-fit relative"} onMouseLeave={handleMouseLeft}>
-      <div>
-        <span>{before + " "}</span>
-        <span onMouseEnter={handleMouseOver} ref={wrapperRef}>
-          {children}
-        </span>
-        <span>{" " + after}</span>
-      </div>
-      <div
-        className={`max-w-[800px] h-fit absolute z-50 transition-all ease-in-out duration-500`}
-        style={{
-          top: 30,
-          left: calculatePosition().left,
-          opacity: show ? 1 : 0,
-          pointerEvents: show ? "auto" : "none",
-        }}
+    <div onMouseLeave={handleMouseLeft}>
+      <span>{before + " "}</span>
+
+      <Popover
+        isOpen={show}
+        positions={["top", "bottom", "left", "right"]}
+        content={
+          <div
+            className={`transition-all duration-500 ease-in-out transform opacity-${
+              newShow ? "100" : "0"
+            } bg-primary p-3 rounded border-2 border-white shadow-lg`}
+          >
+            {content}
+          </div>
+        }
       >
-        <div className="rounded border-white border-2 text-nowrap bg-primary p-3 shadow-[10px_30px_150px_rgba(46,38,92,0.25)] mb-[10px]">
-          {content}
-        </div>
-      </div>
+        <span onMouseEnter={handleMouseOver}>{children}</span>
+      </Popover>
+      <span>{" " + after}</span>
     </div>
   );
 }

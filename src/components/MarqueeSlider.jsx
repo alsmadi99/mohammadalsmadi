@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from "react";
+import { useParallax } from "react-scroll-parallax";
 
 const MarqueeSlider = ({ data }) => {
-  // const [slideIndex, setSlideIndex] = useState(0);
   const sliderRef = useRef(null);
+
+  const frog = useParallax({ rotateY: [0, 360] });
 
   useEffect(() => {
     const slider = sliderRef.current;
@@ -15,34 +17,6 @@ const MarqueeSlider = ({ data }) => {
       });
     }
   }, []);
-
-  // useEffect(() => {
-  //   const slider = sliderRef.current;
-  //   if (slider) {
-  //     slider.scrollLeft = (slideIndex * slider.scrollWidth) / (data.length * 2);
-  //   }
-  // }, [slideIndex]);
-
-  // useEffect(() => {
-  //   const intervalId = setInterval(() => {
-  //     setSlideIndex((prevIndex) => {
-  //       let newIndex = (prevIndex + 1) % (data.length * 2);
-
-  //       if (newIndex === data.length) {
-  //         sliderRef.current.style.transition = "all 0.5s ease-in-out";
-  //         sliderRef.current.scrollLeft = 0;
-
-  //         setTimeout(() => {
-  //           sliderRef.current.style.transition = "none";
-  //         }, 500);
-  //       }
-
-  //       return newIndex;
-  //     });
-  //   }, 1000);
-
-  //   return () => clearInterval(intervalId);
-  // }, []);
 
   return (
     <div className="relative w-full">
@@ -60,6 +34,7 @@ const MarqueeSlider = ({ data }) => {
           >
             <div className="w-full min-h-[90%] justify-center items-center flex bg-white rounded-lg">
               <img
+                ref={frog.ref}
                 src={cert.image}
                 alt={"cert name" + cert.name}
                 className="max-w-[90%] max-h-[90%] shadow-3xl"

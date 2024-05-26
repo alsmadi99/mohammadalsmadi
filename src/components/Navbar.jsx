@@ -68,7 +68,6 @@ const Navbar = () => {
                 const Icon = item.icon;
                 return (
                   <Icon
-                    key={index}
                     onClick={() => {
                       window.open(item.link, "_blank");
                     }}

@@ -2,6 +2,7 @@ import React, { useEffect, lazy, Suspense } from "react";
 import { useLocation } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
 import { GlobalProvider } from "./hooks/GlobalContext";
+import { ParallaxProvider } from "react-scroll-parallax";
 
 const Navbar = lazy(() => import("./components/Navbar"));
 const About = lazy(() => import("./components/About"));
@@ -25,13 +26,15 @@ const App = () => {
   return (
     <GlobalProvider>
       <BrowserRouter>
-        <ScrollToTop />
-        <Suspense fallback={<div></div>}>
-          <Navbar />
-          <About />
-          <Projects />
-          <Contact />
-        </Suspense>
+        <ParallaxProvider>
+          <ScrollToTop />
+          <Suspense fallback={<div></div>}>
+            <Navbar />
+            <About />
+            <Projects />
+            <Contact />
+          </Suspense>
+        </ParallaxProvider>
       </BrowserRouter>
     </GlobalProvider>
   );

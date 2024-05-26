@@ -4,7 +4,8 @@
 import React, { useState } from "react";
 import { SectionWrapper } from "../hoc";
 import ReactPopover from "./ReactPopover";
-import { games } from "../constants";
+import { contributions, games } from "../constants";
+import { useParallax } from "react-scroll-parallax";
 
 const About = () => {
   const [isHoveringTexts, setIsHoveringTexts] = useState(false);
@@ -20,7 +21,12 @@ const About = () => {
     return experienceInWholeYears;
   };
 
-  const hoveringTextStyle = "text-white cursor-pointer";
+  const hoveringTextStyle =
+    "text-primary cursor-pointer bg-secondary rounded-sm px-[2px]";
+
+  const parallax = useParallax({
+    scale: [1, 1.5, "easeInQuad"],
+  });
   return (
     <div
       className="h-full flex flex-col pt-20"
@@ -28,14 +34,17 @@ const About = () => {
       onMouseOut={() => setIsHoveringTexts(false)}
     >
       <div>
-        <p className={`text-white text-center md:text-6xl text-2xl font-black`}>
+        <p
+          ref={parallax.ref}
+          className={`text-white text-center md:text-6xl text-2xl font-black`}
+        >
           Hi, my name is <span className="text-secondary"> Mohammad</span>
         </p>
 
         <p
           className={`mt-2 text-white-100 md:text-2xl text-lg text-center leading-7`}
         >
-          I love building unique applications.
+          I love building unique web & mobile applications.
         </p>
       </div>
 
@@ -85,18 +94,44 @@ const About = () => {
                 {getYearsOfExperience()} years of hands-on experience.
               </span>
             </ReactPopover>
-            <span></span>
-          </div>
-          <div className="text-secondary text-[11px] md:text-lg leading-normal md:leading-relaxed">
-            <span>
-              Team collaboration is something I truly enjoy, and I've had the
-              privilege of working alongside incredibly talented individuals who
-              have enriched my knowledge over the years. As solo working on
-              projects isn't something that motivates me.
-            </span>
           </div>
           <div className="flex flex-row flex-wrap gap-1 text-secondary text-[11px] md:text-lg leading-normal md:leading-relaxed">
-            <span> </span>
+            <ReactPopover
+              trigger="hover"
+              content={
+                <div className="flex flex-col w-full">
+                  {contributions.map((contribution, index) => (
+                    <div key={index}>
+                      {`• ${contribution.name}: `}
+                      <a
+                        href={contribution.link}
+                        className="text-white underline"
+                        target="_blank"
+                      >
+                        {contribution.link}
+                      </a>
+                    </div>
+                  ))}
+                </div>
+              }
+              before={`Team collaboration is something I truly enjoy, and I've had the
+              privilege of working alongside incredibly talented individuals who
+              have enriched my knowledge over the years. As solo working on
+              projects isn't something that motivates me. I believe that contributing to `}
+              after={`not only helps the community, but also helps me grow as a developer.`}
+            >
+              <span
+                className={
+                  "ease-in-out duration-500 " +
+                  (isHoveringTexts ? hoveringTextStyle : "")
+                }
+              >
+                open source projects
+              </span>
+            </ReactPopover>
+          </div>
+
+          <div className="flex flex-row flex-wrap gap-1 text-secondary text-[11px] md:text-lg leading-normal md:leading-relaxed">
             <ReactPopover
               trigger="hover"
               content={
