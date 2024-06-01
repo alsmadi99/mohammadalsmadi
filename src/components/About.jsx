@@ -42,7 +42,7 @@ const About = () => {
         </p>
 
         <p
-          className={`mt-2 text-white-100 md:text-2xl text-lg text-center leading-7`}
+          className={`mt-10 text-white-100 md:text-2xl text-lg text-center leading-7`}
         >
           I love building unique web & mobile applications.
         </p>

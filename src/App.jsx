@@ -29,10 +29,12 @@ const App = () => {
         <ParallaxProvider>
           <ScrollToTop />
           <Suspense fallback={<div></div>}>
-            <Navbar />
-            <About />
-            <Projects />
-            <Contact />
+            <div className="selection:bg-secondary selection:text-primary">
+              <Navbar />
+              <About />
+              <Projects />
+              <Contact />
+            </div>
           </Suspense>
         </ParallaxProvider>
       </BrowserRouter>
