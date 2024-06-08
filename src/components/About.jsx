@@ -36,7 +36,7 @@ const About = () => {
       <div>
         <p
           ref={parallax.ref}
-          className={`text-white text-center md:text-6xl text-2xl font-black`}
+          className={`text-white text-center md:text-6xl text-xl font-black`}
         >
           Hi, my name is <span className="text-secondary"> Mohammad</span>
         </p>

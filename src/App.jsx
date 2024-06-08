@@ -29,7 +29,7 @@ const App = () => {
         <ParallaxProvider>
           <ScrollToTop />
           <Suspense fallback={<div></div>}>
-            <div className="selection:bg-secondary selection:text-primary">
+            <div className="selection:bg-secondary selection:text-primary overflow-x-hidden overflow-y-auto">
               <Navbar />
               <About />
               <Projects />
