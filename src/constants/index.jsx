@@ -222,6 +222,10 @@ export const games = ["League of Legends", "Counter Strike 2", "Rust"];
 
 export const contributions = [
   {
+    name: "Lichess.org",
+    link: "https://github.com/lichess-org/lila",
+  },
+  {
     name: "Yail",
     link: "https://github.com/programmer-network/yail",
   },
