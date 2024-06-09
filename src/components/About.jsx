@@ -83,7 +83,7 @@ const About = () => {
 
   return (
     <div
-      className="h-full flex flex-col pt-20 "
+      className="h-full flex flex-col pt-20"
       onMouseOver={() => setIsHoveringTexts(true)}
       onMouseOut={() => setIsHoveringTexts(false)}
     >
@@ -102,9 +102,9 @@ const About = () => {
         </p>
       </div>
 
-      <div className="flex flex-col justify-between w-full gap-4 h-[60vh] mt-5">
+      <div className="flex flex-col justify-between w-full gap-4 h-[60vh] mt-5 font-semibold md:font-normal">
         <div className="flex flex-row flex-wrap w-full gap-3">
-          <div className="mt-4 text-secondary text-[11px] md:text-lg leading-normal md:leading-relaxed">
+          <div className="mt-4 text-secondary text-[11px] md:text-lg leading-6 md:leading-relaxed">
             <ReactPopover
               trigger="hover"
               content={
@@ -136,7 +136,7 @@ const About = () => {
               </span>
             </ReactPopover>
           </div>
-          <div className="flex flex-row flex-wrap gap-1 text-secondary text-[11px] md:text-lg leading-normal md:leading-relaxed">
+          <div className="flex flex-row flex-wrap gap-1 text-secondary text-[11px] md:text-lg leading-6 md:leading-relaxed">
             <ReactPopover
               trigger="hover"
               content={
@@ -180,7 +180,7 @@ const About = () => {
             </ReactPopover>
           </div>
 
-          <div className="flex flex-row flex-wrap gap-1 text-secondary text-[11px] md:text-lg leading-normal md:leading-relaxed">
+          <div className="flex flex-row flex-wrap gap-1 text-secondary text-[11px] md:text-lg leading-6 md:leading-relaxed">
             <ReactPopover
               trigger="hover"
               content={
