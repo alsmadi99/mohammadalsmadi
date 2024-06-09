@@ -129,17 +129,6 @@ export const projects = [
     ),
   },
   {
-    key: "3",
-    content: (
-      <Card
-        imagen={sta}
-        link="https://www.sta.gov.sa"
-        title="Saudi Tourism Authority"
-        description="STA was established to support the growth of the travel and tourism sector by serving the needs of tourism companies and other commercial partners."
-      />
-    ),
-  },
-  {
     key: "4",
     content: (
       <Card
@@ -214,6 +203,17 @@ export const projects = [
       />
     ),
   },
+  {
+    key: "3",
+    content: (
+      <Card
+        imagen={sta}
+        link="https://www.sta.gov.sa"
+        title="Saudi Tourism Authority"
+        description="STA was established to support the growth of the travel and tourism sector by serving the needs of tourism companies and other commercial partners."
+      />
+    ),
+  },
 ];
 
 export const sections = ["about", "projects", "contact"];
@@ -224,9 +224,28 @@ export const contributions = [
   {
     name: "Lichess.org",
     link: "https://github.com/lichess-org/lila",
+    repo: "lichess-org/lila",
   },
   {
     name: "Yail",
     link: "https://github.com/programmer-network/yail",
+    repo: "programmer-network/yail",
+  },
+];
+
+export const experience = [
+  {
+    name: "Kensoftware",
+    link: "https://www.kensoftware.com",
+    role: "Software Engineer",
+    start: "2020-08-01",
+    end: "2021-08-01",
+  },
+  {
+    name: "PriceWaterhouseCoopers (PwC)",
+    link: "https://www.pwc.com",
+    role: "Senior Software Engineer",
+    start: "2021-08-01",
+    end: null,
   },
 ];

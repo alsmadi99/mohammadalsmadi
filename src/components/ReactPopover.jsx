@@ -23,7 +23,7 @@ function ReactPopover({ children, content, after = "", before = "" }) {
         positions={["top", "bottom", "left", "right"]}
         content={
           <div
-            className={`transition-all duration-500 ease-in-out transform opacity-${
+            className={`max-h-[400px] overflow-y-auto transition-all duration-500 ease-in-out transform opacity-${
               newShow ? "100" : "0"
             } bg-primary p-3 rounded border-2 border-white shadow-lg`}
           >
