@@ -6,11 +6,12 @@ Welcome to my portfolio website! You can check it out [here](https://mohammadals
 
 This website showcases my projects, skills, and experience. It provides an overview of my work and serves as a platform to connect with potential clients or employers.
 
-## Features
+## Sections
 
 - Personal Summary
 - Skills and experience
 - Project showcase
+- Certifications
 - Contact information
 
 ## Technologies Used
