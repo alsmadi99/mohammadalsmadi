@@ -24,7 +24,7 @@ const MarqueeSlider = ({ data }) => {
         {data.map((cert, index) => (
           <div
             key={index}
-            className="flex flex-col items-center gap-2 justify-start p-4 min-w-[250px] mr-10 opacity-100 md:opacity-50 transition-all duration-500 ease-in-out cursor-pointer select-none outline-none hover:opacity-100 transform-gpu hover:scale-110"
+            className="flex flex-col items-center gap-2 justify-start p-4 min-w-[150px] sm:min-w-[200px] md:min-w-[250px] mr-10 opacity-100 md:opacity-50 transition-all duration-500 ease-in-out cursor-pointer select-none outline-none hover:opacity-100 transform-gpu hover:scale-110"
             onClick={() => {
               if (!cert.link) {
                 return;

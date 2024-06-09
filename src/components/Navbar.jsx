@@ -46,10 +46,10 @@ const Navbar = () => {
         <div className="flex flex-row justify-around items-center flex-[2] xs:flex-[3] drop-shadow-2xl">
           {sections.map((item, index) => (
             <p
+              key={index}
               onClick={() => {
                 window.location.hash = `#${item}`;
               }}
-              key={index}
               className={`capitalize cursor-pointer text-xs md:text-lg ${
                 currentHash?.includes(item)
                   ? "text-white text-shadow-lg shadow-secondary"
@@ -68,6 +68,7 @@ const Navbar = () => {
                 const Icon = item.icon;
                 return (
                   <Icon
+                    key={index}
                     onClick={() => {
                       window.open(item.link, "_blank");
                     }}

@@ -1,8 +1,13 @@
 import React, { useEffect, lazy, Suspense } from "react";
 import { useLocation } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
+
+import { LITLY_PROJECT_ID } from "./config";
 import { GlobalProvider } from "./hooks/GlobalContext";
 import { ParallaxProvider } from "react-scroll-parallax";
+import { Lit } from "litlyx";
+
+Lit.init(LITLY_PROJECT_ID);
 
 const Navbar = lazy(() => import("./components/Navbar"));
 const About = lazy(() => import("./components/About"));

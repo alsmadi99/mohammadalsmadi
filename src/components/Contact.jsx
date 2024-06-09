@@ -6,6 +6,7 @@ import { SectionWrapper } from "../hoc";
 import { socials } from "../constants";
 import useIsMobile from "../hooks/useIsMobile";
 import { AiOutlineMailLazy } from "../constants/icons";
+import { VITE_PUBLIC_KEY, VITE_SERVICE_KEY, VITE_TEMPLATE_ID } from "../config";
 
 const Contact = ({}) => {
   const formRef = useRef();
@@ -39,8 +40,8 @@ const Contact = ({}) => {
     setLoading(true);
     emailjs
       .send(
-        import.meta.env.VITE_SERVICE_KEY,
-        import.meta.env.VITE_TEMPLATE_ID,
+        VITE_SERVICE_KEY,
+        VITE_TEMPLATE_ID,
         {
           from_name: form.name,
           to_name: "Mohammad Alsmadi",
@@ -48,7 +49,7 @@ const Contact = ({}) => {
           to_email: "smadi.dev@gmail.com",
           message: form.message,
         },
-        import.meta.env.VITE_PUBLIC_KEY
+        VITE_PUBLIC_KEY
       )
       .then(
         () => {
