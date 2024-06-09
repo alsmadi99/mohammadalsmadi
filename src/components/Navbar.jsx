@@ -35,10 +35,10 @@ const Navbar = () => {
             <img
               src={icon}
               alt="logo"
-              className={`w-10 h-10 md:w-14 md:h-14 object-contain rounded-full border-secondary border-2`}
+              className={`w-8 h-8 md:w-10 md:h-10 object-container`}
             />
-            <p className="hidden lg:hidden xl:flex text-white text-xs md:text-lg font-bold cursor-pointer pb-0 whitespace-nowrap">
-              Mohammad Alsmadi
+            <p className="hidden lg:hidden xl:flex text-white text-xs md:text-xl font-bold cursor-pointer pb-0 whitespace-nowrap">
+              MOHAMMAD ALSMADI
             </p>
           </a>
         </div>

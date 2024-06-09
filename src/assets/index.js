@@ -1,4 +1,4 @@
-import icon from "./icon.webp";
+import icon from "./code.png";
 
 import tamm from "./tamm.webp";
 import carers from "./carers.webp";
@@ -12,7 +12,6 @@ import udemy from "./udemy.webp";
 import kubicle from "./kubicle.webp";
 import quds from "./quds.webp";
 import janah from "./janah.webp";
-import code from "./code.webp";
 
 export {
   icon,
@@ -26,7 +25,6 @@ export {
   neo4j,
   udemy,
   kubicle,
-  code,
   quds,
   janah,
 };
