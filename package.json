@@ -1,13 +1,20 @@
 {
   "name": "mohammad-alsmadi",
-  "description": "I'm Mohammad Alsmadi, a Full-Stack Developer with experience in Node.js, React.js, React Native, MongoDB, and Postgresql. Check out my portfolio!",
+  "description": "I'm Mohammad Alsmadi, a Senior Software Engineer with experience in Node.js, React.js, React Native, MongoDB, and Postgresql. Check out my portfolio!",
   "private": true,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint . --fix --max-warnings=0",
+    "format": "prettier . --write",
+    "prepare": "husky && husky install"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": "eslint --cache --fix",
+    "*.--write": "prettier --write"
   },
   "dependencies": {
     "@emailjs/browser": "^4.1.0",
@@ -27,7 +34,14 @@
     "@types/react-dom": "^18.2.19",
     "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.17",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-react": "^7.34.2",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.5",
     "postcss": "^8.4.35",
+    "prettier": "3.3.2",
     "tailwindcss": "^3.4.1",
     "vite": "^5.1.7",
     "vite-plugin-compression": "^0.5.1"

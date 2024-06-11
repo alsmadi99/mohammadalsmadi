@@ -18,6 +18,7 @@ import {
   AiOutlineMailLazy,
   AiFillLinkedinLazy,
 } from "./icons";
+
 export const socials = [
   {
     link: "https://www.linkedin.com/in/smadixd/",
@@ -222,9 +223,14 @@ export const games = ["League of Legends", "Counter Strike 2", "Rust"];
 
 export const contributions = [
   {
-    name: "Lichess.org",
+    name: "Lichess",
     link: "https://github.com/lichess-org/lila",
     repo: "lichess-org/lila",
+  },
+  {
+    name: "Eslint",
+    link: "https://github.com/eslint/eslint.org",
+    repo: "eslint/eslint.org",
   },
   {
     name: "Yail",

@@ -1,69 +1,62 @@
 /*
   ! This component is the About me section of the portfolio.
 */
+
 import React, { useEffect, useState } from "react";
 import { SectionWrapper } from "../hoc";
 import ReactPopover from "./ReactPopover";
-import { contributions, experience, games } from "../constants";
+import { experience, games } from "../constants";
 import { useParallax } from "react-scroll-parallax";
 import { FaCodePullRequest } from "react-icons/fa6";
+import { FiExternalLink } from "react-icons/fi";
+
+import { GITHUB_API_URL, getYearsOfExperience } from "../global/utils";
+
+const fetchContributions = () =>
+  fetch(GITHUB_API_URL, {
+    headers: {
+      "User-Agent": "smadixd",
+      accept: "application/json",
+    },
+  }).then((response) => response.json());
 
 const About = () => {
   const [isHoveringTexts, setIsHoveringTexts] = useState(false);
-  const [latestContribution, setLatestContribution] = useState({});
-
-  const getYearsOfExperience = (date = "2020-08-01", endDate = "") => {
-    const startDate = new Date(date);
-    const currentDate = endDate ? new Date(endDate) : new Date();
-    const experienceInMilliseconds = currentDate - startDate;
-    const experienceInYears =
-      experienceInMilliseconds / (1000 * 60 * 60 * 24 * 365);
-    const experienceInWholeYears = Math.ceil(experienceInYears);
-
-    return `${experienceInWholeYears} year${
-      experienceInWholeYears > 1 ? "s" : ""
-    }`;
-  };
+  const [latestContributions, setLatestContributions] = useState({});
 
   const getLatestContribution = async () => {
-    const fetchContributions = (contribution) =>
-      fetch(
-        `https://api.github.com/search/issues?q=is:pr+author:smadixd+repo:${contribution.repo}`,
-        {
-          headers: {
-            "User-Agent": "smadixd",
-            accept: "application/json",
-          },
-        }
-      ).then((response) => response.json());
-
-    const contributionsData = await Promise.all(
-      contributions.map(fetchContributions)
+    const contributionsData = await fetchContributions();
+    const filteredContributions = contributionsData.items.filter(
+      (item) => !item.repository_url.includes("smadixd")
     );
+    const contributionsHashMap = filteredContributions.reduce((acc, item) => {
+      const repo = item.repository_url.split("repos/").pop().toLowerCase();
+      const link = item.html_url.split("/pull")[0];
 
-    const contributionsHashMap = contributionsData.reduce(
-      (acc, contribution) => {
-        contribution.items.forEach((item) => {
-          const repo = item.repository_url.split("repos/").pop().toLowerCase();
+      if (!acc[repo]) {
+        acc[repo] = {
+          name: repo?.split("/")[1],
+          link: link,
+          items: [],
+        };
+      }
 
-          if (!acc[repo]) {
-            acc[repo] = [];
-          }
-
-          if (acc[repo].length < 4) {
-            acc[repo].push({
-              name: item.title,
-              link: item.pull_request.html_url,
-            });
-          }
+      if (
+        acc[repo].items.length < 3 &&
+        ((!item.closed_at && !item.pull_request.merged_at) ||
+          (!!item.closed_at && !!item.pull_request.merged_at))
+      ) {
+        acc[repo].items.push({
+          name: item.title,
+          link: item.pull_request.html_url,
+          isMerged: !!item.pull_request.merged_at,
         });
+      }
 
-        return acc;
-      },
-      {}
-    );
+      return acc;
+    }, {});
 
-    setLatestContribution(contributionsHashMap);
+    setLatestContributions(contributionsHashMap);
   };
 
   useEffect(() => {
@@ -108,7 +101,7 @@ const About = () => {
             <ReactPopover
               trigger="hover"
               content={
-                <div className="flex flex-col w-full">
+                <div className="flex flex-col w-full md:text-xl text-md">
                   {experience.map((exp, index) => (
                     <p className="text-white" key={index}>
                       ~ {getYearsOfExperience(exp.start, exp.end)}
@@ -116,6 +109,7 @@ const About = () => {
                       <a
                         href={exp.link}
                         target="_blank"
+                        rel="noopener noreferrer"
                         className="text-secondary underline"
                       >
                         {exp.name}
@@ -141,33 +135,46 @@ const About = () => {
               trigger="hover"
               content={
                 <div className="flex flex-col w-full">
-                  <small className="text-white font-bold mb-2">
+                  <span className="text-white text-md font-bold mb-4">
                     Here are my most recent contributions.
-                  </small>
-                  {contributions.map((contribution, index) => (
-                    <div key={index} className={index > 0 ? " mt-2" : ""}>
-                      <div className="flex flex-row items-center gap-1">
-                        {`${contribution.name}: `}
-                        <a
-                          href={contribution.link}
-                          className="text-secondary underline"
-                          target="_blank"
-                        >
-                          {contribution.link}
-                        </a>
-                      </div>
-                      {latestContribution?.[contribution.repo]?.map((item) => (
-                        <div
-                          key={`${index}-${item.name}`}
-                          className="flex flex-row items-center pl-4 pt-1 gap-2 cursor-pointer leading-7 hover:text-secondary"
-                          onClick={() => window.open(item.link, "_blank")}
-                        >
-                          <FaCodePullRequest className="text-secondary text-sm" />
-                          <small>{item?.name}</small>
+                  </span>
+                  <div className="max-h-[30vh] px-4 py-4 border-secondary border-2 rounded-md overflow-y-auto">
+                    {Object.keys(latestContributions).map((repoKey, index) => (
+                      <div key={index} className={index > 0 ? " mt-2" : ""}>
+                        <div className="flex flex-row items-center gap-1">
+                          <span className="font-semibold text-xl">{`${latestContributions[repoKey].name}: `}</span>
+                          <a
+                            href={latestContributions[repoKey].link}
+                            className="text-secondary underline"
+                            rel="noopener noreferrer"
+                            target="_blank"
+                          >
+                            <FiExternalLink className="ml-1 text-xl" />
+                          </a>
                         </div>
-                      ))}
-                    </div>
-                  ))}
+                        {latestContributions[repoKey].items?.map(
+                          (item, index) => (
+                            <div
+                              key={`${repoKey}-${index}`}
+                              className="flex flex-row items-center cursor-pointer leading-7 hover:text-secondary"
+                              onClick={() => window.open(item.link, "_blank")}
+                            >
+                              <FaCodePullRequest
+                                className={`${
+                                  item.isMerged
+                                    ? "text-github-purple"
+                                    : "text-github-green"
+                                } text-lg md:text-xl w-[10%]`}
+                              />
+                              <span className="text-sm md:text-lg py-1 w-[90%]">
+                                {item?.name}
+                              </span>
+                            </div>
+                          )
+                        )}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               }
               before={`Team collaboration is something I truly enjoy, and I've had the
@@ -184,7 +191,7 @@ const About = () => {
             <ReactPopover
               trigger="hover"
               content={
-                <div>
+                <div className="md:text-xl text-md">
                   {games.map((game) => (
                     <p className="text-white" key={game}>
                       {"• " + game}
@@ -202,9 +209,9 @@ const About = () => {
           </div>
         </div>
         <p className="text-white text-[10px] md:text-sm">
-          Feel free to explore my portfolio to see some of the exciting projects
+          {`Feel free to explore my portfolio to see some of the exciting projects
           I've worked on. If you have any questions or just want to chat, don't
-          hesitate to reach out!
+          hesitate to reach out!`}
         </p>
       </div>
     </div>

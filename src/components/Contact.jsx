@@ -8,7 +8,7 @@ import useIsMobile from "../hooks/useIsMobile";
 import { AiOutlineMailLazy } from "../constants/icons";
 import { VITE_PUBLIC_KEY, VITE_SERVICE_KEY, VITE_TEMPLATE_ID } from "../config";
 
-const Contact = ({}) => {
+const Contact = () => {
   const formRef = useRef();
   const [form, setForm] = useState({
     name: "",

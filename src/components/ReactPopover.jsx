@@ -20,10 +20,10 @@ function ReactPopover({ children, content, after = "", before = "" }) {
 
       <Popover
         isOpen={show}
-        positions={["top", "bottom", "left", "right"]}
+        positions={["bottom", "top", "left", "right"]}
         content={
           <div
-            className={`max-h-[400px] overflow-y-auto transition-all duration-500 ease-in-out transform opacity-${
+            className={`overflow-y-hidden transition-all duration-500 ease-in-out transform opacity-${
               newShow ? "100" : "0"
             } bg-primary p-3 rounded border-2 border-white shadow-lg`}
           >
