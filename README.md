@@ -24,7 +24,7 @@ This website showcases my projects, skills, and experience. It provides an overv
 
 To view the website locally, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/smadixd/my-portfolio.git`
+1. Clone the repository: `git clone https://github.com/smadixd/mohammadalsmadi.git`
 2. Install the dependencies: `yarn`
 3. Start the development server: `yarn dev`
 4. Open your browser and visit `http://localhost:3000`
