@@ -98,7 +98,7 @@ const About = () => {
 
 				<div className="flex flex-col justify-between w-full gap-4 mt-10 font-semibold md:font-normal">
 					<div className="flex flex-row flex-wrap w-full gap-3 md:gap-10">
-						<div className="mt-4 text-secondary text-[12px] md:text-3xl leading-6 md:leading-[3.5rem]">
+						<div className="mt-4 text-secondary text-[12px] md:text-2xl leading-6 md:leading-[3rem]">
 							<ReactPopover
 								trigger="hover"
 								content={
@@ -132,7 +132,7 @@ const About = () => {
 							</ReactPopover>
 						</div>
 
-						<div className="flex flex-row flex-wrap gap-1 text-secondary text-[12px] md:text-3xl leading-6 md:leading-[3.5rem]">
+						<div className="flex flex-row flex-wrap gap-1 text-secondary text-[12px] md:text-2xl leading-6 md:leading-[3rem]">
 							<ReactPopover
 								trigger="hover"
 								content={
@@ -195,7 +195,7 @@ const About = () => {
 							</ReactPopover>
 						</div>
 
-						<div className="flex flex-row flex-wrap gap-1 text-secondary text-[12px] md:text-3xl leading-6 md:leading-[3.5rem]">
+						<div className="flex flex-row flex-wrap gap-1 text-secondary text-[12px] md:text-2xl leading-6 md:leading-[3rem]">
 							<ReactPopover
 								trigger="hover"
 								content={
