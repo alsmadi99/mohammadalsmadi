@@ -26,3 +26,4 @@ public/models/all_setup2.glb
 *.njsproj
 *.sln
 *.sw?
+.eslintcache
