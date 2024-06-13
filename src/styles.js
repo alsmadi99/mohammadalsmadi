@@ -12,7 +12,7 @@ const styles = {
 	sectionHeadText:
 		'mt-2 pb-2 text-white font-black md:text-[30px] sm:text-[20px] xs:text-[15px] text-[15px]',
 	sectionSubText:
-		'sm:text-[18px] text-[14px] text-primary uppercase tracking-wider',
+		'sm:text-[18px] text-[14px] text-primary uppercase tracking-wider font-semibold',
 };
 
 export { styles };

@@ -64,21 +64,28 @@
   font-size: 24px;
 }
 
-.contact-linear {
-  background: rgb(117,194,246);
-  background: linear-gradient(90deg, rgba(117,194,246,1) 0%, rgba(80,146,190,1) 100%);
+
+.gradient-text {
+  background: linear-gradient(90deg, #1c2738, #0e131b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-.project-card {
-  background: rgb(117,194,246);
-  background: linear-gradient(184deg, rgba(117,194,246,1) 0%, rgba(80,146,190,1) 100%);
-}
 
 .shadow-linear {
   background: -moz-linear-gradient(90deg, rgba(29,93,155,1) 0%, rgba(19,56,93,1) 100%);
   background: -webkit-linear-gradient(90deg, rgba(29,93,155,1) 0%, rgba(19,56,93,1) 100%);
   background: linear-gradient(90deg, rgba(29,93,155,1) 0%, rgba(19,56,93,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1d5d9b",endColorstr="#13385d",GradientType=1);
+}
+
+
+.dark-shadow-linear {
+  background: -moz-linear-gradient(180deg, rgba(19,63,105,0) 0%, rgba(19,63,105,1) 10%, rgba(9,36,63,1) 100%);
+  background: -webkit-linear-gradient(180deg, rgba(19,63,105,0) 0%, rgba(19,63,105,1) 10%, rgba(9,36,63,1) 100%);
+  background: linear-gradient(180deg, rgba(19,63,105,0) 0%, rgba(19,63,105,1) 10%, rgba(9,36,63,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#13416900",endColorstr="#09243f",GradientType=0);
 }
 
 html {
@@ -127,6 +134,7 @@ html {
       #f5af19);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -142,6 +150,7 @@ html {
       #38ef7d);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -158,6 +167,7 @@ html {
       #56ccf2);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -173,6 +183,7 @@ html {
       #fc6767);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 

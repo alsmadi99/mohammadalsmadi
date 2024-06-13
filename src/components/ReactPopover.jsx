@@ -23,9 +23,9 @@ function ReactPopover({ children, content, after = '', before = '' }) {
 				positions={['bottom', 'top', 'left', 'right']}
 				content={
 					<div
-						className={`selection:bg-secondary selection:text-primary overflow-y-hidden transition-all duration-500 ease-in-out transform opacity-${
+						className={`bg-darkBlue selection:bg-secondary selection:text-darkBlue overflow-y-hidden transition-all duration-500 ease-in-out transform opacity-${
 							newShow ? '100' : '0'
-						} bg-primary p-3 rounded border-2 border-white shadow-lg`}
+						} p-3 rounded border-2 border-offWhite shadow-lg`}
 					>
 						{content}
 					</div>

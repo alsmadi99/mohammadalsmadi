@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useGlobalContext } from './GlobalContext';
 
-const StarWrapper = (Component, idName) =>
+const StarWrapper = (Component, idName, className = '') =>
 	function HOC(props) {
 		const sectionRef = useRef(null);
 		const { setCurrentHash } = useGlobalContext();
@@ -36,7 +36,7 @@ const StarWrapper = (Component, idName) =>
 		return (
 			<section
 				ref={sectionRef}
-				className={`h-auto md:w-2/3 w-[100%] pb-4 mx-auto px-2 md:px-0 flex flex-col justify-center items-center`}
+				className={`${className} h-auto md:w-2/3 w-[100%] pb-4 mx-auto px-2 md:px-0 flex flex-col justify-center items-center`}
 			>
 				<span id={idName} className="select-none mb-16">
 					&nbsp;

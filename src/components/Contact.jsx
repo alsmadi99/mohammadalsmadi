@@ -73,7 +73,7 @@ const Contact = () => {
 
 	return (
 		<div className={`w-full flex flex-col justify-between`}>
-			<div className="contact-linear flex-[1] md:flex-[0.5] flex-col bg-secondary p-4 md:p-8 rounded-md overflow-y-scroll shadow-2xl">
+			<div className="bg-darkBlue flex-[1] md:flex-[0.5] flex-col p-4 md:p-8 rounded-md overflow-y-scroll shadow-2xl">
 				<p className={styles.sectionSubText}>Get in touch</p>
 				<h3 className={styles.sectionHeadText}>Contact me.</h3>
 
@@ -83,7 +83,7 @@ const Contact = () => {
 					className="mt-2 md:mt-6 gap-6 md:gap-8 flex flex-col"
 				>
 					<label className="flex flex-col">
-						<span className="text-white font-medium text-xs md:text-lg mb-2 md:mb-4">
+						<span className="text-offWhite font-medium text-xs md:text-lg mb-2 md:mb-4">
 							Your Name
 						</span>
 						<input
@@ -93,11 +93,11 @@ const Contact = () => {
 							onChange={handleChange}
 							required
 							placeholder="What's your good name?"
-							className="bg-primary py-2 md:py-4 px-4 md:px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium text-xs md:text-lg"
+							className="bg-offWhite py-2 md:py-4 px-4 md:px-6 placeholder:text-darkBlue text-darkBlue rounded-lg outline-none border-none font-medium text-xs md:text-lg"
 						/>
 					</label>
 					<label className="flex flex-col">
-						<span className="text-white font-medium text-xs md:text-lg mb-2 md:mb-4">
+						<span className="text-offWhite font-medium text-xs md:text-lg mb-2 md:mb-4">
 							Your Email
 						</span>
 						<input
@@ -107,11 +107,11 @@ const Contact = () => {
 							onChange={handleChange}
 							required
 							placeholder="What's your email address?"
-							className="bg-primary py-2 md:py-4 px-4 md:px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium text-xs md:text-lg"
+							className="bg-offWhite py-2 md:py-4 px-4 md:px-6 placeholder:text-darkBlue text-darkBlue rounded-lg outline-none border-none font-medium text-xs md:text-lg"
 						/>
 					</label>
 					<div className="flex flex-col relative">
-						<span className="text-white font-medium text-xs md:text-lg mb-2 md:mb-4">
+						<span className="text-offWhite font-medium text-xs md:text-lg mb-2 md:mb-4">
 							Your Message
 						</span>
 						<textarea
@@ -122,13 +122,13 @@ const Contact = () => {
 							maxLength={2500}
 							onChange={handleChange}
 							placeholder="How can I help?"
-							className={`bg-primary resize-none py-2 md:py-4 px-4 md:px-4 min-h-[130px] max-h-[150px] md:min-h-[200px] md:max-h-[200px] placeholder:text-secondary text-white rounded-lg outline-none font-medium text-xs md:text-lg ${
+							className={`bg-offWhite resize-none py-2 md:py-4 px-4 md:px-4 min-h-[130px] max-h-[150px] md:min-h-[200px] md:max-h-[200px] placeholder:text-darkBlue text-darkBlue rounded-lg outline-none font-medium text-xs md:text-lg ${
 								isError ? 'border-red-700 border-2 vibrate' : ''
 							}`}
 						/>
 
 						<p
-							className={`text-sm font-black text-primary absolute bottom-[-20px] right-1 select-none`}
+							className={`text-sm text-offWhite absolute bottom-[-20px] right-1 select-none`}
 						>
 							{form.message.length}
 						</p>
@@ -143,7 +143,7 @@ const Contact = () => {
 						<button
 							type="submit"
 							disabled={loading}
-							className="w-[120px] md:w-[150px] mt-2 md:mt-4 flex flex-row justify-between items-center bg-primary hover:bg-blue-500 text-white font-bold py-2 px-4 border-b-4 border-white hover:white rounded text-sm md:text-lg"
+							className="w-[120px] md:w-[150px] mt-2 md:mt-4 flex flex-row justify-between items-center bg-offWhite hover:bg-white text-darkBlue font-bold py-2 px-4 border-b-4 border-primary hover:white rounded text-sm md:text-lg"
 						>
 							{loading ? 'Sending...' : 'Send'}
 							<AiOutlineMailLazy />

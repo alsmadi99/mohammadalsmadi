@@ -37,7 +37,7 @@ const Navbar = () => {
 							alt="logo"
 							className={`w-7 h-7 md:w-10 md:h-10 object-container`}
 						/>
-						<p className="hidden lg:hidden xl:flex text-white text-xs md:text-xl font-bold cursor-pointer pb-0 whitespace-nowrap">
+						<p className="hidden lg:hidden xl:flex text-white text-xs md:text-xl cursor-pointer pb-0 whitespace-nowrap tracking-widest">
 							MOHAMMAD ALSMADI
 						</p>
 					</a>
@@ -52,8 +52,8 @@ const Navbar = () => {
 							}}
 							className={`capitalize hover:text-white cursor-pointer text-xs md:text-lg ${
 								currentHash?.includes(item)
-									? 'text-white text-shadow-lg shadow-secondary'
-									: 'text-secondary'
+									? 'text-white text-shadow-lg shadow-darkBlue'
+									: 'text-offWhite'
 							}`}
 						>
 							{item}
@@ -72,7 +72,7 @@ const Navbar = () => {
 										onClick={() => {
 											window.open(item.link, '_blank');
 										}}
-										className="h-7 w-7 md:h-10 md:w-10 opacity-50 transition-transform transform-gpu hover:scale-125 hover:opacity-100 cursor-pointer"
+										className="h-7 w-7 md:h-10 md:w-10 opacity-80 transition-transform transform-gpu hover:scale-125 hover:opacity-100 cursor-pointer"
 									/>
 								);
 							})}

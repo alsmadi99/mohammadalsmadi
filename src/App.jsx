@@ -34,11 +34,13 @@ const App = () => {
 				<ParallaxProvider>
 					<ScrollToTop />
 					<Suspense fallback={<div></div>}>
-						<div className="selection:bg-secondary selection:text-primary overflow-x-hidden overflow-y-auto">
+						<div className="selection:bg-darkBlue selection:text-offWhite overflow-x-hidden overflow-y-auto">
 							<Navbar />
 							<About />
-							<Projects />
-							<Contact />
+							<div className="dark-shadow-linear">
+								<Projects />
+								<Contact />
+							</div>
 						</div>
 					</Suspense>
 				</ParallaxProvider>

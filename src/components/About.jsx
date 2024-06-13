@@ -64,11 +64,11 @@ const About = () => {
 	}, []);
 
 	const hoveringTextStyle =
-		'text-primary cursor-pointer bg-secondary rounded-sm px-[5px] border-b-[4px] border-white';
+		'text-offWhite cursor-pointer bg-darkBlue rounded-sm px-[5px] border-b-[4px] border-offWhite';
 
 	const hoverableTextStyles =
 		'ease-in-out duration-500 ' +
-		(isHoveringTexts ? hoveringTextStyle : 'border-b-2 border-white');
+		(isHoveringTexts ? hoveringTextStyle : 'border-b-2 border-offWhite');
 
 	const parallax = useParallax({
 		scale: [1, 1.5, 'easeInQuad'],
@@ -86,7 +86,11 @@ const About = () => {
 						ref={parallax.ref}
 						className={`text-white text-center md:text-6xl text-xl font-black text-wrap self-center w-[70%]`}
 					>
-						Hi, my name is <span className="text-secondary"> Mohammad</span>
+						Hi, my name is{' '}
+						<span className="gradient-text md:text-6xl text-4xl">
+							{' '}
+							Mohammad
+						</span>
 					</p>
 
 					<p
@@ -96,9 +100,11 @@ const About = () => {
 					</p>
 				</div>
 
-				<div className="flex flex-col justify-between w-full gap-4 mt-10 font-semibold md:font-normal">
+				<div className="flex flex-col justify-between w-full gap-4 mt-10 font-semibold md:font-normal text-center md:text-left">
 					<div className="flex flex-row flex-wrap w-full gap-3 md:gap-10">
-						<div className="mt-4 text-secondary text-[12px] md:text-2xl leading-6 md:leading-[3rem]">
+						<div
+							className={`mt-4 text-offWhite text-[12px] md:text-2xl leading-6 md:leading-[3rem]`}
+						>
 							<ReactPopover
 								trigger="hover"
 								content={
@@ -111,7 +117,7 @@ const About = () => {
 													href={exp.link}
 													target="_blank"
 													rel="noopener noreferrer"
-													className="text-secondary underline"
+													className="text-primary underline font-semibold"
 												>
 													{exp.name}
 												</a>
@@ -132,15 +138,15 @@ const About = () => {
 							</ReactPopover>
 						</div>
 
-						<div className="flex flex-row flex-wrap gap-1 text-secondary text-[12px] md:text-2xl leading-6 md:leading-[3rem]">
+						<div className="flex flex-row flex-wrap gap-1 text-offWhite text-[12px] md:text-2xl leading-6 md:leading-[3rem]">
 							<ReactPopover
 								trigger="hover"
 								content={
 									<div className="flex flex-col w-full">
-										<span className="text-white text-md font-bold mb-4">
+										<span className="text-primary font-semibold text-md mb-4">
 											Here are my most recent contributions.
 										</span>
-										<div className="max-h-[30vh] px-4 py-4 border-secondary border-2 rounded-md overflow-y-auto">
+										<div className="max-h-[30vh] px-4 py-4 overflow-y-auto">
 											{Object.keys(latestContributions).map(
 												(repoKey, index) => (
 													<div key={index} className={index > 0 ? ' mt-2' : ''}>
@@ -148,7 +154,7 @@ const About = () => {
 															<span className="font-semibold text-xl">{`${latestContributions[repoKey].name}: `}</span>
 															<a
 																href={latestContributions[repoKey].link}
-																className="text-secondary underline"
+																className="text-link underline"
 																rel="noopener noreferrer"
 																target="_blank"
 															>
@@ -159,7 +165,7 @@ const About = () => {
 															(item, index) => (
 																<div
 																	key={`${repoKey}-${index}`}
-																	className="flex flex-row items-center cursor-pointer leading-7 hover:text-secondary"
+																	className="flex flex-row items-center cursor-pointer leading-7 hover:text-primary hover:underline"
 																	onClick={() =>
 																		window.open(item.link, '_blank')
 																	}
@@ -195,7 +201,7 @@ const About = () => {
 							</ReactPopover>
 						</div>
 
-						<div className="flex flex-row flex-wrap gap-1 text-secondary text-[12px] md:text-2xl leading-6 md:leading-[3rem]">
+						<div className="flex flex-row flex-wrap gap-1 text-offWhite text-[12px] md:text-2xl leading-6 md:leading-[3rem]">
 							<ReactPopover
 								trigger="hover"
 								content={
@@ -205,7 +211,9 @@ const About = () => {
 												{'• ' + game}
 											</p>
 										))}
-										<small>{'and more :)'}</small>
+										<small className="text-primary font-semibold">
+											{'and more :)'}
+										</small>
 									</div>
 								}
 								before="Outside of coding, I enjoy playing"
@@ -220,7 +228,7 @@ const About = () => {
 			</div>
 
 			<div className="w-full flex items-center justify-center text-center mt-5">
-				<p className="text-white text-center text-sm md:text-2xl leading-6 md:leading-10 italic w-fit">
+				<p className="text-secondary text-center text-sm md:text-2xl leading-6 md:leading-10 italic w-fit">
 					{`Check out my portfolio to see some cool projects I've worked on. Got questions or just want to chat? Reach out anytime!`}
 				</p>
 			</div>

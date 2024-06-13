@@ -10,21 +10,20 @@ const LazyCarouselComponent = lazy(() => import('./Carousel'));
 const Projects = () => {
 	const isMobile = useIsMobile();
 	return (
-		<div className="flex flex-col min-h-[85vh]">
-			<div className="w-3/4 m-auto">
-				<div>
+		<div className="flex flex-col min-h-[85vh] py-10">
+			<div className="w-3/4 mx-auto">
+				<div className="my-4">
 					<h1 className={styles.sectionHeadText}>Projects I worked on.</h1>
 				</div>
 				<Suspense fallback={<div>Loading Projects Carousel...</div>}>
 					<LazyCarouselComponent
 						cards={projects}
-						className="h-[70vh]"
+						className="h-[40vh] md:h-[70vh]"
 						offset={isMobile ? 2 : 4}
 						showArrows={false}
 					/>
 				</Suspense>
 			</div>
-
 			<div className="pb-10">
 				<div className="w-3/4 m-auto">
 					<h1 className={styles.sectionHeadText}>Certifications.</h1>
