@@ -12,20 +12,20 @@ const Projects = () => {
 	return (
 		<div className="flex flex-col min-h-[85vh] py-10">
 			<div className="w-3/4 mx-auto">
-				<div className="my-4">
+				<div className="mb-10">
 					<h1 className={styles.sectionHeadText}>Projects I worked on.</h1>
 				</div>
 				<Suspense fallback={<div>Loading Projects Carousel...</div>}>
 					<LazyCarouselComponent
 						cards={projects}
-						className="h-[40vh] md:h-[70vh]"
+						className="h-[50vh] md:h-[70vh]"
 						offset={isMobile ? 2 : 4}
 						showArrows={false}
 					/>
 				</Suspense>
 			</div>
-			<div className="pb-10">
-				<div className="w-3/4 m-auto">
+			<div className="my-10">
+				<div className="w-3/4 mx-auto">
 					<h1 className={styles.sectionHeadText}>Certifications.</h1>
 				</div>
 				<div className="w-[100vw]">

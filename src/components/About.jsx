@@ -87,8 +87,7 @@ const About = () => {
 						className={`text-white text-center md:text-6xl text-xl font-black text-wrap self-center w-[70%]`}
 					>
 						Hi, my name is{' '}
-						<span className="gradient-text md:text-6xl text-4xl">
-							{' '}
+						<span className="blue-text-gradient md:text-6xl text-4xl relative">
 							Mohammad
 						</span>
 					</p>
