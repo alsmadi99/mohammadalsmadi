@@ -72,8 +72,8 @@ const Contact = () => {
 	};
 
 	return (
-		<div className={`w-full flex flex-col justify-between`}>
-			<div className="bg-darkBlue flex-[1] md:flex-[0.5] flex-col p-4 md:p-8 rounded-md overflow-y-scroll shadow-2xl">
+		<div className={`w-full flex flex-col justify-between shadow-2xl mb-4`}>
+			<div className="bg-darkBlue bg-opacity-80 flex-[1] md:flex-[0.5] flex-col p-4 md:p-8 rounded-md overflow-y-scroll">
 				<p className={styles.sectionSubText}>Get in touch</p>
 				<h3 className={styles.sectionHeadText}>Contact me.</h3>
 
