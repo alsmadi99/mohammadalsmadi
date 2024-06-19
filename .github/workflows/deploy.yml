@@ -29,6 +29,7 @@ jobs:
             --build-arg VITE_TEMPLATE_ID=${{ secrets.VITE_TEMPLATE_ID }} \
             --build-arg VITE_PUBLIC_KEY=${{ secrets.VITE_PUBLIC_KEY }} \
             --build-arg VITE_LITLY_PROJECT_ID=${{ secrets.VITE_LITLY_PROJECT_ID }} \
+            --build-arg VITE_GITHUB_TOKEN=${{ secrets.VITE_GITHUB_TOKEN }} \
             -t portfolio .
             sudo docker stop portfolio-container || true
             sudo docker rm portfolio-container || true
