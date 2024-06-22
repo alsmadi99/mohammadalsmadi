@@ -2,39 +2,39 @@
   ! This component is the About me section of the portfolio.
 */
 
-import React, { useEffect, useState } from 'react';
-import { SectionWrapper } from '../hoc';
-import ReactPopover from './ReactPopover';
-import { experience, games } from '../constants';
-import { useParallax } from 'react-scroll-parallax';
-import { FaCodePullRequest } from 'react-icons/fa6';
-import { FiExternalLink } from 'react-icons/fi';
-import { GoRepoForked, GoStarFill } from 'react-icons/go';
+import React, { useEffect, useState } from "react";
+import { SectionWrapper } from "../hoc";
+import ReactPopover from "./ReactPopover";
+import { experiences, games } from "../constants";
+import { useParallax } from "react-scroll-parallax";
+import { FaCodePullRequest } from "react-icons/fa6";
+import { FiExternalLink } from "react-icons/fi";
+import { GoRepoForked, GoStarFill } from "react-icons/go";
 
 import {
   GET_GITHUB_REPO_DETAILS_API_URL,
   GITHUB_PRS_API_URL,
   formatNumber,
   getYearsOfExperience,
-} from '../global/utils';
-import { VITE_GITHUB_TOKEN } from '../config/index';
-import useIsMobile from '../hooks/useIsMobile';
+} from "../global/utils";
+import { VITE_GITHUB_TOKEN } from "../config/index";
+import useIsMobile from "../hooks/useIsMobile";
 
 const fetchContributions = () =>
   fetch(GITHUB_PRS_API_URL, {
     headers: {
-      'User-Agent': 'smadixd',
-      accept: 'application/vnd.github+json',
-      'X-GitHub-Api-Version': '2022-11-28',
+      "User-Agent": "smadixd",
+      accept: "application/vnd.github+json",
+      "X-GitHub-Api-Version": "2022-11-28",
     },
   }).then((response) => response.json());
 
 const fetchRepoDetails = (repo) =>
   fetch(GET_GITHUB_REPO_DETAILS_API_URL(repo), {
     headers: {
-      'User-Agent': 'smadixd',
-      accept: 'application/vnd.github+json',
-      'X-GitHub-Api-Version': '2022-11-28',
+      "User-Agent": "smadixd",
+      accept: "application/vnd.github+json",
+      "X-GitHub-Api-Version": "2022-11-28",
       Authorization: `Token ${VITE_GITHUB_TOKEN}`,
     },
   }).then((response) => response.json());
@@ -47,13 +47,13 @@ const About = () => {
     try {
       const contributionsData = await fetchContributions();
       const filteredContributions = contributionsData.items.filter(
-        (item) => !item.repository_url.includes('smadixd')
+        (item) => !item.repository_url.includes("smadixd")
       );
 
       const contributionsHashMap = {};
       for (const item of filteredContributions) {
-        const repo = item.repository_url.split('repos/').pop().toLowerCase();
-        const link = item.html_url.split('/pull')[0];
+        const repo = item.repository_url.split("repos/").pop().toLowerCase();
+        const link = item.html_url.split("/pull")[0];
 
         if (!contributionsHashMap[repo]) {
           const repoDetails = await fetchRepoDetails(repo);
@@ -83,7 +83,7 @@ const About = () => {
 
       setLatestContributions(contributionsHashMap);
     } catch (error) {
-      console.error('Failed to fetch latest contributions:', error);
+      console.error("Failed to fetch latest contributions:", error);
     }
   };
   const isMobile = useIsMobile();
@@ -93,20 +93,20 @@ const About = () => {
   }, []);
 
   const hoveringTextStyle =
-    'text-offWhite cursor-pointer bg-darkBlue rounded-sm px-[5px] border-b-[4px] border-offWhite';
+    "text-offWhite cursor-pointer bg-darkBlue rounded-sm px-[5px] border-b-[4px] border-offWhite";
 
   const hoverableTextStyles =
-    'ease-in-out duration-500 ' +
+    "ease-in-out duration-500 " +
     (isHoveringTexts || isMobile
       ? hoveringTextStyle
-      : 'border-b-2 border-offWhite');
+      : "border-b-2 border-offWhite");
 
   const parallax = useParallax({
-    scale: [1, 1.5, 'easeInQuad'],
+    scale: [1, 1.5, "easeInQuad"],
   });
 
   const starForkContainer =
-    'flex flex-row items-center justify-between px-1 py-1 md:py-0 border-primary border-2 rounded-lg w-[45%]';
+    "flex flex-row items-center justify-between px-1 py-1 md:py-0 border-primary border-2 rounded-lg w-[45%]";
   return (
     <div
       className="min-h-[85vh] flex flex-col mt-10 justify-between"
@@ -119,7 +119,7 @@ const About = () => {
             ref={parallax.ref}
             className={`text-white text-center md:text-6xl text-xl font-black text-wrap self-center w-[70%]`}
           >
-            Hi, my name is{' '}
+            Hi, my name is{" "}
             <span className="blue-text-gradient md:text-7xl text-4xl select-none">
               Mohammad
             </span>
@@ -140,10 +140,10 @@ const About = () => {
               <ReactPopover
                 content={
                   <div className="flex flex-col w-full md:text-xl text-md">
-                    {experience.map((exp, index) => (
+                    {experiences.map((exp, index) => (
                       <p className="text-white" key={index}>
                         ~ {getYearsOfExperience(exp.start, exp.end)}
-                        {' @ '}
+                        {" @ "}
                         <a
                           href={exp.link}
                           target="_blank"
@@ -179,7 +179,7 @@ const About = () => {
                     <div className="max-h-[30vh] px-4 py-4 overflow-y-auto overflow-x-hidden">
                       {Object.keys(latestContributions).map(
                         (repoKey, index) => (
-                          <div key={index} className={index > 0 ? ' mt-2' : ''}>
+                          <div key={index} className={index > 0 ? " mt-2" : ""}>
                             <div className="flex flex-row items-center justify-between mb-2">
                               <div className="flex flex-row items-center gap-2">
                                 <span className="font-semibold text-md md:text-xl">{`${latestContributions[repoKey].name}: `}</span>
@@ -218,14 +218,14 @@ const About = () => {
                                   key={`${repoKey}-${index}`}
                                   className="flex flex-row items-center cursor-pointer leading-7 hover:text-primary hover:underline"
                                   onClick={() =>
-                                    window.open(item.link, '_blank')
+                                    window.open(item.link, "_blank")
                                   }
                                 >
                                   <FaCodePullRequest
                                     className={`${
                                       item.isMerged
-                                        ? 'text-github-purple'
-                                        : 'text-github-green'
+                                        ? "text-github-purple"
+                                        : "text-github-green"
                                     } text-md md:text-xl w-[10%]`}
                                   />
                                   <span className="text-xs md:text-lg py-1 w-[90%]">
@@ -258,11 +258,11 @@ const About = () => {
                   <div className="md:text-xl text-md">
                     {games.map((game) => (
                       <p className="text-white" key={game}>
-                        {'• ' + game}
+                        {"• " + game}
                       </p>
                     ))}
                     <small className="text-primary font-semibold">
-                      {'and more :)'}
+                      {"and more :)"}
                     </small>
                   </div>
                 }
@@ -286,4 +286,4 @@ const About = () => {
   );
 };
 
-export default SectionWrapper(About, 'about');
+export default SectionWrapper(About, "about");

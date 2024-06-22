@@ -239,19 +239,19 @@ export const contributions = [
   },
 ];
 
-export const experience = [
-  {
-    name: "Kensoftware",
-    link: "https://www.kensoftware.com",
-    role: "Software Engineer",
-    start: "2020-08-01",
-    end: "2021-08-01",
-  },
+export const experiences = [
   {
     name: "PriceWaterhouseCoopers (PwC)",
     link: "https://www.pwc.com",
     role: "Senior Software Engineer",
     start: "2021-08-01",
     end: null,
+  },
+  {
+    name: "Kensoftware",
+    link: "https://www.kensoftware.com",
+    role: "Software Engineer",
+    start: "2020-08-01",
+    end: "2021-08-01",
   },
 ];

@@ -1,19 +1,19 @@
-import React, { useRef, useState } from 'react';
-import emailjs from '@emailjs/browser';
+import React, { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 
-import { styles } from '../styles';
-import { SectionWrapper } from '../hoc';
-import { socials } from '../constants';
-import useIsMobile from '../hooks/useIsMobile';
-import { AiOutlineMailLazy } from '../constants/icons';
-import { VITE_PUBLIC_KEY, VITE_SERVICE_KEY, VITE_TEMPLATE_ID } from '../config';
+import { styles } from "../styles";
+import { SectionWrapper } from "../hoc";
+import { socials } from "../constants";
+import useIsMobile from "../hooks/useIsMobile";
+import { AiOutlineMailLazy } from "../constants/icons";
+import { VITE_PUBLIC_KEY, VITE_SERVICE_KEY, VITE_TEMPLATE_ID } from "../config";
 
 const Contact = () => {
   const formRef = useRef();
   const [form, setForm] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
 
   const isMobile = useIsMobile();
@@ -44,9 +44,9 @@ const Contact = () => {
         VITE_TEMPLATE_ID,
         {
           from_name: form.name,
-          to_name: 'Mohammad Alsmadi',
+          to_name: "Mohammad Alsmadi",
           from_email: form.email,
-          to_email: 'smadi.dev@gmail.com',
+          to_email: "smadi.dev@gmail.com",
           message: form.message,
         },
         VITE_PUBLIC_KEY
@@ -54,19 +54,19 @@ const Contact = () => {
       .then(
         () => {
           setLoading(false);
-          alert('Thank you. I will get back to you as soon as possible.');
+          alert("Thank you. I will get back to you as soon as possible.");
 
           setForm({
-            name: '',
-            email: '',
-            message: '',
+            name: "",
+            email: "",
+            message: "",
           });
         },
         (error) => {
           setLoading(false);
           console.error(error);
 
-          alert('Ah, something went wrong. Please try again.');
+          alert("Ah, something went wrong. Please try again.");
         }
       );
   };
@@ -123,7 +123,7 @@ const Contact = () => {
               onChange={handleChange}
               placeholder="How can I help?"
               className={`bg-offWhite resize-none py-2 md:py-4 px-4 md:px-4 min-h-[130px] max-h-[150px] md:min-h-[200px] md:max-h-[200px] placeholder:text-darkBlue text-darkBlue rounded-lg outline-none font-medium text-xs md:text-lg ${
-                isError ? 'border-red-700 border-2 vibrate' : ''
+                isError ? "border-red-700 border-2 vibrate" : ""
               }`}
             />
 
@@ -145,7 +145,7 @@ const Contact = () => {
               disabled={loading}
               className="w-[120px] md:w-[150px] mt-2 md:mt-4 flex flex-row justify-between items-center bg-offWhite hover:bg-white text-darkBlue font-bold py-2 px-4 border-b-4 border-primary hover:white rounded text-sm md:text-lg"
             >
-              {loading ? 'Sending...' : 'Send'}
+              {loading ? "Sending..." : "Send"}
               <AiOutlineMailLazy />
             </button>
           </div>
@@ -153,16 +153,16 @@ const Contact = () => {
       </div>
       {isMobile && (
         <div
-          className={'flex flex-row w-full justify-around items-center mt-4'}
+          className={"flex flex-row w-full justify-around items-center mt-4"}
         >
-          <h3 className={'text-xl tracking-wider'}>{'Connect'}</h3>
+          <h3 className={"text-xl tracking-wider"}>{"Connect"}</h3>
           {socials.map((item, index) => {
             const Icon = item.icon;
             return (
               <Icon
                 key={index}
                 onClick={() => {
-                  window.open(item.link, '_blank');
+                  window.open(item.link, "_blank");
                 }}
                 className="h-7 w-7 transition-transform transform-gpu hover:scale-150 cursor-pointer"
               />
@@ -174,4 +174,4 @@ const Contact = () => {
   );
 };
 
-export default SectionWrapper(Contact, 'contact');
+export default SectionWrapper(Contact, "contact");

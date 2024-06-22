@@ -10,11 +10,14 @@
     "preview": "vite preview",
     "lint": "eslint . --fix --max-warnings=0",
     "format": "prettier . --write",
+    "format:check": "prettier . --check",
     "prepare": "husky && husky install"
   },
   "lint-staged": {
-    "*.{js,jsx}": "eslint --cache --fix",
-    "*.--write": "prettier --write"
+    "*.{js,jsx}": [
+      "eslint --cache --fix",
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "@emailjs/browser": "^4.1.0",

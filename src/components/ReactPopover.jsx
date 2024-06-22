@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
-import { Popover } from 'react-tiny-popover';
+import { useEffect, useState } from "react";
+import { Popover } from "react-tiny-popover";
 
 function ReactPopover({
   children,
   isOpen = false,
   content,
-  after = '',
-  before = '',
+  after = "",
+  before = "",
 }) {
   const [show, setShow] = useState(false);
   const [newShow, setNewShow] = useState(false);
@@ -22,15 +22,15 @@ function ReactPopover({
 
   return (
     <div onMouseLeave={handleMouseLeft} className="">
-      <span>{before + ' '}</span>
+      <span>{before + " "}</span>
 
       <Popover
         isOpen={show || isOpen}
-        positions={['bottom', 'top', 'left', 'right']}
+        positions={["bottom", "top", "left", "right"]}
         content={
           <div
             className={`bg-darkBlue selection:bg-secondary selection:text-darkBlue overflow-y-hidden transition-all duration-500 ease-in-out transform opacity-${
-              newShow ? '100' : '0'
+              newShow ? "100" : "0"
             } p-3 rounded border-2 border-offWhite shadow-lg`}
           >
             {content}
@@ -39,7 +39,7 @@ function ReactPopover({
       >
         <span onMouseEnter={handleMouseOver}>{children}</span>
       </Popover>
-      <span>{' ' + after}</span>
+      <span>{" " + after}</span>
     </div>
   );
 }
