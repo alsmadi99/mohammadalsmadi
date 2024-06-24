@@ -12,7 +12,7 @@ import {
   quds,
   janah,
 } from "../assets";
-import Card from "../components/Card";
+import ProjectCard from "../components/ProjectCard";
 import {
   AiFillGithubLazy,
   AiOutlineMailLazy,
@@ -110,7 +110,7 @@ export const projects = [
   {
     key: "1",
     content: (
-      <Card
+      <ProjectCard
         imagen={neom}
         link="https://www.neom.com"
         title="Neom (OXAGON)"
@@ -121,7 +121,7 @@ export const projects = [
   {
     key: "2",
     content: (
-      <Card
+      <ProjectCard
         imagen={tamm}
         link="https://www.tamm.abudhabi/"
         title="Tamm"
@@ -132,7 +132,7 @@ export const projects = [
   {
     key: "4",
     content: (
-      <Card
+      <ProjectCard
         imagen={quds}
         link="https://qudspaints.com/"
         android={
@@ -147,7 +147,7 @@ export const projects = [
   {
     key: "5",
     content: (
-      <Card
+      <ProjectCard
         imagen={janah}
         link="https://janahalaman.com/"
         android={
@@ -162,7 +162,7 @@ export const projects = [
   {
     key: "6",
     content: (
-      <Card
+      <ProjectCard
         imagen={carers}
         link="https://carers.care/"
         title="Carers"
@@ -177,7 +177,7 @@ export const projects = [
   {
     key: "7",
     content: (
-      <Card
+      <ProjectCard
         imagen={taadhod}
         link="https://altaadhod.com/"
         android={
@@ -194,7 +194,7 @@ export const projects = [
   {
     key: "8",
     content: (
-      <Card
+      <ProjectCard
         imagen={caterthumb}
         link="https://caterthumb.com"
         title="CaterThumb"
@@ -207,7 +207,7 @@ export const projects = [
   {
     key: "3",
     content: (
-      <Card
+      <ProjectCard
         imagen={sta}
         link="https://www.sta.gov.sa"
         title="Saudi Tourism Authority"

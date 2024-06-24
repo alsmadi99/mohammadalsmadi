@@ -8,7 +8,7 @@ import {
 
 import useIsMobile from "../hooks/useIsMobile";
 
-const Card = ({ imagen, title, description, link, android, ios }) => {
+const ProjectCard = ({ imagen, title, description, link, android, ios }) => {
   const [show, setShown] = useState(false);
 
   const props3 = useSpring({
@@ -22,7 +22,7 @@ const Card = ({ imagen, title, description, link, android, ios }) => {
   const isMobile = useIsMobile();
   return (
     <animated.div
-      className="bg-darkBlue bg-opacity-70 flex flex-col justify-between w-[10rem] md:w-[18rem] p-4 md:p-8 pt-0 h-[350px] md:h-[500px] shadow-lg rounded-md cursor-pointer"
+      className="bg-darkBlue bg-opacity-90 flex flex-col justify-between w-[10rem] md:w-[18rem] p-4 md:p-8 pt-0 h-[350px] md:h-[500px] shadow-lg rounded-md cursor-pointer"
       style={props3}
       onMouseEnter={() => setShown(true)}
       onMouseLeave={() => setShown(false)}
@@ -77,4 +77,4 @@ const Card = ({ imagen, title, description, link, android, ios }) => {
   );
 };
 
-export default Card;
+export default ProjectCard;

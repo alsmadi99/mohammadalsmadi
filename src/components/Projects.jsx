@@ -11,7 +11,7 @@ const Projects = () => {
   const isMobile = useIsMobile();
   return (
     <div className="flex flex-col min-h-[85vh] py-10">
-      <div className="w-3/4 mx-auto">
+      <div className="w-full md:w-3/4 mx-auto">
         <div className="mb-10">
           <h1 className={styles.sectionHeadText}>Projects I worked on.</h1>
         </div>
@@ -25,7 +25,7 @@ const Projects = () => {
         </Suspense>
       </div>
       <div className="my-10">
-        <div className="w-3/4 mx-auto">
+        <div className="w-full md:w-3/4 mx-auto">
           <h1 className={styles.sectionHeadText}>Certifications.</h1>
         </div>
         <div className="w-[100vw]">

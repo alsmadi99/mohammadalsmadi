@@ -93,7 +93,7 @@ const About = () => {
   }, []);
 
   const hoveringTextStyle =
-    "text-offWhite cursor-pointer bg-darkBlue rounded-sm px-[5px] border-b-[4px] border-offWhite";
+    "font-semibold text-offWhite cursor-pointer bg-darkBlue rounded-sm px-[5px] border-b-[4px] border-offWhite";
 
   const hoverableTextStyles =
     "ease-in-out duration-500 " +
@@ -132,7 +132,7 @@ const About = () => {
           </p>
         </div>
 
-        <div className="flex flex-col justify-between w-full gap-4 mt-10 font-semibold md:font-normal text-center md:text-left">
+        <div className="flex flex-col justify-between w-full gap-4 mt-10 font-normal text-center md:text-left">
           <div className="flex flex-row flex-wrap w-full gap-3 md:gap-10">
             <div
               className={`mt-4 text-offWhite text-[12px] md:text-2xl leading-6 md:leading-[3rem]`}
