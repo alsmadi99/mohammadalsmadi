@@ -16,10 +16,14 @@ ENV VITE_GITHUB_TOKEN=$VITE_GITHUB_TOKEN
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm install --force
+COPY yarn.lock ./
+
+RUN npm install -g yarn --force
+
+RUN yarn
 
 COPY . .
-RUN npm run build
+RUN yarn run build
 
 # Run stage
 FROM node:20
