@@ -34,7 +34,4 @@ jobs:
             sudo docker stop portfolio-container || true
             sudo docker rm portfolio-container || true
             sudo docker run -d --name portfolio-container -p 127.0.0.1:5000:5000 --network my-network portfolio
-
-      - name: Clear cache
-        run: |
-          sudo docker system prune -af
+            sudo docker system prune -af
