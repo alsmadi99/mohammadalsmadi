@@ -15,21 +15,4 @@ const styles = {
     "sm:text-[18px] text-[14px] text-primary uppercase tracking-wider font-semibold",
 };
 
-const hoverableTextStyle = "border-b-[4px] px-[5px] border-offWhite";
-
-export const hoveringTextStyle = `font-semibold text-offWhite cursor-pointer bg-darkBlue rounded-sm ${hoverableTextStyle}`;
-
-export const hoverableTextStyles = ({
-  isHoveringTexts,
-  isMobile,
-}: {
-  isHoveringTexts: boolean;
-  isMobile: boolean;
-}) =>
-  "ease-in-out duration-300 " +
-  (isHoveringTexts || isMobile ? hoveringTextStyle : hoverableTextStyle);
-
-export const starForkContainer =
-  "flex flex-row items-center justify-between px-1 py-1 md:py-0 border-primary border-2 rounded-lg w-[45%]";
-
 export { styles };

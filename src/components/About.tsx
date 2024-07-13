@@ -1,17 +1,14 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import ReactPopover from "./ReactPopover";
 import { experiences, games, projects } from "../constants";
 import { FaCodePullRequest } from "react-icons/fa6";
 import { FiExternalLink } from "react-icons/fi";
-import { GoRepoForked, GoStarFill } from "react-icons/go";
-import { TbWorldWww } from "react-icons/tb";
-import { DiAndroid } from "react-icons/di";
-import { SiIos } from "react-icons/si";
+import { GoRepoForked, GoStarFill, GoGlobe } from "react-icons/go";
+import { SiIos, SiAndroid } from "react-icons/si";
 
 import useIsMobile from "../hooks/useIsMobile";
 import { useContributions } from "../hooks/useContributions";
 import { formatNumber, getYearsOfExperience } from "../utils";
-import { hoverableTextStyles, starForkContainer } from "../styles";
 
 const About = () => {
   const [isHoveringTexts, setIsHoveringTexts] = useState(false);
@@ -20,12 +17,15 @@ const About = () => {
     useContributions();
   const isMobile = useIsMobile();
 
-  const hoverableTextStylesString = useMemo(() => {
-    return hoverableTextStyles({
-      isHoveringTexts,
-      isMobile,
-    });
-  }, [isHoveringTexts, isMobile]);
+  const hoveringTextStyle =
+    "font-semibold text-offWhite cursor-pointer bg-darkBlue rounded-sm";
+
+  const hoverableTextStyles =
+    "ease-in-out duration-500 px-[5px] border-b-[4px] border-offWhite" +
+    (isHoveringTexts || isMobile ? hoveringTextStyle : "");
+
+  const starForkContainer =
+    "flex flex-row items-center justify-between px-1 py-1 md:py-0 border-primary border-2 rounded-lg w-[45%]";
 
   return (
     <div
@@ -82,7 +82,7 @@ const About = () => {
               applications using various frameworks and technologies on top of
               using database engines like MongoDB and PostgreSQL.`}
               >
-                <span className={hoverableTextStylesString}>
+                <span className={hoverableTextStyles}>
                   {"~" + getYearsOfExperience()} of hands-on experience.
                 </span>
               </ReactPopover>
@@ -107,7 +107,7 @@ const About = () => {
 
                           <div className="flex flex-row items-center justify-around gap-2 h-[20%] w-full">
                             {project.link && (
-                              <TbWorldWww
+                              <GoGlobe
                                 onClick={() =>
                                   window.open(project.link, "_blank")
                                 }
@@ -115,7 +115,7 @@ const About = () => {
                               />
                             )}
                             {project.android && (
-                              <DiAndroid
+                              <SiAndroid
                                 onClick={() =>
                                   window.open(project.android, "_blank")
                                 }
@@ -137,11 +137,9 @@ const About = () => {
                   </div>
                 }
                 before={`Team collaboration is something I truly enjoy. I've had the privilege of working alongside incredibly talented individuals. Together, we've enriched our collective knowledge over the years by building various`}
-                after={`, while delivering high-quality software solutions and meeting tight deadlines.`}
+                after={` while delivering high-quality software solutions and meeting tight deadlines.`}
               >
-                <span className={hoverableTextStylesString}>
-                  client projects
-                </span>
+                <span className={hoverableTextStyles}>client projects ,</span>
               </ReactPopover>
             </div>
 
@@ -222,7 +220,7 @@ const About = () => {
                 before={`I believe that contributing to `}
                 after={` not only benefits the community but also facilitates my growth as a developer. It has enlightened me on how communities around the world collaborate on software development. Additionally, it has enhanced my understanding of CI/CD workflows and the automation of deployments in large-scale projects with more than 800 contributors.`}
               >
-                <span className={hoverableTextStylesString}>
+                <span className={hoverableTextStyles}>
                   open-source projects
                 </span>
               </ReactPopover>
@@ -246,7 +244,7 @@ const About = () => {
                 after="and hanging out with friends and family. I also enjoy playing football. Learning new development skills is a hobby of mine,
               and I'm always keen on getting involved in various unique ideas and projects."
               >
-                <span className={hoverableTextStylesString}>video games</span>
+                <span className={hoverableTextStyles}>video games</span>
               </ReactPopover>
             </div>
           </div>

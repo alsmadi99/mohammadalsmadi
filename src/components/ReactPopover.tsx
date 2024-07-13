@@ -37,7 +37,6 @@ const ReactPopover = ({
 
       <Popover
         isOpen={show || isOpen}
-        positions={["bottom", "top", "left", "right"]}
         content={
           <div
             className={`bg-darkBlue selection:bg-secondary selection:text-darkBlue overflow-y-hidden transition-all duration-500 ease-in-out transform opacity-${
