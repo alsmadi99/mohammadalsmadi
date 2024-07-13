@@ -15,8 +15,9 @@ const styles = {
     "sm:text-[18px] text-[14px] text-primary uppercase tracking-wider font-semibold",
 };
 
-export const hoveringTextStyle =
-  "font-semibold text-offWhite cursor-pointer bg-darkBlue rounded-sm px-[5px] border-b-[4px] border-offWhite";
+const hoverableTextStyle = "border-b-[4px] px-[5px] border-offWhite";
+
+export const hoveringTextStyle = `font-semibold text-offWhite cursor-pointer bg-darkBlue rounded-sm ${hoverableTextStyle}`;
 
 export const hoverableTextStyles = ({
   isHoveringTexts,
@@ -25,10 +26,8 @@ export const hoverableTextStyles = ({
   isHoveringTexts: boolean;
   isMobile: boolean;
 }) =>
-  "ease-in-out duration-500 " +
-  (isHoveringTexts || isMobile
-    ? hoveringTextStyle
-    : "border-b-[4px] border-offWhite");
+  "ease-in-out duration-300 " +
+  (isHoveringTexts || isMobile ? hoveringTextStyle : hoverableTextStyle);
 
 export const starForkContainer =
   "flex flex-row items-center justify-between px-1 py-1 md:py-0 border-primary border-2 rounded-lg w-[45%]";

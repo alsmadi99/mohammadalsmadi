@@ -41,7 +41,7 @@ const ReactPopover = ({
         content={
           <div
             className={`bg-darkBlue selection:bg-secondary selection:text-darkBlue overflow-y-hidden transition-all duration-500 ease-in-out transform opacity-${
-              newShow ? "100" : "0"
+              newShow || isOpen ? "100" : "0"
             } p-3 rounded border-2 border-offWhite shadow-lg`}
           >
             {isLoading ? (
@@ -61,7 +61,9 @@ const ReactPopover = ({
           </div>
         }
       >
-        <span onMouseEnter={handleMouseOver}>{children}</span>
+        <span onMouseEnter={handleMouseOver} className="text-nowrap">
+          {children}
+        </span>
       </Popover>
       <span>{" " + after}</span>
     </div>

@@ -1,13 +1,12 @@
-/*
-  ! This component is the About me section of the portfolio.
-*/
-
 import { useMemo, useState } from "react";
 import ReactPopover from "./ReactPopover";
 import { experiences, games, projects } from "../constants";
 import { FaCodePullRequest } from "react-icons/fa6";
 import { FiExternalLink } from "react-icons/fi";
 import { GoRepoForked, GoStarFill } from "react-icons/go";
+import { TbWorldWww } from "react-icons/tb";
+import { DiAndroid } from "react-icons/di";
+import { SiIos } from "react-icons/si";
 
 import useIsMobile from "../hooks/useIsMobile";
 import { useContributions } from "../hooks/useContributions";
@@ -92,32 +91,45 @@ const About = () => {
             <div className="flex flex-row flex-wrap gap-1 text-offWhite text-[12px] md:text-2xl leading-6 md:leading-[3rem]">
               <ReactPopover
                 content={
-                  <div className="flex flex-col w-full">
+                  <div className="flex flex-col w-full md:w-[40vw]">
                     <span className="text-secondary font-semibold text-sm md:text-md mb-4">
                       {"Here are some of the projects I've worked on."}
                     </span>
 
-                    <div className="flex flex-col w-full md:text-xl text-md max-h-[30vh] px-4 py-4 overflow-y-auto overflow-x-hidden">
+                    <div className="flex flex-row flex-wrap gap-4 w-full justify-center md:text-xl text-md max-h-[30vh] px-4 py-4 overflow-y-auto overflow-x-hidden">
                       {projects.map((project, index) => (
-                        <div
-                          key={index}
-                          className={`flex flex-row items-center cursor-pointer leading-7 hover:text-primary hover:underline ${index > 0 ? "mt-2" : ""}`}
-                          onClick={() => window.open(project.link, "_blank")}
-                        >
+                        <div key={index} className="h-[160px] w-[130px]">
                           <img
                             alt={project.title}
                             src={project.imagen}
-                            className="h-10 w-10 rounded-full mr-2"
+                            className="h-[80%] w-full object-contain rounded-lg bg-white border-secondary border-4"
                           />
-                          <div className="flex flex-col">
-                            {/* title */}
-                            <span className="text-xs md:text-lg py-1">
-                              {project.title}
-                            </span>
-                            {/* description */}
-                            <span className="text-xs md:text-xs py-1">
-                              {project.description}
-                            </span>
+
+                          <div className="flex flex-row items-center justify-around gap-2 h-[20%] w-full">
+                            {project.link && (
+                              <TbWorldWww
+                                onClick={() =>
+                                  window.open(project.link, "_blank")
+                                }
+                                className="h-6 w-[30%] text-secondary hover:text-primary cursor-pointer"
+                              />
+                            )}
+                            {project.android && (
+                              <DiAndroid
+                                onClick={() =>
+                                  window.open(project.android, "_blank")
+                                }
+                                className="h-6 w-[30%] text-secondary hover:text-primary cursor-pointer"
+                              />
+                            )}
+                            {project.ios && (
+                              <SiIos
+                                onClick={() =>
+                                  window.open(project.ios, "_blank")
+                                }
+                                className="h-6 w-[30%] text-secondary hover:text-primary cursor-pointer"
+                              />
+                            )}
                           </div>
                         </div>
                       ))}
@@ -128,7 +140,7 @@ const About = () => {
                 after={`, while delivering high-quality software solutions and meeting tight deadlines.`}
               >
                 <span className={hoverableTextStylesString}>
-                  client-based projects
+                  client projects
                 </span>
               </ReactPopover>
             </div>

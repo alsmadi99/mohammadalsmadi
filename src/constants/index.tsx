@@ -2,87 +2,32 @@ import {
   carers,
   caterthumb,
   taadhod,
-  azure,
-  neo4j,
-  udemy,
-  kubicle,
   neom,
   tamm,
   sta,
   quds,
   janah,
 } from "../assets";
-import {
-  AiFillGithubLazy,
-  AiOutlineMailLazy,
-  AiFillLinkedinLazy,
-} from "./icons";
+
+import { AiFillLinkedin, AiFillGithub, AiOutlineMail } from "react-icons/ai";
 
 export const email = "smadi.dev@gmail.com";
 
 export const socials = [
   {
     link: "https://www.linkedin.com/in/smadixd/",
-    icon: (props: any) => <AiFillLinkedinLazy size={23} {...props} />,
+    icon: (props: any) => <AiFillLinkedin size={23} {...props} />,
     text: "Linkedin",
   },
   {
     link: "https://github.com/smadixd",
-    icon: (props: any) => <AiFillGithubLazy size={23} {...props} />,
+    icon: (props: any) => <AiFillGithub size={23} {...props} />,
     text: "Github",
   },
   {
     link: `mailto:${email}`,
-    icon: (props: any) => <AiOutlineMailLazy size={23} {...props} />,
+    icon: (props: any) => <AiOutlineMail size={23} {...props} />,
     text: "E-Mail",
-  },
-];
-
-export const certificates = [
-  {
-    name: "Principles of Generative AI",
-    image: kubicle,
-    link: "https://app.kubicle.com/certificates/1351698?token=Ebf35tPDDvdSHP3LTFE8xsq6",
-  },
-  {
-    name: "The Complete Guide to Advanced React Component Patterns",
-    image: udemy,
-    link: "https://www.udemy.com/certificate/UC-230ad6fd-eeab-4b28-87ca-7bdfadd7d8d2/",
-  },
-  {
-    name: "Cypher Fundamentals",
-    image: neo4j,
-    link: "https://graphacademy.neo4j.com/c/97778f33-e8b3-4134-b210-77d350ac7f9c/",
-  },
-  {
-    name: "Microsoft Certified: Azure Fundamentals",
-    image: azure,
-    link: "https://www.credly.com/badges/d955a26a-63a0-4af7-9a5c-9785d8a5ce1e/public_url",
-  },
-  {
-    name: "Applying Visual Data Skills in Visualization Fundamentals",
-    image: kubicle,
-    link: "",
-  },
-  {
-    name: "Building Neo4j Applications with TypeScript",
-    image: neo4j,
-    link: "https://graphacademy.neo4j.com/c/9ce1fc4d-9cc0-4eb6-a6b4-db71799b7ad8/",
-  },
-  {
-    name: "The Complete SQL Bootcamp 2022: Go from Zero to Hero",
-    image: udemy,
-    link: "https://www.udemy.com/certificate/UC-5c3b95d5-dbd2-4619-8c66-dc7ea5474e10/",
-  },
-  {
-    name: "Visual Data Thinking in Visualization Fundamentals",
-    image: kubicle,
-    link: "",
-  },
-  {
-    name: "Neo4j Fundamentals",
-    image: neo4j,
-    link: "https://graphacademy.neo4j.com/c/c26a1ddf-2570-49d5-bf0f-2e1a7e4c1096/",
   },
 ];
 
