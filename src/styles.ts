@@ -15,4 +15,22 @@ const styles = {
     "sm:text-[18px] text-[14px] text-primary uppercase tracking-wider font-semibold",
 };
 
+export const hoveringTextStyle =
+  "font-semibold text-offWhite cursor-pointer bg-darkBlue rounded-sm px-[5px] border-b-[4px] border-offWhite";
+
+export const hoverableTextStyles = ({
+  isHoveringTexts,
+  isMobile,
+}: {
+  isHoveringTexts: boolean;
+  isMobile: boolean;
+}) =>
+  "ease-in-out duration-500 " +
+  (isHoveringTexts || isMobile
+    ? hoveringTextStyle
+    : "border-b-[4px] border-offWhite");
+
+export const starForkContainer =
+  "flex flex-row items-center justify-between px-1 py-1 md:py-0 border-primary border-2 rounded-lg w-[45%]";
+
 export { styles };

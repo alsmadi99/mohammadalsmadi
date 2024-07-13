@@ -2,87 +2,31 @@
   ! This component is the About me section of the portfolio.
 */
 
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 import ReactPopover from "./ReactPopover";
-import { experiences, games } from "../constants";
+import { experiences, games, projects } from "../constants";
 import { FaCodePullRequest } from "react-icons/fa6";
 import { FiExternalLink } from "react-icons/fi";
 import { GoRepoForked, GoStarFill } from "react-icons/go";
 
-import {
-  fetchContributions,
-  fetchRepoDetails,
-  formatNumber,
-  getYearsOfExperience,
-} from "../utils";
 import useIsMobile from "../hooks/useIsMobile";
-import { ContributionsHashMap } from "../types";
+import { useContributions } from "../hooks/useContributions";
+import { formatNumber, getYearsOfExperience } from "../utils";
+import { hoverableTextStyles, starForkContainer } from "../styles";
 
 const About = () => {
   const [isHoveringTexts, setIsHoveringTexts] = useState(false);
-  const [latestContributions, setLatestContributions] =
-    useState<ContributionsHashMap>({});
 
-  const getLatestContribution = async () => {
-    try {
-      const contributionsData = await fetchContributions();
-      const filteredContributions = contributionsData.items.filter(
-        (item: any) => !item.repository_url.includes("smadixd"),
-      );
-
-      const contributionsHashMap: ContributionsHashMap = {};
-      for (const item of filteredContributions) {
-        const repo = item.repository_url.split("repos/").pop().toLowerCase();
-        const link = item.html_url.split("/pull")[0];
-
-        if (!contributionsHashMap[repo]) {
-          const repoDetails = await fetchRepoDetails(repo);
-          contributionsHashMap[repo] = {
-            name: repoDetails.name,
-            link: link,
-            items: [],
-            details: {
-              stars: repoDetails.stargazers_count,
-              forks: repoDetails.forks_count,
-            },
-          };
-        }
-
-        if (
-          contributionsHashMap[repo].items.length < 3 &&
-          ((!item.closed_at && !item.pull_request.merged_at) ||
-            (!!item.closed_at && !!item.pull_request.merged_at))
-        ) {
-          contributionsHashMap[repo].items.push({
-            name: item.title,
-            link: item.pull_request.html_url,
-            isMerged: !!item.pull_request.merged_at,
-          });
-        }
-      }
-
-      setLatestContributions(contributionsHashMap);
-    } catch (error) {
-      console.error("Failed to fetch latest contributions:", error);
-    }
-  };
+  const { latestContributions, isLoading: loadingContributions } =
+    useContributions();
   const isMobile = useIsMobile();
 
-  useEffect(() => {
-    getLatestContribution();
-  }, []);
-
-  const hoveringTextStyle =
-    "font-semibold text-offWhite cursor-pointer bg-darkBlue rounded-sm px-[5px] border-b-[4px] border-offWhite";
-
-  const hoverableTextStyles =
-    "ease-in-out duration-500 " +
-    (isHoveringTexts || isMobile
-      ? hoveringTextStyle
-      : "border-b-2 border-offWhite");
-
-  const starForkContainer =
-    "flex flex-row items-center justify-between px-1 py-1 md:py-0 border-primary border-2 rounded-lg w-[45%]";
+  const hoverableTextStylesString = useMemo(() => {
+    return hoverableTextStyles({
+      isHoveringTexts,
+      isMobile,
+    });
+  }, [isHoveringTexts, isMobile]);
 
   return (
     <div
@@ -133,14 +77,14 @@ const About = () => {
                     ))}
                   </div>
                 }
-                before="I'm a software engineer based in Jordan with around"
-                after={`I've mastered JavaScript and TypeScript, working extensively with
-              React.js, Node.js, and React Native. My portfolio includes building
+                before="I'm a software engineer based in Jordan with "
+                after={`I have developed deep understanding of JavaScript and TypeScript through extensive work with React.js,
+               Node.js, and React Native. My portfolio includes building
               applications using various frameworks and technologies on top of
               using database engines like MongoDB and PostgreSQL.`}
               >
-                <span className={hoverableTextStyles}>
-                  {getYearsOfExperience()} of hands-on experience.
+                <span className={hoverableTextStylesString}>
+                  {"~" + getYearsOfExperience()} of hands-on experience.
                 </span>
               </ReactPopover>
             </div>
@@ -149,81 +93,43 @@ const About = () => {
               <ReactPopover
                 content={
                   <div className="flex flex-col w-full">
-                    <span className="text-primary font-semibold text-sm md:text-md mb-4">
-                      Here are my most recent contributions.
+                    <span className="text-secondary font-semibold text-sm md:text-md mb-4">
+                      {"Here are some of the projects I've worked on."}
                     </span>
-                    <div className="max-h-[30vh] px-4 py-4 overflow-y-auto overflow-x-hidden">
-                      {Object.keys(latestContributions).map(
-                        (repoKey, index) => (
-                          <div key={index} className={index > 0 ? " mt-2" : ""}>
-                            <div className="flex flex-row items-center justify-between mb-2">
-                              <div className="flex flex-row items-center gap-2">
-                                <span className="font-semibold text-md md:text-xl">{`${latestContributions[repoKey].name}: `}</span>
-                                <a
-                                  href={latestContributions[repoKey].link}
-                                  className="text-link underline"
-                                  rel="noopener noreferrer"
-                                  target="_blank"
-                                >
-                                  <FiExternalLink className="text-md md:text-xl" />
-                                </a>
-                              </div>
-                              <div className="flex flex-row items-center justify-between md:w-[30%] w-[50%]">
-                                <div className={starForkContainer}>
-                                  <span className="text-xs md:text-lg tracking-widest">
-                                    {formatNumber(
-                                      latestContributions[repoKey].details
-                                        .forks,
-                                    )}
-                                  </span>
-                                  <GoRepoForked className="text-md md:text-xl w-4 h-4 md:w-5 md:h-5 text-offWhite" />
-                                </div>
 
-                                <div className={starForkContainer}>
-                                  <span className="text-xs md:text-lg tracking-widest">
-                                    {formatNumber(
-                                      latestContributions[repoKey].details
-                                        .stars,
-                                    )}
-                                  </span>
-                                  <GoStarFill className="text-md md:text-xl w-4 h-4 md:w-5 md:h-5 text-github-yellow" />
-                                </div>
-                              </div>
-                            </div>
-                            {latestContributions[repoKey].items?.map(
-                              (item, index) => (
-                                <div
-                                  key={`${repoKey}-${index}`}
-                                  className="flex flex-row items-center cursor-pointer leading-7 hover:text-primary hover:underline"
-                                  onClick={() =>
-                                    window.open(item.link, "_blank")
-                                  }
-                                >
-                                  <FaCodePullRequest
-                                    className={`${
-                                      item.isMerged
-                                        ? "text-github-purple"
-                                        : "text-github-green"
-                                    } text-md md:text-xl w-[10%]`}
-                                  />
-                                  <span className="text-xs md:text-lg py-1 w-[90%]">
-                                    {item?.name}
-                                  </span>
-                                </div>
-                              ),
-                            )}
+                    <div className="flex flex-col w-full md:text-xl text-md max-h-[30vh] px-4 py-4 overflow-y-auto overflow-x-hidden">
+                      {projects.map((project, index) => (
+                        <div
+                          key={index}
+                          className={`flex flex-row items-center cursor-pointer leading-7 hover:text-primary hover:underline ${index > 0 ? "mt-2" : ""}`}
+                          onClick={() => window.open(project.link, "_blank")}
+                        >
+                          <img
+                            alt={project.title}
+                            src={project.imagen}
+                            className="h-10 w-10 rounded-full mr-2"
+                          />
+                          <div className="flex flex-col">
+                            {/* title */}
+                            <span className="text-xs md:text-lg py-1">
+                              {project.title}
+                            </span>
+                            {/* description */}
+                            <span className="text-xs md:text-xs py-1">
+                              {project.description}
+                            </span>
                           </div>
-                        ),
-                      )}
+                        </div>
+                      ))}
                     </div>
                   </div>
                 }
-                before={`Team collaboration is something I truly enjoy, and I've had the
-              privilege of working alongside incredibly talented individuals who
-              have enriched my knowledge over the years to build various`}
-                after={`while delivering high-quality software solutions & meeting tight deadlines.`}
+                before={`Team collaboration is something I truly enjoy. I've had the privilege of working alongside incredibly talented individuals. Together, we've enriched our collective knowledge over the years by building various`}
+                after={`, while delivering high-quality software solutions and meeting tight deadlines.`}
               >
-                <span className={hoverableTextStyles}>client projects</span>
+                <span className={hoverableTextStylesString}>
+                  client-based projects
+                </span>
               </ReactPopover>
             </div>
 
@@ -231,7 +137,7 @@ const About = () => {
               <ReactPopover
                 content={
                   <div className="flex flex-col w-full">
-                    <span className="text-primary font-semibold text-sm md:text-md mb-4">
+                    <span className="text-secondary font-semibold text-sm md:text-md mb-4">
                       Here are my most recent contributions.
                     </span>
                     <div className="max-h-[30vh] px-4 py-4 overflow-y-auto overflow-x-hidden">
@@ -300,10 +206,11 @@ const About = () => {
                     </div>
                   </div>
                 }
+                isLoading={loadingContributions}
                 before={`I believe that contributing to `}
-                after={`not only helps the community, but also helps me grow as a developer and learn how communities around the world are building software. It also helped me learn more about CI/CD workflows and how to automate deployments in large projects with over 800 contributors.`}
+                after={` not only benefits the community but also facilitates my growth as a developer. It has enlightened me on how communities around the world collaborate on software development. Additionally, it has enhanced my understanding of CI/CD workflows and the automation of deployments in large-scale projects with more than 800 contributors.`}
               >
-                <span className={hoverableTextStyles}>
+                <span className={hoverableTextStylesString}>
                   open-source projects
                 </span>
               </ReactPopover>
@@ -327,7 +234,7 @@ const About = () => {
                 after="and hanging out with friends and family. I also enjoy playing football. Learning new development skills is a hobby of mine,
               and I'm always keen on getting involved in various unique ideas and projects."
               >
-                <span className={hoverableTextStyles}>video games</span>
+                <span className={hoverableTextStylesString}>video games</span>
               </ReactPopover>
             </div>
           </div>

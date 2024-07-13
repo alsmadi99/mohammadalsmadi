@@ -1,9 +1,11 @@
 import { ReactNode, useEffect, useState } from "react";
 import { Popover } from "react-tiny-popover";
+import LoadingList from "./LoadingList";
 
 type ReactPopoverProps = {
   children: ReactNode;
   isOpen?: boolean;
+  isLoading?: boolean;
   content: ReactNode;
   after?: string;
   before?: string;
@@ -12,6 +14,7 @@ type ReactPopoverProps = {
 const ReactPopover = ({
   children,
   isOpen = false,
+  isLoading = false,
   content,
   after = "",
   before = "",
@@ -41,7 +44,20 @@ const ReactPopover = ({
               newShow ? "100" : "0"
             } p-3 rounded border-2 border-offWhite shadow-lg`}
           >
-            {content}
+            {isLoading ? (
+              <LoadingList
+                cellSizes={[
+                  { percentage: 40, height: 20 },
+                  { percentage: 100 },
+                  { percentage: 40 },
+                  { percentage: 70 },
+                  { percentage: 40 },
+                  { percentage: 70 },
+                ]}
+              />
+            ) : (
+              content
+            )}
           </div>
         }
       >
