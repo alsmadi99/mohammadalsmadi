@@ -1,13 +1,21 @@
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { Popover } from "react-tiny-popover";
 
-function ReactPopover({
+type ReactPopoverProps = {
+  children: ReactNode;
+  isOpen?: boolean;
+  content: ReactNode;
+  after?: string;
+  before?: string;
+};
+
+const ReactPopover = ({
   children,
   isOpen = false,
   content,
   after = "",
   before = "",
-}) {
+}: ReactPopoverProps) => {
   const [show, setShow] = useState(false);
   const [newShow, setNewShow] = useState(false);
 
@@ -42,6 +50,6 @@ function ReactPopover({
       <span>{" " + after}</span>
     </div>
   );
-}
+};
 
 export default ReactPopover;

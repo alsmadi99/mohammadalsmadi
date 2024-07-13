@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
 import plugin from "tailwindcss/plugin";
-export const content = ["./src/**/*.{js,jsx}"];
+export const content = ["./src/**/*.{js,jsx,ts,tsx}"];
 export const mode = "jit";
 export const theme = {
   extend: {
@@ -39,7 +39,7 @@ export const plugins = [
           textShadow: value,
         }),
       },
-      { values: theme("textShadow") }
+      { values: theme("textShadow") },
     );
   }),
 ];

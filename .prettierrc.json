@@ -3,7 +3,7 @@
   "useTabs": false,
   "printWidth": 80,
   "semi": true,
-  "trailingComma": "es5",
+  "trailingComma": "all",
   "singleQuote": false,
   "endOfLine": "lf"
 }
