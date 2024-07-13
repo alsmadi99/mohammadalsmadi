@@ -29,32 +29,34 @@ const About = () => {
 
   return (
     <div
-      className="min-h-[85vh] flex flex-col mt-10 justify-between"
+      className="min-h-[85vh] flex flex-col mt-5 md:mt-10 justify-between"
       onMouseOver={() => setIsHoveringTexts(true)}
       onMouseOut={() => setIsHoveringTexts(false)}
     >
       <div>
         <div className="w-[100%] self-start justify-center flex-wrap text-wrap flex">
           <p
-            className={`text-white text-center md:text-6xl text-xl font-black text-wrap self-center w-[70%]`}
+            className={`text-white md:text-center md:text-6xl text-xl font-black text-wrap self-center md:w-[70%]`}
           >
             Hi, my name is{" "}
-            <span className="blue-text-gradient md:text-7xl text-4xl select-none">
+            <span className="blue-text-gradient md:text-7xl text-3xl select-none">
               Mohammad
             </span>
           </p>
 
-          <p
-            className={`mt-10 text-white-100 md:text-3xl text-lg text-center leading-7 w-[100%]`}
-          >
-            I love building unique web & mobile applications.
-          </p>
+          {!isMobile && (
+            <p
+              className={`mt-5 md:mt-10 text-white-100 md:text-3xl text-lg text-center leading-7 w-[100%]`}
+            >
+              I love building unique web & mobile applications.
+            </p>
+          )}
         </div>
 
-        <div className="flex flex-col justify-between w-full gap-4 mt-10 font-normal text-center md:text-left">
+        <div className="flex flex-col justify-between w-full gap-4 md:mt-10 font-normal">
           <div className="flex flex-row flex-wrap w-full gap-3 md:gap-10">
             <div
-              className={`mt-4 text-offWhite text-[12px] md:text-2xl leading-6 md:leading-[3rem]`}
+              className={`mt-4 text-offWhite text-[14px] md:text-2xl leading-6 md:leading-[3rem]`}
             >
               <ReactPopover
                 content={
@@ -88,7 +90,7 @@ const About = () => {
               </ReactPopover>
             </div>
 
-            <div className="flex flex-row flex-wrap gap-1 text-offWhite text-[12px] md:text-2xl leading-6 md:leading-[3rem]">
+            <div className="flex flex-row flex-wrap gap-1 text-offWhite text-[14px] md:text-2xl leading-6 md:leading-[3rem]">
               <ReactPopover
                 content={
                   <div className="flex flex-col w-full md:w-[40vw]">
@@ -143,7 +145,7 @@ const About = () => {
               </ReactPopover>
             </div>
 
-            <div className="flex flex-row flex-wrap gap-1 text-offWhite text-[12px] md:text-2xl leading-6 md:leading-[3rem]">
+            <div className="flex flex-row flex-wrap gap-1 text-offWhite text-[14px] md:text-2xl leading-6 md:leading-[3rem]">
               <ReactPopover
                 content={
                   <div className="flex flex-col w-full">
@@ -226,7 +228,7 @@ const About = () => {
               </ReactPopover>
             </div>
 
-            <div className="flex flex-row flex-wrap gap-1 text-offWhite text-[12px] md:text-2xl leading-6 md:leading-[3rem]">
+            <div className="flex flex-row flex-wrap gap-1 text-offWhite text-[14px] md:text-2xl leading-6 md:leading-[3rem]">
               <ReactPopover
                 content={
                   <div className="md:text-xl text-md">

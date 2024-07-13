@@ -9,7 +9,8 @@ import {
   janah,
 } from "../assets";
 
-import { AiFillLinkedin, AiFillGithub, AiOutlineMail } from "react-icons/ai";
+import { MdOutlineEmail } from "react-icons/md";
+import { AiFillLinkedin, AiFillGithub } from "react-icons/ai";
 
 export const email = "smadi.dev@gmail.com";
 
@@ -26,7 +27,7 @@ export const socials = [
   },
   {
     link: `mailto:${email}`,
-    icon: (props: any) => <AiOutlineMail size={23} {...props} />,
+    icon: (props: any) => <MdOutlineEmail size={23} {...props} />,
     text: "E-Mail",
   },
 ];
