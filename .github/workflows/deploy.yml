@@ -31,7 +31,7 @@ jobs:
             --build-arg VITE_LITLY_PROJECT_ID=${{ secrets.VITE_LITLY_PROJECT_ID }} \
             --build-arg VITE_GITHUB_TOKEN=${{ secrets.VITE_GITHUB_TOKEN }} \
             -t portfolio .
-            sudo docker stop portfolio-container || true
-            sudo docker rm portfolio-container || true
-            sudo docker run -d --name portfolio-container -p 127.0.0.1:5000:5000 --network my-network portfolio
-            sudo docker system prune -af
+            docker stop portfolio-container || true
+            docker rm portfolio-container || true
+            docker run -d --name portfolio-container -p 127.0.0.1:5000:5000 --network my-network portfolio
+            docker system prune -af
