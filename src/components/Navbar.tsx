@@ -14,8 +14,7 @@ const Navbar = () => {
             window.open(buyMeACoffee, "_blank");
           }}
         >
-          <SiBuymeacoffee className="h-6 w-6 md:h-7 md:w-7 fill-github-yellow" />
-          <span className="text-xs md:text-lg">buy me a coffee</span>
+          <SiBuymeacoffee className="h-6 w-6 md:h-10 md:w-10 fill-secondary" />
         </div>
         <div className="flex justify-end items-end flex-[1]">
           <div className="flex flex-row items-center gap-4">
