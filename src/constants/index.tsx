@@ -16,7 +16,7 @@ export const email = "smadi.dev@gmail.com";
 
 export const socials = [
   {
-    link: "https://www.linkedin.com/in/smadixd/",
+    link: "https://www.linkedin.com/in/alsmadi99",
     icon: (props: any) => <AiFillLinkedin size={23} {...props} />,
     text: "Linkedin",
   },
