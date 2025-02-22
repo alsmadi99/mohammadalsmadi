@@ -21,13 +21,10 @@ jobs:
           key: ${{ secrets.HETZNER_SSH_KEY }}
           port: ${{ secrets.HETZNER_PORT }}
           script: |
-            git clone git@github.com:smadixd/mohammadalsmadi.git || git -C mohammadalsmadi pull origin main
+            git clone git@github.com:alsmadi99/mohammadalsmadi.git || git -C mohammadalsmadi pull origin main
             cd mohammadalsmadi
             git checkout main
             sudo docker build \
-            --build-arg VITE_SERVICE_KEY=${{ secrets.VITE_SERVICE_KEY }} \
-            --build-arg VITE_TEMPLATE_ID=${{ secrets.VITE_TEMPLATE_ID }} \
-            --build-arg VITE_PUBLIC_KEY=${{ secrets.VITE_PUBLIC_KEY }} \
             --build-arg VITE_LITLY_PROJECT_ID=${{ secrets.VITE_LITLY_PROJECT_ID }} \
             --build-arg VITE_GITHUB_TOKEN=${{ secrets.VITE_GITHUB_TOKEN }} \
             -t portfolio .

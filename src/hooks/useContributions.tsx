@@ -12,7 +12,7 @@ export const useContributions = () => {
       try {
         const contributionsData = await fetchContributions();
         const filteredContributions = contributionsData.items.filter(
-          (item: any) => !item.repository_url.includes("smadixd"),
+          (item: any) => !item.repository_url.includes("alsmadi99"),
         );
 
         const contributionsHashMap: ContributionsHashMap = {};

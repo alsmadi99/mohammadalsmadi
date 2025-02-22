@@ -1,7 +1,7 @@
 import { VITE_GITHUB_TOKEN } from "../config";
 
 export const GITHUB_PRS_API_URL =
-  "https://api.github.com/search/issues?q=is:pr+author:smadixd";
+  "https://api.github.com/search/issues?q=is:pr+author:alsmadi99";
 
 export const GET_GITHUB_REPO_DETAILS_API_URL = (repo: string) =>
   `https://api.github.com/repos/${repo}`;
@@ -39,7 +39,7 @@ export const formatNumber = (value: number) => {
 export const fetchContributions = () =>
   fetch(GITHUB_PRS_API_URL, {
     headers: {
-      "User-Agent": "smadixd",
+      "User-Agent": "alsmadi99",
       accept: "application/vnd.github+json",
       "X-GitHub-Api-Version": "2022-11-28",
     },
@@ -48,7 +48,7 @@ export const fetchContributions = () =>
 export const fetchRepoDetails = (repo: string) =>
   fetch(GET_GITHUB_REPO_DETAILS_API_URL(repo), {
     headers: {
-      "User-Agent": "smadixd",
+      "User-Agent": "alsmadi99",
       accept: "application/vnd.github+json",
       "X-GitHub-Api-Version": "2022-11-28",
       Authorization: `Token ${VITE_GITHUB_TOKEN}`,

@@ -7,6 +7,7 @@ import {
   sta,
   quds,
   janah,
+  mawani,
 } from "../assets";
 
 import { MdOutlineEmail } from "react-icons/md";
@@ -21,7 +22,7 @@ export const socials = [
     text: "Linkedin",
   },
   {
-    link: "https://github.com/smadixd",
+    link: "https://github.com/alsmadi99",
     icon: (props: any) => <AiFillGithub size={23} {...props} />,
     text: "Github",
   },
@@ -53,6 +54,13 @@ export const projects = [
     title: "Saudi Tourism Authority",
     description:
       "STA was established to support the growth of the travel and tourism sector by serving the needs of tourism companies and other commercial partners.",
+  },
+  {
+    imagen: mawani,
+    link: "https://mawani.gov.sa/",
+    title: "Saudi Ports Authority",
+    description:
+      "Saudi Ports Authority is a government agency that supervises the ports of Saudi Arabia.",
   },
   {
     imagen: taadhod,
