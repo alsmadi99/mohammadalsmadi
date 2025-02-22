@@ -4,6 +4,8 @@ import { experiences, games, projects } from "../constants";
 import { FaCodePullRequest } from "react-icons/fa6";
 import { FiExternalLink } from "react-icons/fi";
 import { GoRepoForked, GoStarFill, GoGlobe } from "react-icons/go";
+import { SiPrivateinternetaccess } from "react-icons/si";
+
 import { SiIos, SiAndroid } from "react-icons/si";
 
 import useIsMobile from "../hooks/useIsMobile";
@@ -93,10 +95,37 @@ const About = () => {
             <div className="flex flex-row flex-wrap gap-1 text-offWhite text-[14px] md:text-2xl leading-6 md:leading-[3rem]">
               <ReactPopover
                 content={
-                  <div className="flex flex-col w-full md:w-[40vw]">
+                  <div className="flex flex-col w-full md:w-[40vw] ">
                     <span className="text-secondary font-semibold text-sm md:text-md mb-4">
                       {"Here are some of the projects I've worked on."}
                     </span>
+                    <div className="flex flex-row w-full items-center justify-between">
+                      <div className="flex flex-col gap-2">
+                        <div className="flex flex-row items-center gap-4">
+                          <div className="flex flex-col items-center">
+                            <SiAndroid className="md:h-5 md:w-5 h-4 w-4 text-secondary" />
+                            <SiIos className="md:h-5 md:w-5 h-4 w-4 text-secondary" />
+                          </div>
+                          <span className="text-secondary text-xs md:text-sm">
+                            Developed mobile apps.
+                          </span>
+                        </div>
+
+                        <div className="flex flex-row items-center gap-4">
+                          <SiPrivateinternetaccess className="md:h-5 md:w-5 h-4 w-4 text-secondary" />
+                          <span className="text-secondary text-xs md:text-sm">
+                            Developed internal apps.
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="flex flex-row items-center gap-4">
+                        <GoGlobe className="md:h-6 md:w-6 h-5 w-5 text-secondary" />
+                        <span className="text-secondary text-xs md:text-sm">
+                          Visit the main landing page.
+                        </span>
+                      </div>
+                    </div>
 
                     <div className="flex flex-row flex-wrap gap-4 w-full justify-center md:text-xl text-md max-h-[30vh] px-4 py-4 overflow-y-auto overflow-x-hidden">
                       {projects.map((project, index) => (
@@ -113,7 +142,7 @@ const About = () => {
                                 onClick={() =>
                                   window.open(project.link, "_blank")
                                 }
-                                className="h-6 w-[30%] text-secondary hover:text-primary cursor-pointer"
+                                className="md:h-6 md:w-6 h-5 w-5 text-secondary hover:text-primary cursor-pointer"
                               />
                             )}
                             {project.android && (
@@ -121,16 +150,21 @@ const About = () => {
                                 onClick={() =>
                                   window.open(project.android, "_blank")
                                 }
-                                className="h-6 w-[30%] text-secondary hover:text-primary cursor-pointer"
+                                className="md:h-6 md:w-6 h-5 w-5 text-secondary hover:text-primary cursor-pointer"
                               />
                             )}
+
                             {project.ios && (
                               <SiIos
                                 onClick={() =>
                                   window.open(project.ios, "_blank")
                                 }
-                                className="h-6 w-[30%] text-secondary hover:text-primary cursor-pointer"
+                                className="md:h-6 md:w-6 h-5 w-5 text-secondary hover:text-primary cursor-pointer"
                               />
+                            )}
+
+                            {project.internal && (
+                              <SiPrivateinternetaccess className="md:h-6 md:w-6 h-5 w-5 text-secondary" />
                             )}
                           </div>
                         </div>
@@ -220,7 +254,7 @@ const About = () => {
                 }
                 isLoading={loadingContributions}
                 before={`I believe that contributing to `}
-                after={` not only benefits the community but also facilitates my growth as a developer. It has enlightened me on how communities around the world collaborate on software development. Additionally, it has enhanced my understanding of CI/CD workflows and the automation of deployments in large-scale projects with more than 800 contributors.`}
+                after={` not only benefits the community but also facilitates my growth as a developer. It has enlightened me on how communities around the world collaborate on software development. Additionally, it has enhanced my understanding of CI/CD workflows and the automation of deployments in large-scale projects with 800+ contributors.`}
               >
                 <span className={hoverableTextStyles}>
                   open-source projects

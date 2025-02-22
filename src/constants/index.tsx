@@ -40,6 +40,7 @@ export const projects = [
     title: "Neom (OXAGON)",
     description:
       "A city in neom, oxagon will be a new paradigm where people, industries and technology come together in harmony with nature.",
+    internal: true,
   },
   {
     imagen: tamm,
@@ -47,6 +48,7 @@ export const projects = [
     title: "Tamm",
     description:
       "A unified system helping you find Abu Dhabi government services and information",
+    internal: true,
   },
   {
     imagen: sta,
@@ -54,6 +56,7 @@ export const projects = [
     title: "Saudi Tourism Authority",
     description:
       "STA was established to support the growth of the travel and tourism sector by serving the needs of tourism companies and other commercial partners.",
+    internal: true,
   },
   {
     imagen: mawani,
@@ -61,6 +64,7 @@ export const projects = [
     title: "Saudi Ports Authority",
     description:
       "Saudi Ports Authority is a government agency that supervises the ports of Saudi Arabia.",
+    internal: true,
   },
   {
     imagen: taadhod,
