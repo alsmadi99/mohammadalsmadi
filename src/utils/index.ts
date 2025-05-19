@@ -13,16 +13,31 @@ export const getYearsOfExperience = (
   endDate?: string | null,
 ) => {
   const MILLISECONDS_IN_YEAR = 1000 * 60 * 60 * 24 * 365;
+  const MILLISECONDS_IN_MONTH = MILLISECONDS_IN_YEAR / 12;
+
   const startDate = new Date(date).getTime();
   const currentDate = (endDate ? new Date(endDate) : new Date()).getTime();
   const experienceInMilliseconds = currentDate - startDate;
-  const experienceInYears = experienceInMilliseconds / MILLISECONDS_IN_YEAR;
-  const experienceInWholeYears = Math.ceil(experienceInYears);
 
-  return `${experienceInWholeYears} year${
-    experienceInWholeYears > 1 ? "s" : ""
-  }`;
+  if (experienceInMilliseconds < MILLISECONDS_IN_MONTH * 9) {
+    const months = Math.max(1, Math.floor(experienceInMilliseconds / MILLISECONDS_IN_MONTH));
+    return `${months} month${months > 1 ? "s" : ""}`;
+  }
+
+  const totalMonths = experienceInMilliseconds / MILLISECONDS_IN_MONTH;
+  const years = Math.floor(totalMonths / 12);
+  const remainingMonths = Math.floor(totalMonths % 12);
+
+  if (remainingMonths >= 9) {
+    return `${years + 1} year${years + 1 > 1 ? "s" : ""}`;
+  }
+
+  const yearStr = `${years} year${years !== 1 ? "s" : ""}`;
+  const monthStr = remainingMonths > 0 ? ` ${remainingMonths} month${remainingMonths > 1 ? "s" : ""}` : "";
+
+  return `${yearStr}${monthStr}`;
 };
+
 
 export const formatNumber = (value: number) => {
   if (value < 1000) {
