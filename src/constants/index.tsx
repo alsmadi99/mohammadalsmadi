@@ -139,11 +139,18 @@ export const contributions = [
 
 export const experiences = [
   {
+    name: "Abu Dhabi Social Support Authority",
+    link: "https://www.ssa.gov.ae",
+    role: "Senior Software Engineer",
+    start: "2025-05-15",
+    end: null,
+  },
+  {
     name: "PriceWaterhouseCoopers (PwC)",
     link: "https://www.pwc.com",
     role: "Senior Software Engineer",
     start: "2021-08-01",
-    end: null,
+    end: "2025-05-08",
   },
   {
     name: "Kensoftware",
