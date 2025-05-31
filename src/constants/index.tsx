@@ -13,7 +13,7 @@ import {
 import { MdOutlineEmail } from "react-icons/md";
 import { AiFillLinkedin, AiFillGithub } from "react-icons/ai";
 
-export const email = "smadi.dev@gmail.com";
+export const email = "alsmadi.work@gmail.com";
 
 export const socials = [
   {

@@ -35,4 +35,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 
-If you have any questions or would like to collaborate, feel free to reach out to me at [smadi.dev@gmail.com](mailto:smadi.dev@gmail.com).
+If you have any questions or would like to collaborate, feel free to reach out to me at [alsmadi.work@gmail.com](mailto:alsmadi.work@gmail.com).
