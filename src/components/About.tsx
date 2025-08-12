@@ -80,7 +80,7 @@ const About = () => {
                     ))}
                   </div>
                 }
-                before="I'm a software engineer based in Jordan with "
+                before="I'm a software engineer based in the UAE with "
                 after={`I have developed deep understanding of JavaScript and TypeScript through extensive work with React.js,
                Node.js, and React Native. My portfolio includes building
               applications using various frameworks and technologies on top of
