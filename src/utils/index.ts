@@ -20,7 +20,10 @@ export const getYearsOfExperience = (
   const experienceInMilliseconds = currentDate - startDate;
 
   if (experienceInMilliseconds < MILLISECONDS_IN_MONTH * 9) {
-    const months = Math.max(1, Math.floor(experienceInMilliseconds / MILLISECONDS_IN_MONTH));
+    const months = Math.max(
+      1,
+      Math.floor(experienceInMilliseconds / MILLISECONDS_IN_MONTH),
+    );
     return `${months} month${months > 1 ? "s" : ""}`;
   }
 
@@ -33,11 +36,13 @@ export const getYearsOfExperience = (
   }
 
   const yearStr = `${years} year${years !== 1 ? "s" : ""}`;
-  const monthStr = remainingMonths > 0 ? ` ${remainingMonths} month${remainingMonths > 1 ? "s" : ""}` : "";
+  const monthStr =
+    remainingMonths > 0
+      ? ` ${remainingMonths} month${remainingMonths > 1 ? "s" : ""}`
+      : "";
 
   return `${yearStr}${monthStr}`;
 };
-
 
 export const formatNumber = (value: number) => {
   if (value < 1000) {
