@@ -17,6 +17,10 @@ export const theme = {
       "github-purple": "#ff60f2",
       "github-green": "#36d254",
       "github-yellow": "#e3b341",
+      "github-pink": {
+        DEFAULT: "#DB61A2",
+        500: "#ffb3e6",
+      },
     },
     boxShadow: {
       card: "0px 35px 120px -15px #211e35",

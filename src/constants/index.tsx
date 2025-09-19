@@ -33,6 +33,7 @@ export const socials = [
   },
 ];
 
+export const github_sponsor_link = "https://github.com/sponsors/alsmadi99";
 export const projects = [
   {
     imagen: neom,

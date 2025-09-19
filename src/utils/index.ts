@@ -26,20 +26,16 @@ export const getYearsOfExperience = (
   }
 
   const totalMonths = experienceInMilliseconds / MILLISECONDS_IN_MONTH;
-  const years = Math.floor(totalMonths / 12);
-  const remainingMonths = Math.floor(totalMonths % 12);
+  let years = Math.floor(totalMonths / 12);
 
-  if (remainingMonths >= 9) {
-    return `${years + 1} year${years + 1 > 1 ? "s" : ""}`;
+  const remainingMonths = Math.floor(totalMonths % 12);
+  if (remainingMonths >= 6) {
+    years++;
   }
 
   const yearStr = `${years} year${years !== 1 ? "s" : ""}`;
-  const monthStr =
-    remainingMonths > 0
-      ? ` ${remainingMonths} month${remainingMonths > 1 ? "s" : ""}`
-      : "";
 
-  return `${yearStr}${monthStr}`;
+  return yearStr;
 };
 
 export const formatNumber = (value: number) => {
