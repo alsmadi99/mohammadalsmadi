@@ -1,10 +1,8 @@
-import { VITE_GITHUB_TOKEN } from "../config";
-
 export const GITHUB_PRS_API_URL =
   "https://api.github.com/search/issues?q=is:pr+author:alsmadi99";
 
 export const GET_GITHUB_REPO_DETAILS_API_URL = (repo: string) =>
-  `https://api.github.com/repos/${repo}`;
+  `https://api.mohammadalsmadi.com/github/repos?repo=${repo}`;
 
 const START_DATE = "2020-08-01";
 
@@ -20,7 +18,10 @@ export const getYearsOfExperience = (
   const experienceInMilliseconds = currentDate - startDate;
 
   if (experienceInMilliseconds < MILLISECONDS_IN_MONTH * 9) {
-    const months = Math.max(1, Math.floor(experienceInMilliseconds / MILLISECONDS_IN_MONTH));
+    const months = Math.max(
+      1,
+      Math.floor(experienceInMilliseconds / MILLISECONDS_IN_MONTH),
+    );
     return `${months} month${months > 1 ? "s" : ""}`;
   }
 
@@ -33,11 +34,13 @@ export const getYearsOfExperience = (
   }
 
   const yearStr = `${years} year${years !== 1 ? "s" : ""}`;
-  const monthStr = remainingMonths > 0 ? ` ${remainingMonths} month${remainingMonths > 1 ? "s" : ""}` : "";
+  const monthStr =
+    remainingMonths > 0
+      ? ` ${remainingMonths} month${remainingMonths > 1 ? "s" : ""}`
+      : "";
 
   return `${yearStr}${monthStr}`;
 };
-
 
 export const formatNumber = (value: number) => {
   if (value < 1000) {
@@ -64,8 +67,6 @@ export const fetchRepoDetails = (repo: string) =>
   fetch(GET_GITHUB_REPO_DETAILS_API_URL(repo), {
     headers: {
       "User-Agent": "alsmadi99",
-      accept: "application/vnd.github+json",
       "X-GitHub-Api-Version": "2022-11-28",
-      Authorization: `Token ${VITE_GITHUB_TOKEN}`,
     },
   }).then((response) => response.json());

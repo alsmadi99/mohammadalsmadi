@@ -26,7 +26,6 @@ jobs:
             git checkout main
             sudo docker build \
             --build-arg VITE_LITLY_PROJECT_ID=${{ secrets.VITE_LITLY_PROJECT_ID }} \
-            --build-arg VITE_GITHUB_TOKEN=${{ secrets.VITE_GITHUB_TOKEN }} \
             -t portfolio .
             docker stop portfolio-container || true
             docker rm portfolio-container || true
