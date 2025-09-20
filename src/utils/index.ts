@@ -2,7 +2,7 @@ export const GITHUB_PRS_API_URL =
   "https://api.github.com/search/issues?q=is:pr+author:alsmadi99";
 
 export const GET_GITHUB_REPO_DETAILS_API_URL = (repo: string) =>
-  `https://api.mohammadalsmadi.com/github/repos?repo=${repo}`;
+  `https://corsproxy.io/?https://api.github.com/repos/${repo}`;
 
 const START_DATE = "2020-08-01";
 
