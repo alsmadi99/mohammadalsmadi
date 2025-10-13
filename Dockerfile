@@ -1,10 +1,6 @@
 # Build stage
 FROM node:20 AS build
 
-ARG VITE_LITLY_PROJECT_ID
-
-ENV VITE_LITLY_PROJECT_ID=$VITE_LITLY_PROJECT_ID
-
 WORKDIR /app
 
 COPY package*.json ./

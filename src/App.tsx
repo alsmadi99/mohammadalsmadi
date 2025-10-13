@@ -1,10 +1,6 @@
-import { LITLY_PROJECT_ID } from "./config";
-import { Lit } from "litlyx";
 import About from "./components/About";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-
-Lit.init(LITLY_PROJECT_ID);
 
 const App = () => {
   return (
