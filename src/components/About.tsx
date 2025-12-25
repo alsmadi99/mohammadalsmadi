@@ -19,6 +19,11 @@ const About = () => {
     useContributions();
   const isMobile = useIsMobile();
 
+  const getRepoDisplayName = (fullName: string) => {
+    if (!isMobile) return fullName;
+    return fullName.split("/").pop() || fullName;
+  };
+
   const hoveringTextStyle =
     "font-semibold text-offWhite cursor-pointer bg-darkBlue rounded-sm";
 
@@ -192,7 +197,7 @@ const About = () => {
                           <div key={index} className={index > 0 ? " mt-2" : ""}>
                             <div className="flex flex-row items-center justify-between mb-2">
                               <div className="flex flex-row items-center gap-2">
-                                <span className="font-semibold text-md md:text-xl">{`${latestContributions[repoKey].name}: `}</span>
+                                <span className="font-semibold text-xs md:text-xl">{`${getRepoDisplayName(latestContributions[repoKey].name)}: `}</span>
                                 <a
                                   href={latestContributions[repoKey].link}
                                   className="text-link underline"

@@ -23,12 +23,13 @@ export const useContributions = () => {
           if (!contributionsHashMap[repo]) {
             const repoDetails = await fetchRepoDetails(repo);
             contributionsHashMap[repo] = {
-              name: repoDetails.name,
+              // Display as `org/repo` in the UI (falls back to the URL-derived value).
+              name: (repoDetails?.full_name || repo) as string,
               link: link,
               items: [],
               details: {
-                stars: repoDetails.stargazers_count,
-                forks: repoDetails.forks_count,
+                stars: Number(repoDetails?.stargazers_count ?? 0),
+                forks: Number(repoDetails?.forks_count ?? 0),
               },
             };
           }
