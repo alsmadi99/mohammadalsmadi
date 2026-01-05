@@ -394,3 +394,27 @@ body {
     transform: translateX(-100%);
   }
 }
+
+/* Mobile touch feedback */
+.touch-manipulation {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Ensure popovers appear above navbar */
+.popover-container {
+  z-index: 9999 !important;
+}

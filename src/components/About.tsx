@@ -5,12 +5,20 @@ import { FaCodePullRequest } from "react-icons/fa6";
 import { FiExternalLink } from "react-icons/fi";
 import { GoRepoForked, GoStarFill, GoGlobe } from "react-icons/go";
 import { SiPrivateinternetaccess } from "react-icons/si";
+import { FaHandPointer } from "react-icons/fa";
 
 import { SiIos, SiAndroid } from "react-icons/si";
 
 import useIsMobile from "../hooks/useIsMobile";
 import { useContributions } from "../hooks/useContributions";
 import { formatNumber, getYearsOfExperience } from "../utils";
+
+const PopoverIcon = ({ isMobile }: { isMobile: boolean }) => (
+  <FaHandPointer
+    className="inline-block ml-1 text-white animate-pulse-slow"
+    size={isMobile ? 14 : 18}
+  />
+);
 
 const About = () => {
   const [isHoveringTexts, setIsHoveringTexts] = useState(false);
@@ -28,8 +36,11 @@ const About = () => {
     "font-semibold text-offWhite cursor-pointer bg-darkBlue rounded-sm";
 
   const hoverableTextStyles =
-    "ease-in-out duration-500 px-[5px] border-b-[4px] border-offWhite" +
-    (isHoveringTexts || isMobile ? hoveringTextStyle : "");
+    "ease-in-out duration-500 px-[5px] border-b-[4px] border-offWhite relative" +
+    (isHoveringTexts || isMobile ? hoveringTextStyle : "") +
+    (isMobile
+      ? " active:scale-95 active:opacity-80 touch-manipulation underline decoration-2 decoration-primary underline-offset-2"
+      : "");
 
   const starForkContainer =
     "flex flex-row items-center justify-between px-1 py-1 md:py-0 border-primary border-2 rounded-lg w-[45%]";
@@ -66,6 +77,7 @@ const About = () => {
               className={`mt-4 text-offWhite text-[14px] md:text-2xl leading-6 md:leading-[3rem]`}
             >
               <ReactPopover
+                popoverId="experience"
                 ariaLabel="Work experience details"
                 content={
                   <div className="flex flex-col w-full md:text-xl text-md">
@@ -92,12 +104,14 @@ const About = () => {
               >
                 <span className={hoverableTextStyles}>
                   {"~" + getYearsOfExperience()} of hands-on experience.
+                  <PopoverIcon isMobile={isMobile} />
                 </span>
               </ReactPopover>
             </div>
 
             <div className="flex flex-row flex-wrap gap-1 text-offWhite text-[14px] md:text-2xl leading-6 md:leading-[3rem]">
               <ReactPopover
+                popoverId="projects"
                 ariaLabel="Projects showcase"
                 content={
                   <div className="flex flex-col w-full md:w-[40vw] ">
@@ -210,12 +224,16 @@ const About = () => {
                 before={`I thrive in collaborative environments and have had the privilege of working alongside talented teams. Together, we've enriched our collective knowledge over the years by building various`}
                 after={` while delivering high-quality software solutions and meeting tight deadlines.`}
               >
-                <span className={hoverableTextStyles}>client projects ,</span>
+                <span className={hoverableTextStyles}>
+                  client projects
+                  <PopoverIcon isMobile={isMobile} />
+                </span>
               </ReactPopover>
             </div>
 
             <div className="flex flex-row flex-wrap gap-1 text-offWhite text-[14px] md:text-2xl leading-6 md:leading-[3rem]">
               <ReactPopover
+                popoverId="contributions"
                 ariaLabel="Open source contributions"
                 content={
                   <div className="flex flex-col w-full">
@@ -304,12 +322,14 @@ const About = () => {
               >
                 <span className={hoverableTextStyles}>
                   open-source projects
+                  <PopoverIcon isMobile={isMobile} />
                 </span>
               </ReactPopover>
             </div>
 
             <div className="flex flex-row flex-wrap gap-1 text-offWhite text-[14px] md:text-2xl leading-6 md:leading-[3rem]">
               <ReactPopover
+                popoverId="games"
                 ariaLabel="Personal interests and hobbies"
                 content={
                   <div className="md:text-xl text-md">
@@ -326,7 +346,10 @@ const About = () => {
                 before="Outside of coding, I enjoy playing"
                 after="and spending time with friends and family. I'm also passionate about football. Continuous learning is important to me, and I'm always eager to get involved in unique ideas and projects."
               >
-                <span className={hoverableTextStyles}>video games</span>
+                <span className={hoverableTextStyles}>
+                  video games
+                  <PopoverIcon isMobile={isMobile} />
+                </span>
               </ReactPopover>
             </div>
           </div>

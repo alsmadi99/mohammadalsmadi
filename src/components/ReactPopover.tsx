@@ -1,6 +1,8 @@
-import { ReactNode, useEffect, useState, useRef } from "react";
+import { ReactNode, useEffect, useState, useRef, KeyboardEvent } from "react";
 import { Popover } from "react-tiny-popover";
 import LoadingList from "./LoadingList";
+import useIsMobile from "../hooks/useIsMobile";
+import { usePopoverContext } from "../contexts/PopoverContext";
 
 type ReactPopoverProps = {
   children: ReactNode;
@@ -10,6 +12,7 @@ type ReactPopoverProps = {
   after?: string;
   before?: string;
   ariaLabel?: string;
+  popoverId?: string;
 };
 
 const ReactPopover = ({
@@ -20,19 +23,55 @@ const ReactPopover = ({
   after = "",
   before = "",
   ariaLabel,
+  popoverId = "",
 }: ReactPopoverProps) => {
   const [show, setShow] = useState(false);
   const [newShow, setNewShow] = useState(false);
   const triggerRef = useRef<HTMLSpanElement>(null);
+  const isMobile = useIsMobile();
+  const { openPopoverId, setOpenPopoverId } = usePopoverContext();
 
-  const handleMouseOver = () => setShow(true);
-  const handleMouseLeft = () => setShow(false);
-  const handleKeyDown = (e: React.KeyboardEvent) => {
+  const handleMouseOver = () => {
+    if (!isMobile) {
+      setShow(true);
+    }
+  };
+  const handleMouseLeft = () => {
+    if (!isMobile) {
+      setShow(false);
+    }
+  };
+  const handleClick = () => {
+    if (isMobile) {
+      if (show) {
+        setShow(false);
+        setOpenPopoverId(null);
+      } else {
+        // Close any other open popover first
+        setOpenPopoverId(popoverId);
+        setShow(true);
+      }
+    }
+  };
+  const handleKeyDown = (e: KeyboardEvent<HTMLSpanElement>) => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
-      setShow(!show);
+      if (isMobile) {
+        if (show) {
+          setShow(false);
+          setOpenPopoverId(null);
+        } else {
+          setOpenPopoverId(popoverId);
+          setShow(true);
+        }
+      } else {
+        setShow(!show);
+      }
     } else if (e.key === "Escape") {
       setShow(false);
+      if (isMobile) {
+        setOpenPopoverId(null);
+      }
       triggerRef.current?.focus();
     }
   };
@@ -43,12 +82,31 @@ const ReactPopover = ({
     }, 100);
   }, [show]);
 
+  // Close this popover if another one opens on mobile
+  useEffect(() => {
+    if (isMobile && openPopoverId !== popoverId && show) {
+      setShow(false);
+    }
+  }, [isMobile, openPopoverId, popoverId, show]);
+
+  // Handle click outside on mobile
+  const handleClickOutside = () => {
+    if (isMobile && show) {
+      setShow(false);
+      setOpenPopoverId(null);
+    }
+  };
+
   return (
-    <div onMouseLeave={handleMouseLeft} className="">
+    <div onMouseLeave={handleMouseLeft} className="relative">
       <span>{before + " "}</span>
 
       <Popover
         isOpen={show || isOpen}
+        containerClassName="popover-container"
+        containerStyle={{ zIndex: "9999" } as Partial<CSSStyleDeclaration>}
+        onClickOutside={isMobile ? handleClickOutside : undefined}
+        clickOutsideCapture={isMobile}
         content={
           <div
             role="dialog"
@@ -77,6 +135,8 @@ const ReactPopover = ({
         <span
           ref={triggerRef}
           onMouseEnter={handleMouseOver}
+          onMouseLeave={handleMouseLeft}
+          onClick={handleClick}
           onKeyDown={handleKeyDown}
           tabIndex={0}
           role="button"
