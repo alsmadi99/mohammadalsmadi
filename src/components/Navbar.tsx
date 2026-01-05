@@ -9,14 +9,15 @@ const Navbar = () => {
     >
       <div className="w-full flex flex-row justify-between items-center">
         <a
-          className="flex flex-row items-center gap-2 opacity-80 transition-transform transform-gpu duration-75 hover:scale-110 hover:opacity-100 cursor-pointer"
+          className="flex flex-row items-center gap-2 opacity-80 transition-transform transform-gpu duration-75 hover:scale-110 hover:opacity-100 cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-darkBlue rounded px-2"
           href={github_sponsor_link}
           target="_blank"
           rel="noreferrer"
+          aria-label="Sponsor on GitHub"
         >
           <FaGithub size={25} color="white" />
-          <div className="font-medium white bg-transparent rounded ">
-            Sponsor Me 💖
+          <div className="font-medium white bg-transparent rounded text-sm">
+            Sponsor
           </div>
         </a>
         <div className="flex justify-end items-end flex-[1]">
@@ -29,7 +30,16 @@ const Navbar = () => {
                   onClick={() => {
                     window.open(item.link, "_blank");
                   }}
-                  className="h-7 w-7 md:h-10 md:w-10 opacity-80 transition-transform transform-gpu duration-75 hover:scale-125 hover:opacity-100 cursor-pointer"
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      window.open(item.link, "_blank");
+                    }
+                  }}
+                  tabIndex={0}
+                  role="link"
+                  aria-label={`Visit ${item.text} profile`}
+                  className="h-7 w-7 md:h-10 md:w-10 opacity-80 transition-transform transform-gpu duration-75 hover:scale-125 hover:opacity-100 cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-darkBlue rounded"
                 />
               );
             })}
