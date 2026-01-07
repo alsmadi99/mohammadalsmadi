@@ -5,6 +5,17 @@
     <link rel="icon" type="image/png" href="/code.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
 
+    <script>
+      (function () {
+        try {
+          var theme = localStorage.getItem("theme");
+          if (theme === "dark") document.documentElement.classList.add("dark");
+        } catch (e) {
+          // no-op
+        }
+      })();
+    </script>
+
     <script async src="https://views.mohammadalsmadi.com/tracker.js" data-ackee-server="https://views.mohammadalsmadi.com" data-ackee-domain-id="ef2a3c62-8ac6-4552-873e-dc8227bff53b"></script>
     <meta
       name="viewport"
