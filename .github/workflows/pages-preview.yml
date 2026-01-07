@@ -11,48 +11,118 @@ permissions:
   pull-requests: write
 
 concurrency:
-  group: pages-pr-${{ github.event.pull_request.number }}
-  cancel-in-progress: true
+  group: pages-preview
+  cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      is_latest: ${{ steps.latest.outputs.is_latest }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Skip if not latest PR commit
+        id: latest
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const prNumber = context.payload.pull_request.number;
+            const thisSha = context.payload.pull_request.head.sha;
+
+            const { data: pr } = await github.rest.pulls.get({
+              owner,
+              repo,
+              pull_number: prNumber,
+            });
+
+            const isLatest = pr.head.sha === thisSha;
+            core.setOutput("is_latest", isLatest ? "true" : "false");
+
+            if (!isLatest) {
+              core.notice(
+                `Skipping: newer commit exists on PR #${prNumber} (latest=${pr.head.sha}, this=${thisSha})`,
+              );
+            }
+
       - name: Setup Node
+        if: steps.latest.outputs.is_latest == 'true'
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: yarn
 
       - name: Install dependencies
+        if: steps.latest.outputs.is_latest == 'true'
         run: yarn install --frozen-lockfile
 
       - name: Format check
+        if: steps.latest.outputs.is_latest == 'true'
         run: yarn format:check
 
       - name: Lint
+        if: steps.latest.outputs.is_latest == 'true'
         run: yarn lint
 
       - name: Build
+        if: steps.latest.outputs.is_latest == 'true'
         env:
           BASE_PATH: /${{ github.event.repository.name }}/pr-${{ github.event.pull_request.number }}/
         run: yarn build
 
+      - name: Find latest successful preview deployment run
+        if: steps.latest.outputs.is_latest == 'true'
+        id: previous
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const workflow_id = "pages-preview.yml";
+
+            const { data } = await github.rest.actions.listWorkflowRuns({
+              owner,
+              repo,
+              workflow_id,
+              event: "pull_request",
+              status: "completed",
+              per_page: 50,
+            });
+
+            const previous = data.workflow_runs.find(
+              (run) => run.id !== context.runId && run.conclusion === "success",
+            );
+
+            core.setOutput("run_id", previous?.id ? String(previous.id) : "");
+
+      - name: Download previously deployed Pages artifact (if any)
+        if: steps.latest.outputs.is_latest == 'true' && steps.previous.outputs.run_id != ''
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: ${{ steps.previous.outputs.run_id }}
+          name: github-pages
+          path: out
+
       - name: Prepare preview artifact
+        if: steps.latest.outputs.is_latest == 'true'
         run: |
+          mkdir -p out
+          rm -rf out/pr-${{ github.event.pull_request.number }}
           mkdir -p out/pr-${{ github.event.pull_request.number }}
           cp -R dist/. out/pr-${{ github.event.pull_request.number }}/
 
       - name: Upload Pages artifact
+        if: steps.latest.outputs.is_latest == 'true'
         uses: actions/upload-pages-artifact@v3
         with:
           path: out
 
   deploy:
     needs: build
+    if: needs.build.outputs.is_latest == 'true'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
