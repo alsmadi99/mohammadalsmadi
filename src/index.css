@@ -4,6 +4,46 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* Light theme (current look) */
+  --color-primary: 29 93 155; /* #1D5D9B */
+  --color-secondary: 173 216 230; /* #ADD8E6 */
+  --color-tertiary: 244 209 96; /* #F4D160 */
+  --color-offWhite: 208 213 221; /* #D0D5DD */
+  --color-darkBlue: 22 31 44; /* #161F2C */
+  --color-black-100: 16 13 37; /* #100D25 */
+  --color-black-200: 9 3 37; /* #090325 */
+  --color-white-100: 243 243 243; /* #F3F3F3 */
+  --color-link: 173 216 230; /* align links with secondary */
+
+  /* App background gradient */
+  --app-bg-from: 29 93 155; /* #1D5D9B */
+  --app-bg-to: 19 56 93; /* #13385D */
+
+  /* Misc */
+  --gradient-text-from: 28 39 56; /* #1C2738 */
+  --gradient-text-to: 14 19 27; /* #0E131B */
+  --scrollbar-thumb: 255 255 255;
+
+  color-scheme: light;
+}
+
+html.dark {
+  /* Dark theme: darker, closer to black, derived from existing hex values */
+  --color-darkBlue: 8 11 15; /* darkened from #161F2C */
+  --color-black-100: 8 6 19; /* darkened from #100D25 */
+  --color-black-200: 4 1 15; /* darkened from #090325 */
+
+  --app-bg-from: 10 33 54; /* darkened from #1D5D9B */
+  --app-bg-to: 7 20 33; /* darkened from #13385D */
+
+  --gradient-text-from: 12 16 22;
+  --gradient-text-to: 0 0 0;
+  --scrollbar-thumb: 208 213 221; /* offWhite */
+
+  color-scheme: dark;
+}
+
 @layer utilities {
   @variants responsive {
     /* Hide scrollbar for Chrome, Safari and Opera */
@@ -65,7 +105,6 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   scroll-behavior: smooth;
-  color-scheme: dark;
   outline: none;
 }
 
@@ -87,29 +126,22 @@
 }
 
 .gradient-text {
-  background: linear-gradient(90deg, #1c2738, #0e131b);
+  background: linear-gradient(
+    90deg,
+    rgb(var(--gradient-text-from)),
+    rgb(var(--gradient-text-to))
+  );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .shadow-linear {
-  background: -moz-linear-gradient(
-    90deg,
-    rgba(29, 93, 155, 1) 0%,
-    rgba(19, 56, 93, 1) 100%
-  );
-  background: -webkit-linear-gradient(
-    90deg,
-    rgba(29, 93, 155, 1) 0%,
-    rgba(19, 56, 93, 1) 100%
-  );
   background: linear-gradient(
     90deg,
-    rgba(29, 93, 155, 1) 0%,
-    rgba(19, 56, 93, 1) 100%
+    rgb(var(--app-bg-from)) 0%,
+    rgb(var(--app-bg-to)) 100%
   );
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1d5d9b",endColorstr="#13385d",GradientType=1);
 }
 
 .dark-shadow-linear {
@@ -135,22 +167,11 @@
 }
 
 html {
-  background: -moz-linear-gradient(
-    90deg,
-    rgba(29, 93, 155, 1) 0%,
-    rgba(19, 56, 93, 1) 100%
-  );
-  background: -webkit-linear-gradient(
-    90deg,
-    rgba(29, 93, 155, 1) 0%,
-    rgba(19, 56, 93, 1) 100%
-  );
   background: linear-gradient(
     90deg,
-    rgba(29, 93, 155, 1) 0%,
-    rgba(19, 56, 93, 1) 100%
+    rgb(var(--app-bg-from)) 0%,
+    rgb(var(--app-bg-to)) 100%
   );
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1d5d9b",endColorstr="#13385d",GradientType=1);
 }
 
 .black-gradient {
@@ -376,7 +397,7 @@ body {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #ffffff;
+  background: rgb(var(--scrollbar-thumb));
   border-radius: 100px;
 }
 
