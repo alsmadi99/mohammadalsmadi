@@ -33,15 +33,19 @@ export const useContributions = () => {
         const contributionsHashMap: ContributionsHashMap = {};
         for (const item of filteredContributions) {
           try {
-            const repo = item.repository_url.split("repos/").pop()?.toLowerCase();
+            const repo = item.repository_url
+              .split("repos/")
+              .pop()
+              ?.toLowerCase();
             if (!repo) continue;
 
             const link = item.html_url.split("/pull")[0];
 
             if (!contributionsHashMap[repo]) {
               try {
-                const repoDetails =
-                  (await fetchRepoDetails(repo)) as GitHubRepoDetails | null;
+                const repoDetails = (await fetchRepoDetails(
+                  repo,
+                )) as GitHubRepoDetails | null;
                 contributionsHashMap[repo] = {
                   // Display as `org/repo` in the UI (falls back to the URL-derived value).
                   name: (repoDetails?.full_name || repo) as string,

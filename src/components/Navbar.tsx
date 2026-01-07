@@ -29,7 +29,9 @@ const Navbar = () => {
               type="button"
               onClick={toggleTheme}
               aria-label={
-                theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
+                theme === "dark"
+                  ? "Switch to light mode"
+                  : "Switch to dark mode"
               }
               className="h-8 w-8 md:h-10 md:w-10 flex items-center justify-center opacity-80 transition-transform transform-gpu duration-75 hover:scale-125 hover:opacity-100 cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-darkBlue rounded"
             >
