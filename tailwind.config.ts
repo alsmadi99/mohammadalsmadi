@@ -3,17 +3,19 @@
 import plugin from "tailwindcss/plugin";
 export const content = ["./src/**/*.{js,jsx,ts,tsx}"];
 export const mode = "jit";
+export const darkMode = "class";
 export const theme = {
   extend: {
     colors: {
-      primary: "#1D5D9B",
-      secondary: "#add8e6",
-      tertiary: "#F4D160",
-      offWhite: "#d0d5dd",
-      darkBlue: "#161f2c",
-      "black-100": "#100d25",
-      "black-200": "#090325",
-      "white-100": "#f3f3f3",
+      primary: "rgb(var(--color-primary) / <alpha-value>)",
+      secondary: "rgb(var(--color-secondary) / <alpha-value>)",
+      tertiary: "rgb(var(--color-tertiary) / <alpha-value>)",
+      offWhite: "rgb(var(--color-offWhite) / <alpha-value>)",
+      darkBlue: "rgb(var(--color-darkBlue) / <alpha-value>)",
+      link: "rgb(var(--color-link) / <alpha-value>)",
+      "black-100": "rgb(var(--color-black-100) / <alpha-value>)",
+      "black-200": "rgb(var(--color-black-200) / <alpha-value>)",
+      "white-100": "rgb(var(--color-white-100) / <alpha-value>)",
       "github-purple": "#ff60f2",
       "github-green": "#36d254",
       "github-yellow": "#e3b341",

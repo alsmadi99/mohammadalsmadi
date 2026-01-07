@@ -8,7 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint . --fix --max-warnings=0",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --fix --max-warnings=0",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "prepare": "husky && husky install"

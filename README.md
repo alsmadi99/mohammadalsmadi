@@ -18,19 +18,23 @@ This is a modern, interactive portfolio website showcasing my work as a Senior S
 ## Technologies Used
 
 ### Core
+
 - **React 18** - UI library
 - **TypeScript** - Type safety
 - **Vite** - Build tool and dev server
 
 ### Styling
+
 - **Tailwind CSS** - Utility-first CSS framework
 - **PostCSS** - CSS processing
 
 ### Libraries
+
 - **react-icons** - Icon library
 - **react-tiny-popover** - Popover component for interactive elements
 
 ### Development Tools
+
 - **ESLint** - Code linting
 - **Prettier** - Code formatting
 - **Husky** - Git hooks
@@ -41,21 +45,25 @@ This is a modern, interactive portfolio website showcasing my work as a Senior S
 To run this project locally, follow these steps:
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/alsmadi99/mohammadalsmadi.git
    ```
 
 2. Navigate to the project directory:
+
    ```bash
    cd mohammadalsmadi
    ```
 
 3. Install the dependencies:
+
    ```bash
    yarn
    ```
 
 4. Start the development server:
+
    ```bash
    yarn dev
    ```

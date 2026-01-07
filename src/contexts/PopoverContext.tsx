@@ -2,7 +2,7 @@ import { createContext, useContext, useState, ReactNode } from "react";
 
 type PopoverContextType = {
   openPopoverId: string | null;
-  setOpenPopoverId: (id: string | null) => void;
+  setOpenPopoverId: (_id: string | null) => void;
 };
 
 const PopoverContext = createContext<PopoverContextType | undefined>(undefined);
