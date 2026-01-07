@@ -1,6 +1,5 @@
 import About from "./components/About";
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
 import { PopoverProvider } from "./contexts/PopoverContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
 
