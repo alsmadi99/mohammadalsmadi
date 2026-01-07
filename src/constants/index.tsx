@@ -13,10 +13,11 @@ import {
 import { MdOutlineEmail } from "react-icons/md";
 import { AiFillLinkedin, AiFillGithub } from "react-icons/ai";
 import { IconType } from "react-icons";
+import type { ComponentProps } from "react";
 
 export const email = "alsmadi.work@gmail.com";
 
-type IconProps = React.ComponentProps<IconType>;
+type IconProps = ComponentProps<IconType>;
 
 export const socials = [
   {

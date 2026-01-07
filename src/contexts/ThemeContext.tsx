@@ -12,7 +12,7 @@ export type ThemeMode = "light" | "dark";
 
 type ThemeContextValue = {
   theme: ThemeMode;
-  setTheme: (theme: ThemeMode) => void;
+  setTheme: (_theme: ThemeMode) => void;
   toggleTheme: () => void;
 };
 
