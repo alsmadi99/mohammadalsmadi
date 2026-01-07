@@ -8,6 +8,7 @@ export default ({ mode }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
 
   return defineConfig({
+    base: process.env.BASE_PATH ?? "/",
     // To access env vars here use process.env.TEST_VAR
     plugins: [react(), viteCompression()],
     optimizeDeps: {
