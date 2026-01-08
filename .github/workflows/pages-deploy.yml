@@ -1,0 +1,64 @@
+name: Pages deploy (main)
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Compute BASE_PATH for Pages
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+
+            // Default GitHub Pages project site path: /<repo>/
+            let sitePath = `/${repo}/`;
+
+            // If Pages is configured with a custom domain, the site path is usually "/".
+            try {
+              const { data } = await github.rest.repos.getPages({ owner, repo });
+              if (data?.html_url) {
+                const pathname = new URL(data.html_url).pathname;
+                sitePath = pathname.endsWith("/") ? pathname : `${pathname}/`;
+              }
+            } catch (e) {
+              // Repo may not have Pages configured yet; fall back to default path.
+            }
+
+            core.exportVariable("BASE_PATH", sitePath);
+            core.notice(`Using BASE_PATH=${sitePath}`);
+
+      - name: Build
+        run: yarn build
+
+      - name: Deploy site to gh-pages (preserve PR previews)
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: dist
+          clean: true
+          clean-exclude: |
+            pr-*
+          single-commit: true
