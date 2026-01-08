@@ -28,17 +28,35 @@ const ReactPopover = ({
   const [show, setShow] = useState(false);
   const [newShow, setNewShow] = useState(false);
   const triggerRef = useRef<HTMLSpanElement>(null);
+  const closeTimeoutRef = useRef<number | null>(null);
   const isMobile = useIsMobile();
   const { openPopoverId, setOpenPopoverId } = usePopoverContext();
 
+  const clearCloseTimeout = () => {
+    if (closeTimeoutRef.current !== null) {
+      window.clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+  };
+
+  const scheduleClose = () => {
+    if (isMobile) return;
+    clearCloseTimeout();
+    // Small delay so users can move into the popover without it closing.
+    closeTimeoutRef.current = window.setTimeout(() => {
+      setShow(false);
+    }, 150);
+  };
+
   const handleMouseOver = () => {
     if (!isMobile) {
+      clearCloseTimeout();
       setShow(true);
     }
   };
   const handleMouseLeft = () => {
     if (!isMobile) {
-      setShow(false);
+      scheduleClose();
     }
   };
   const handleClick = () => {
@@ -77,9 +95,10 @@ const ReactPopover = ({
   };
 
   useEffect(() => {
-    setTimeout(() => {
+    const t = window.setTimeout(() => {
       setNewShow(show);
     }, 100);
+    return () => window.clearTimeout(t);
   }, [show]);
 
   // Close this popover if another one opens on mobile
@@ -98,7 +117,7 @@ const ReactPopover = ({
   };
 
   return (
-    <div onMouseLeave={handleMouseLeft} className="relative">
+    <div className="relative">
       <span>{before + " "}</span>
 
       <Popover
@@ -111,7 +130,18 @@ const ReactPopover = ({
           <div
             role="dialog"
             aria-label={ariaLabel || "Additional information"}
-            className={`bg-darkBlue selection:bg-secondary selection:text-darkBlue overflow-y-hidden transition-all duration-500 ease-in-out transform opacity-${
+            onMouseEnter={() => {
+              if (!isMobile) {
+                clearCloseTimeout();
+                setShow(true);
+              }
+            }}
+            onMouseLeave={() => {
+              if (!isMobile) {
+                scheduleClose();
+              }
+            }}
+            className={`bg-darkBlue selection:bg-secondary selection:text-darkBlue max-h-80 overflow-y-auto overscroll-contain transition-all duration-500 ease-in-out transform opacity-${
               newShow || isOpen ? "100" : "0"
             } p-3 rounded border-2 border-offWhite shadow-lg`}
           >
