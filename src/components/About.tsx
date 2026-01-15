@@ -114,7 +114,7 @@ const About = () => {
                 popoverId="projects"
                 ariaLabel="Projects showcase"
                 content={
-                  <div className="flex flex-col w-full md:w-[40vw] ">
+                  <div className="flex flex-col w-full md:w-[min(920px,85vw)]">
                     <span className="text-secondary font-semibold text-sm md:text-md mb-4">
                       {"Here are some of the projects I've worked on."}
                     </span>
@@ -146,7 +146,7 @@ const About = () => {
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 w-full justify-items-center md:text-xl text-md max-h-[55vh] px-4 py-4 overflow-y-auto overflow-x-hidden">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full justify-items-center md:text-xl text-md max-h-[55vh] px-4 py-4 overflow-y-auto overflow-x-hidden">
                       {projects.map((project, index) => (
                         <div key={index} className="h-[160px] w-[130px]">
                           <img

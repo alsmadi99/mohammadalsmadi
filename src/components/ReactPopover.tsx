@@ -235,7 +235,7 @@ const ReactPopover = ({
                 scheduleClose();
               }
             }}
-            className={`bg-darkBlue text-offWhite selection:bg-secondary selection:text-darkBlue w-[calc(100vw-16px)] max-w-[calc(100vw-16px)] md:w-auto md:max-w-[600px] max-h-[80vh] overflow-hidden transition-all duration-500 ease-in-out transform opacity-${
+            className={`bg-darkBlue text-offWhite selection:bg-secondary selection:text-darkBlue w-[calc(100vw-16px)] max-w-[calc(100vw-16px)] md:w-auto md:max-w-[90vw] max-h-[80vh] overflow-hidden transition-all duration-500 ease-in-out transform opacity-${
               newShow || isOpen ? "100" : "0"
             } p-3 rounded border-2 border-offWhite shadow-lg`}
           >
