@@ -146,7 +146,7 @@ const About = () => {
                       </div>
                     </div>
 
-                    <div className="flex flex-row flex-wrap gap-4 w-full justify-center md:text-xl text-md max-h-[30vh] px-4 py-4 overflow-y-auto overflow-x-hidden">
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 w-full justify-items-center md:text-xl text-md max-h-[55vh] px-4 py-4 overflow-y-auto overflow-x-hidden">
                       {projects.map((project, index) => (
                         <div key={index} className="h-[160px] w-[130px]">
                           <img
