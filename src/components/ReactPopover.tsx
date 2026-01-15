@@ -1,4 +1,12 @@
-import { ReactNode, useCallback, useEffect, useMemo, useRef, useState, KeyboardEvent } from "react";
+import {
+  ReactNode,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  KeyboardEvent,
+} from "react";
 import { Popover, PopoverPosition } from "react-tiny-popover";
 import LoadingList from "./LoadingList";
 import useIsMobile from "../hooks/useIsMobile";
@@ -37,7 +45,9 @@ const ReactPopover = ({
     "right",
     "left",
   ]);
-  const [boundaryElement, setBoundaryElement] = useState<HTMLElement | undefined>(undefined);
+  const [boundaryElement, setBoundaryElement] = useState<
+    HTMLElement | undefined
+  >(undefined);
 
   const clearCloseTimeout = () => {
     if (closeTimeoutRef.current !== null) {
@@ -68,7 +78,12 @@ const ReactPopover = ({
 
     // Prefer vertical placements first (more natural for tooltips),
     // but pick the one with the most space as the first attempt.
-    return [vertical[0].pos, vertical[1].pos, horizontal[0].pos, horizontal[1].pos];
+    return [
+      vertical[0].pos,
+      vertical[1].pos,
+      horizontal[0].pos,
+      horizontal[1].pos,
+    ];
   }, []);
 
   const updatePositionPriority = useCallback(() => {
