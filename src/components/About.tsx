@@ -114,7 +114,7 @@ const About = () => {
                 popoverId="projects"
                 ariaLabel="Projects showcase"
                 content={
-                  <div className="flex flex-col w-full md:w-[min(920px,85vw)]">
+                  <div className="flex flex-col w-full md:w-[40vw] ">
                     <span className="text-secondary font-semibold text-sm md:text-md mb-4">
                       {"Here are some of the projects I've worked on."}
                     </span>
@@ -146,7 +146,7 @@ const About = () => {
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full justify-items-center md:text-xl text-md max-h-[55vh] px-4 py-4 overflow-y-auto overflow-x-hidden">
+                    <div className="flex flex-row flex-wrap gap-4 w-full justify-center md:text-xl text-md max-h-[30vh] px-4 py-4 overflow-y-auto overflow-x-hidden">
                       {projects.map((project, index) => (
                         <div key={index} className="h-[160px] w-[130px]">
                           <img
@@ -246,19 +246,16 @@ const About = () => {
                           <div key={index} className={index > 0 ? " mt-2" : ""}>
                             <div className="flex flex-row items-center justify-between mb-2">
                               <div className="flex flex-row items-center gap-2">
+                                <span className="font-semibold text-xs md:text-xl">{`${getRepoDisplayName(latestContributions[repoKey].name)}: `}</span>
                                 <a
                                   href={latestContributions[repoKey].link}
-                                  className="text-link underline font-semibold text-xs md:text-xl"
+                                  className="text-link underline"
                                   rel="noopener noreferrer"
                                   target="_blank"
                                   aria-label={`Visit ${getRepoDisplayName(latestContributions[repoKey].name)} repository`}
-                                >{`${getRepoDisplayName(latestContributions[repoKey].name)}:`}</a>
-                                {!isMobile && (
-                                  <FiExternalLink
-                                    className="text-md md:text-xl"
-                                    aria-hidden="true"
-                                  />
-                                )}
+                                >
+                                  <FiExternalLink className="text-md md:text-xl" />
+                                </a>
                               </div>
                               <div className="flex flex-row items-center justify-between md:w-[30%] w-[50%]">
                                 <div className={starForkContainer}>
