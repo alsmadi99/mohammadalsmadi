@@ -141,7 +141,7 @@ const ReactPopover = ({
                 scheduleClose();
               }
             }}
-            className={`bg-darkBlue selection:bg-secondary selection:text-darkBlue max-h-80 overflow-y-auto overscroll-contain transition-all duration-500 ease-in-out transform opacity-${
+            className={`bg-darkBlue text-offWhite selection:bg-secondary selection:text-darkBlue max-h-80 overflow-y-auto overscroll-contain transition-all duration-500 ease-in-out transform opacity-${
               newShow || isOpen ? "100" : "0"
             } p-3 rounded border-2 border-offWhite shadow-lg`}
           >
