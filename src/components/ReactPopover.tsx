@@ -1,5 +1,5 @@
-import { ReactNode, useEffect, useState, useRef, KeyboardEvent } from "react";
-import { Popover } from "react-tiny-popover";
+import { ReactNode, useEffect, useMemo, useRef, useState, KeyboardEvent } from "react";
+import { Popover, PopoverPosition } from "react-tiny-popover";
 import LoadingList from "./LoadingList";
 import useIsMobile from "../hooks/useIsMobile";
 import { usePopoverContext } from "../contexts/PopoverContext";
@@ -31,6 +31,13 @@ const ReactPopover = ({
   const closeTimeoutRef = useRef<number | null>(null);
   const isMobile = useIsMobile();
   const { openPopoverId, setOpenPopoverId } = usePopoverContext();
+  const [positionPriority, setPositionPriority] = useState<PopoverPosition[]>([
+    "bottom",
+    "top",
+    "right",
+    "left",
+  ]);
+  const [boundaryElement, setBoundaryElement] = useState<HTMLElement | undefined>(undefined);
 
   const clearCloseTimeout = () => {
     if (closeTimeoutRef.current !== null) {
@@ -38,6 +45,33 @@ const ReactPopover = ({
       closeTimeoutRef.current = null;
     }
   };
+
+  const computePositionPriority = (): PopoverPosition[] => {
+    const rect = triggerRef.current?.getBoundingClientRect();
+    if (!rect) return ["bottom", "top", "right", "left"];
+
+    // Available space in the viewport (not the document).
+    const topSpace = rect.top;
+    const bottomSpace = window.innerHeight - rect.bottom;
+    const leftSpace = rect.left;
+    const rightSpace = window.innerWidth - rect.right;
+
+    const vertical = [
+      { pos: "bottom" as const, space: bottomSpace },
+      { pos: "top" as const, space: topSpace },
+    ].sort((a, b) => b.space - a.space);
+
+    const horizontal = [
+      { pos: "right" as const, space: rightSpace },
+      { pos: "left" as const, space: leftSpace },
+    ].sort((a, b) => b.space - a.space);
+
+    // Prefer vertical placements first (more natural for tooltips),
+    // but pick the one with the most space as the first attempt.
+    return [vertical[0].pos, vertical[1].pos, horizontal[0].pos, horizontal[1].pos];
+  };
+
+  const updatePositionPriority = () => setPositionPriority(computePositionPriority());
 
   const scheduleClose = () => {
     if (isMobile) return;
@@ -51,6 +85,7 @@ const ReactPopover = ({
   const handleMouseOver = () => {
     if (!isMobile) {
       clearCloseTimeout();
+      updatePositionPriority();
       setShow(true);
     }
   };
@@ -67,6 +102,7 @@ const ReactPopover = ({
       } else {
         // Close any other open popover first
         setOpenPopoverId(popoverId);
+        updatePositionPriority();
         setShow(true);
       }
     }
@@ -101,6 +137,39 @@ const ReactPopover = ({
     return () => window.clearTimeout(t);
   }, [show]);
 
+  useEffect(() => {
+    setBoundaryElement(document.documentElement);
+  }, []);
+
+  const isActuallyOpen = useMemo(() => show || isOpen, [isOpen, show]);
+
+  // Keep the position choice dynamic while open (scroll/resize).
+  useEffect(() => {
+    if (!isActuallyOpen) return;
+
+    let rafId: number | null = null;
+    const onViewportChange = () => {
+      if (rafId !== null) return;
+      rafId = window.requestAnimationFrame(() => {
+        rafId = null;
+        updatePositionPriority();
+      });
+    };
+
+    window.addEventListener("resize", onViewportChange);
+    // Capture scroll events from scrollable parents too.
+    window.addEventListener("scroll", onViewportChange, true);
+
+    // Initial update when opening.
+    onViewportChange();
+
+    return () => {
+      window.removeEventListener("resize", onViewportChange);
+      window.removeEventListener("scroll", onViewportChange, true);
+      if (rafId !== null) window.cancelAnimationFrame(rafId);
+    };
+  }, [isActuallyOpen]);
+
   // Close this popover if another one opens on mobile
   useEffect(() => {
     if (isMobile && openPopoverId !== popoverId && show) {
@@ -121,7 +190,12 @@ const ReactPopover = ({
       <span>{before + " "}</span>
 
       <Popover
-        isOpen={show || isOpen}
+        isOpen={isActuallyOpen}
+        positions={positionPriority}
+        padding={8}
+        boundaryInset={8}
+        boundaryElement={boundaryElement}
+        reposition
         containerClassName="popover-container"
         containerStyle={{ zIndex: "9999" } as Partial<CSSStyleDeclaration>}
         onClickOutside={isMobile ? handleClickOutside : undefined}
@@ -133,6 +207,7 @@ const ReactPopover = ({
             onMouseEnter={() => {
               if (!isMobile) {
                 clearCloseTimeout();
+                updatePositionPriority();
                 setShow(true);
               }
             }}
@@ -170,7 +245,7 @@ const ReactPopover = ({
           onKeyDown={handleKeyDown}
           tabIndex={0}
           role="button"
-          aria-expanded={show || isOpen}
+          aria-expanded={isActuallyOpen}
           aria-haspopup="dialog"
           aria-label={ariaLabel}
           className="text-nowrap focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-darkBlue rounded"
