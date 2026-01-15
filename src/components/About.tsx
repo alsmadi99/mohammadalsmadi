@@ -114,7 +114,7 @@ const About = () => {
                 popoverId="projects"
                 ariaLabel="Projects showcase"
                 content={
-                  <div className="flex flex-col w-full md:w-[min(920px,85vw)]">
+                  <div className="flex flex-col w-full md:w-[min(760px,85vw)]">
                     <span className="text-secondary font-semibold text-sm md:text-md mb-4">
                       {"Here are some of the projects I've worked on."}
                     </span>

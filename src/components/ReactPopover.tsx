@@ -210,8 +210,8 @@ const ReactPopover = ({
       <Popover
         isOpen={isActuallyOpen}
         positions={positionPriority}
-        align="center"
-        padding={8}
+        align={isMobile ? "start" : "center"}
+        padding={isMobile ? 12 : 8}
         boundaryInset={8}
         boundaryElement={boundaryElement}
         reposition
@@ -235,7 +235,7 @@ const ReactPopover = ({
                 scheduleClose();
               }
             }}
-            className={`bg-darkBlue text-offWhite selection:bg-secondary selection:text-darkBlue w-[calc(100vw-16px)] max-w-[calc(100vw-16px)] md:w-auto md:max-w-[90vw] max-h-[80vh] overflow-hidden transition-all duration-500 ease-in-out transform opacity-${
+            className={`bg-darkBlue text-offWhite selection:bg-secondary selection:text-darkBlue w-[min(420px,calc(100vw-16px))] max-w-[calc(100vw-16px)] md:w-auto md:max-w-[min(720px,90vw)] max-h-[80vh] overflow-hidden transition-all duration-500 ease-in-out transform opacity-${
               newShow || isOpen ? "100" : "0"
             } p-3 rounded border-2 border-offWhite shadow-lg`}
           >
