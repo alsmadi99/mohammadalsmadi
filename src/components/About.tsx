@@ -118,7 +118,7 @@ const About = () => {
                     <span className="text-secondary font-semibold text-sm md:text-md mb-4">
                       {"Here are some of the projects I've worked on."}
                     </span>
-                    <div className="flex flex-row w-full items-center justify-between">
+                    <div className="flex flex-row flex-wrap w-full items-center justify-between gap-4">
                       <div className="flex flex-col gap-2">
                         <div className="flex flex-row items-center gap-4">
                           <div className="flex flex-col items-center">
@@ -138,7 +138,7 @@ const About = () => {
                         </div>
                       </div>
 
-                      <div className="flex flex-row items-center gap-4">
+                      <div className="flex flex-row items-center gap-4 md:ml-auto">
                         <GoGlobe className="md:h-6 md:w-6 h-5 w-5 text-secondary" />
                         <span className="text-secondary text-xs md:text-sm">
                           Visit the main landing page.

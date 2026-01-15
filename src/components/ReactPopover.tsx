@@ -12,6 +12,8 @@ import LoadingList from "./LoadingList";
 import useIsMobile from "../hooks/useIsMobile";
 import { usePopoverContext } from "../contexts/PopoverContext";
 
+type PopoverAlign = "start" | "center" | "end";
+
 type ReactPopoverProps = {
   children: ReactNode;
   isOpen?: boolean;
@@ -45,6 +47,7 @@ const ReactPopover = ({
     "right",
     "left",
   ]);
+  const [align, setAlign] = useState<PopoverAlign>("center");
   const [boundaryElement, setBoundaryElement] = useState<
     HTMLElement | undefined
   >(undefined);
@@ -87,9 +90,23 @@ const ReactPopover = ({
     ];
   }, [isMobile]);
 
-  const updatePositionPriority = useCallback(() => {
+  const computeAlign = useCallback((): PopoverAlign => {
+    if (isMobile) return "start";
+    const rect = triggerRef.current?.getBoundingClientRect();
+    if (!rect || window.innerWidth <= 0) return "center";
+
+    // If the trigger is near an edge, align away from it to keep popover in view.
+    const triggerCenterX = rect.left + rect.width / 2;
+    const pct = triggerCenterX / window.innerWidth;
+    if (pct >= 0.66) return "end";
+    if (pct <= 0.34) return "start";
+    return "center";
+  }, [isMobile]);
+
+  const updatePlacement = useCallback(() => {
     setPositionPriority(computePositionPriority());
-  }, [computePositionPriority]);
+    setAlign(computeAlign());
+  }, [computeAlign, computePositionPriority]);
 
   const scheduleClose = () => {
     if (isMobile) return;
@@ -103,7 +120,7 @@ const ReactPopover = ({
   const handleMouseOver = () => {
     if (!isMobile) {
       clearCloseTimeout();
-      updatePositionPriority();
+      updatePlacement();
       setShow(true);
     }
   };
@@ -120,7 +137,7 @@ const ReactPopover = ({
       } else {
         // Close any other open popover first
         setOpenPopoverId(popoverId);
-        updatePositionPriority();
+        updatePlacement();
         setShow(true);
       }
     }
@@ -170,7 +187,7 @@ const ReactPopover = ({
       if (rafId !== null) return;
       rafId = window.requestAnimationFrame(() => {
         rafId = null;
-        updatePositionPriority();
+        updatePlacement();
       });
     };
 
@@ -186,7 +203,7 @@ const ReactPopover = ({
       window.removeEventListener("scroll", onViewportChange, true);
       if (rafId !== null) window.cancelAnimationFrame(rafId);
     };
-  }, [isActuallyOpen, updatePositionPriority]);
+  }, [isActuallyOpen, updatePlacement]);
 
   // Close this popover if another one opens on mobile
   useEffect(() => {
@@ -210,7 +227,7 @@ const ReactPopover = ({
       <Popover
         isOpen={isActuallyOpen}
         positions={positionPriority}
-        align={isMobile ? "start" : "center"}
+        align={align}
         padding={isMobile ? 12 : 8}
         boundaryInset={8}
         boundaryElement={boundaryElement}
@@ -226,7 +243,7 @@ const ReactPopover = ({
             onMouseEnter={() => {
               if (!isMobile) {
                 clearCloseTimeout();
-                updatePositionPriority();
+                updatePlacement();
                 setShow(true);
               }
             }}
