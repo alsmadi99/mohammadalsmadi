@@ -12,8 +12,6 @@ import LoadingList from "./LoadingList";
 import useIsMobile from "../hooks/useIsMobile";
 import { usePopoverContext } from "../contexts/PopoverContext";
 
-type PopoverAlign = "start" | "center" | "end";
-
 type ReactPopoverProps = {
   children: ReactNode;
   isOpen?: boolean;
@@ -47,7 +45,6 @@ const ReactPopover = ({
     "right",
     "left",
   ]);
-  const [align, setAlign] = useState<PopoverAlign>("center");
   const [boundaryElement, setBoundaryElement] = useState<
     HTMLElement | undefined
   >(undefined);
@@ -60,7 +57,6 @@ const ReactPopover = ({
   };
 
   const computePositionPriority = useCallback((): PopoverPosition[] => {
-    if (isMobile) return ["bottom", "top"];
     const rect = triggerRef.current?.getBoundingClientRect();
     if (!rect) return ["bottom", "top", "right", "left"];
 
@@ -88,25 +84,11 @@ const ReactPopover = ({
       horizontal[0].pos,
       horizontal[1].pos,
     ];
-  }, [isMobile]);
+  }, []);
 
-  const computeAlign = useCallback((): PopoverAlign => {
-    if (isMobile) return "start";
-    const rect = triggerRef.current?.getBoundingClientRect();
-    if (!rect || window.innerWidth <= 0) return "center";
-
-    // If the trigger is near an edge, align away from it to keep popover in view.
-    const triggerCenterX = rect.left + rect.width / 2;
-    const pct = triggerCenterX / window.innerWidth;
-    if (pct >= 0.66) return "end";
-    if (pct <= 0.34) return "start";
-    return "center";
-  }, [isMobile]);
-
-  const updatePlacement = useCallback(() => {
+  const updatePositionPriority = useCallback(() => {
     setPositionPriority(computePositionPriority());
-    setAlign(computeAlign());
-  }, [computeAlign, computePositionPriority]);
+  }, [computePositionPriority]);
 
   const scheduleClose = () => {
     if (isMobile) return;
@@ -120,7 +102,7 @@ const ReactPopover = ({
   const handleMouseOver = () => {
     if (!isMobile) {
       clearCloseTimeout();
-      updatePlacement();
+      updatePositionPriority();
       setShow(true);
     }
   };
@@ -137,7 +119,7 @@ const ReactPopover = ({
       } else {
         // Close any other open popover first
         setOpenPopoverId(popoverId);
-        updatePlacement();
+        updatePositionPriority();
         setShow(true);
       }
     }
@@ -187,7 +169,7 @@ const ReactPopover = ({
       if (rafId !== null) return;
       rafId = window.requestAnimationFrame(() => {
         rafId = null;
-        updatePlacement();
+        updatePositionPriority();
       });
     };
 
@@ -203,7 +185,7 @@ const ReactPopover = ({
       window.removeEventListener("scroll", onViewportChange, true);
       if (rafId !== null) window.cancelAnimationFrame(rafId);
     };
-  }, [isActuallyOpen, updatePlacement]);
+  }, [isActuallyOpen, updatePositionPriority]);
 
   // Close this popover if another one opens on mobile
   useEffect(() => {
@@ -227,8 +209,7 @@ const ReactPopover = ({
       <Popover
         isOpen={isActuallyOpen}
         positions={positionPriority}
-        align={align}
-        padding={isMobile ? 12 : 8}
+        padding={8}
         boundaryInset={8}
         boundaryElement={boundaryElement}
         reposition
@@ -243,7 +224,7 @@ const ReactPopover = ({
             onMouseEnter={() => {
               if (!isMobile) {
                 clearCloseTimeout();
-                updatePlacement();
+                updatePositionPriority();
                 setShow(true);
               }
             }}
@@ -252,7 +233,7 @@ const ReactPopover = ({
                 scheduleClose();
               }
             }}
-            className={`bg-darkBlue text-offWhite selection:bg-secondary selection:text-darkBlue w-[min(420px,calc(100vw-16px))] max-w-[calc(100vw-16px)] md:w-auto md:max-w-[min(720px,90vw)] max-h-[80vh] overflow-hidden transition-all duration-500 ease-in-out transform opacity-${
+            className={`bg-darkBlue text-offWhite selection:bg-secondary selection:text-darkBlue max-h-80 overflow-y-auto overscroll-contain transition-all duration-500 ease-in-out transform opacity-${
               newShow || isOpen ? "100" : "0"
             } p-3 rounded border-2 border-offWhite shadow-lg`}
           >
