@@ -170,7 +170,7 @@ const ReactPopover = ({
       window.removeEventListener("scroll", onViewportChange, true);
       if (rafId !== null) window.cancelAnimationFrame(rafId);
     };
-  }, [isActuallyOpen]);
+  }, [isActuallyOpen, updatePositionPriority]);
 
   // Close this popover if another one opens on mobile
   useEffect(() => {
