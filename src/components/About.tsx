@@ -246,16 +246,19 @@ const About = () => {
                           <div key={index} className={index > 0 ? " mt-2" : ""}>
                             <div className="flex flex-row items-center justify-between mb-2">
                               <div className="flex flex-row items-center gap-2">
-                                <span className="font-semibold text-xs md:text-xl">{`${getRepoDisplayName(latestContributions[repoKey].name)}: `}</span>
                                 <a
                                   href={latestContributions[repoKey].link}
-                                  className="text-link underline"
+                                  className="text-link underline font-semibold text-xs md:text-xl"
                                   rel="noopener noreferrer"
                                   target="_blank"
                                   aria-label={`Visit ${getRepoDisplayName(latestContributions[repoKey].name)} repository`}
-                                >
-                                  <FiExternalLink className="text-md md:text-xl" />
-                                </a>
+                                >{`${getRepoDisplayName(latestContributions[repoKey].name)}:`}</a>
+                                {!isMobile && (
+                                  <FiExternalLink
+                                    className="text-md md:text-xl"
+                                    aria-hidden="true"
+                                  />
+                                )}
                               </div>
                               <div className="flex flex-row items-center justify-between md:w-[30%] w-[50%]">
                                 <div className={starForkContainer}>
