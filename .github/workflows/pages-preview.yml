@@ -21,6 +21,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # Always build the PR head SHA (merge ref can lag behind on synchronize).
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
 
       - name: Skip if not latest PR commit
         id: latest
@@ -102,6 +106,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # Always build the PR head SHA (merge ref can lag behind on synchronize).
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
