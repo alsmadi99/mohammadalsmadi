@@ -118,7 +118,7 @@ const About = () => {
                     <span className="text-secondary font-semibold text-sm md:text-md mb-4">
                       {"Here are some of the projects I've worked on."}
                     </span>
-                    <div className="flex flex-row flex-wrap w-full items-center justify-between">
+                    <div className="flex flex-row flex-wrap w-full items-center justify-between gap-2">
                       <div className="flex flex-col gap-2">
                         <div className="flex flex-row items-center gap-4">
                           <div className="flex flex-col items-center">
