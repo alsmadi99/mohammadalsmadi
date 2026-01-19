@@ -8,7 +8,7 @@ const Footer = () => {
   const isMobile = useIsMobile();
   const textSize = "text-[11px] md:text-lg text-center";
   return (
-    <footer className="bg-darkBlue w-full h-fit py-5 md:py-2 mt-4 px-4">
+    <footer className="bg-darkBlue w-full h-fit py-5 md:py-2 mt-4 px-2">
       <div className="flex flex-row flex-nowrap w-full items-center justify-between gap-3 min-w-0">
         <p className={`${textSize} whitespace-nowrap`}>
           &copy; {currentYear} Mohammad Alsmadi.
