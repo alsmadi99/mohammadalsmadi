@@ -3,6 +3,7 @@
   "description": "I'm Mohammad Alsmadi, a Senior Software Engineer with experience in Node.js, React.js, React Native, MongoDB, and Postgresql. Check out my portfolio!",
   "private": true,
   "version": "1.0.0",
+  "author": "Mohammad Alsmadi",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -47,5 +48,8 @@
     "typescript": "^5.5.3",
     "vite": "^5.4.21",
     "vite-plugin-compression": "^0.5.1"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   }
 }
