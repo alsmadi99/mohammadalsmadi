@@ -9,7 +9,7 @@ interface LoadingListProps {
 
 const LoadingList = ({ cellSizes }: LoadingListProps) => {
   return (
-    <div className="flex flex-row flex-wrap w-[400px] max-h-[400px] animate-pulse">
+    <div className="flex flex-row flex-wrap md:w-[400px] w-[90vw] max-h-[400px] animate-pulse">
       {cellSizes.map((size, index) => {
         const { height = 10, percentage = 50 } = size;
         return (

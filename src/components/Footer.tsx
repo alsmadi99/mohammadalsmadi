@@ -6,14 +6,16 @@ import useIsMobile from "../hooks/useIsMobile";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const isMobile = useIsMobile();
-  const textSize = "text-xs md:text-lg text-center";
+  const textSize = "text-[11px] md:text-lg text-center";
   return (
-    <footer className="bg-darkBlue w-full h-fit py-5 md:py-2 mt-4 px-4">
-      <div className="flex flex-row w-full items-center justify-between">
-        <p className={textSize}>&copy; {currentYear} Mohammad Alsmadi.</p>
+    <footer className="bg-darkBlue w-full h-fit py-5 md:py-2 mt-4 px-2">
+      <div className="flex flex-row flex-nowrap w-full items-center justify-between gap-3 min-w-0">
+        <p className={`${textSize} whitespace-nowrap`}>
+          &copy; {currentYear} Mohammad Alsmadi.
+        </p>
         <a
           href={`mailto:${email}`}
-          className={`flex flex-row items-center gap-1 text-secondary hover:text-primary underline ${textSize}`}
+          className={`flex flex-row items-center gap-1 text-secondary hover:text-primary underline ${textSize} whitespace-nowrap`}
         >
           <MdOutlineEmail size={isMobile ? 18 : 22} />
 

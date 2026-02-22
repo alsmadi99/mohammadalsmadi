@@ -12,23 +12,27 @@ import {
 
 import { MdOutlineEmail } from "react-icons/md";
 import { AiFillLinkedin, AiFillGithub } from "react-icons/ai";
+import { IconType } from "react-icons";
+import type { ComponentProps } from "react";
 
 export const email = "alsmadi.work@gmail.com";
+
+type IconProps = ComponentProps<IconType>;
 
 export const socials = [
   {
     link: "https://www.linkedin.com/in/alsmadi99",
-    icon: (props: any) => <AiFillLinkedin size={23} {...props} />,
+    icon: (props: IconProps) => <AiFillLinkedin size={23} {...props} />,
     text: "Linkedin",
   },
   {
     link: "https://github.com/alsmadi99",
-    icon: (props: any) => <AiFillGithub size={23} {...props} />,
+    icon: (props: IconProps) => <AiFillGithub size={23} {...props} />,
     text: "Github",
   },
   {
     link: `mailto:${email}`,
-    icon: (props: any) => <MdOutlineEmail size={23} {...props} />,
+    icon: (props: IconProps) => <MdOutlineEmail size={23} {...props} />,
     text: "E-Mail",
   },
 ];
@@ -143,7 +147,7 @@ export const experiences = [
     name: "Abu Dhabi Social Support Authority",
     link: "https://www.ssa.gov.ae",
     role: "Senior Software Engineer",
-    start: "2025-05-15",
+    start: "2024-05-15",
     end: null,
   },
   {
