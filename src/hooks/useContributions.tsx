@@ -72,8 +72,8 @@ export const useContributions = () => {
 
             if (
               contributionsHashMap[repo].items.length < 3 &&
-              ((!item.closed_at && !item.pull_request.merged_at) ||
-                (!!item.closed_at && !!item.pull_request.merged_at))
+              ((!item.closed_at && !item.pull_request.merged_at) || // if the pull request is not merged
+                (!!item.closed_at && !!item.pull_request.merged_at)) // if the pull request is merged
             ) {
               contributionsHashMap[repo].items.push({
                 name: item.title,
@@ -87,6 +87,12 @@ export const useContributions = () => {
           }
         }
 
+        // remove repos with no items
+        Object.keys(contributionsHashMap).forEach((repo) => {
+          if (contributionsHashMap[repo].items.length === 0) {
+            delete contributionsHashMap[repo];
+          }
+        });
         setLatestContributions(contributionsHashMap);
       } catch (error) {
         const errorMessage =
