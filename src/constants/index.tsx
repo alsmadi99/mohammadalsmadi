@@ -8,6 +8,7 @@ import {
   quds,
   janah,
   mawani,
+  mizan,
 } from "../assets";
 
 import { MdOutlineEmail } from "react-icons/md";
@@ -177,6 +178,18 @@ export const projects = [
     impact: "Delivered an end-to-end procurement workflow for business users.",
     description:
       "Built a mobile-first SaaS procurement solution from onboarding to purchasing.",
+  },
+  {
+    category: "public",
+    imagen: mizan,
+    link: "https://meetmizan.com/",
+    title: "Mizan",
+    role: "Founder/Full-Stack Engineer",
+    stack: "React, TypeScript, Node.js",
+    impact:
+      "Unified portfolio, gold, cash, and zakat tracking into one dashboard.",
+    description:
+      "A personal-finance platform with Islamic finance built in, not bolted on.",
   },
 ];
 

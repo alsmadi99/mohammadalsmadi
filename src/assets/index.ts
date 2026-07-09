@@ -9,6 +9,7 @@ import mawani from "./mawani.webp";
 import taadhod from "./taadhod.webp";
 import quds from "./quds.webp";
 import janah from "./janah.webp";
+import mizan from "./mizan.png";
 
 export {
   icon,
@@ -21,4 +22,5 @@ export {
   taadhod,
   quds,
   janah,
+  mizan,
 };
