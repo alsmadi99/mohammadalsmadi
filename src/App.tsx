@@ -3,22 +3,9 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { PopoverProvider } from "./contexts/PopoverContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import { useEffect } from "react";
+import ZakatCalculator from "components/ZakatCalculator";
 
 const App = () => {
-  useEffect(() => {
-    const s = document.createElement("script");
-    s.src = "https://www.meetmizan.com/embed/mizan-embed.js";
-    s.async = true;
-    s.onload = () =>
-      window.MizanEmbed.render("#zakat", {
-        partner: "mohammadalsmadi",
-        lang: "en",
-        currency: "USD",
-      });
-    document.body.appendChild(s);
-  }, []);
-
   return (
     <ThemeProvider>
       <PopoverProvider>
@@ -26,6 +13,7 @@ const App = () => {
           <Navbar />
           <main className="xl:w-2/3 sm:w-[90%] xs:w-[100%] mx-auto px-2 md:px-0 flex flex-col justify-center items-center">
             <About />
+            <ZakatCalculator />
             <Footer />
           </main>
         </div>
