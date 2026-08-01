@@ -3,7 +3,6 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { PopoverProvider } from "./contexts/PopoverContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import ZakatCalculator from "./components/ZakatCalculator";
 
 const App = () => {
   return (
@@ -13,7 +12,6 @@ const App = () => {
           <Navbar />
           <main className="xl:w-2/3 sm:w-[90%] xs:w-[100%] mx-auto px-2 md:px-0 flex flex-col justify-center items-center">
             <About />
-            <ZakatCalculator />
             <Footer />
           </main>
         </div>
