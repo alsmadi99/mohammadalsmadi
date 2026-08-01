@@ -55,17 +55,6 @@ const About = () => {
       onMouseOut={() => setIsHoveringTexts(false)}
     >
       <div className="w-full">
-        <script
-          src="https://www.meetmizan.com/embed/mizan-embed.js"
-          data-partner="mohammadalsmadi"
-          data-lang="en"
-          data-currency="USD"
-          data-primary="#123456"
-          data-logo="https://mohammadalsmadi.com/logo.svg"
-          data-cta-label="Give your Zakat"
-          data-cta-url="https://mohammadalsmadi.com/donate"
-          async
-        ></script>
         <div className="w-[100%] self-start justify-center flex-wrap text-wrap flex">
           <p
             className={`text-white md:text-center md:text-6xl text-xl font-black text-wrap self-center md:w-[70%]`}

@@ -3,8 +3,22 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { PopoverProvider } from "./contexts/PopoverContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { useEffect } from "react";
 
 const App = () => {
+  useEffect(() => {
+    const s = document.createElement("script");
+    s.src = "https://www.meetmizan.com/embed/mizan-embed.js";
+    s.async = true;
+    s.onload = () =>
+      window.MizanEmbed.render("#zakat", {
+        partner: "mohammadalsmadi",
+        lang: "en",
+        currency: "USD",
+      });
+    document.body.appendChild(s);
+  }, []);
+
   return (
     <ThemeProvider>
       <PopoverProvider>
