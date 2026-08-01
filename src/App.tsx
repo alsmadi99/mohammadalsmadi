@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { PopoverProvider } from "./contexts/PopoverContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import ZakatCalculator from "components/ZakatCalculator";
+import ZakatCalculator from "./components/ZakatCalculator";
 
 const App = () => {
   return (
