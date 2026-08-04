@@ -1,5 +1,5 @@
 import { styles } from "../styles";
-import { github_sponsor_link, socials } from "../constants";
+import { contactLink, github_sponsor_link, socials } from "../constants";
 import { FaGithub } from "react-icons/fa";
 import { FiMoon, FiSun } from "react-icons/fi";
 import { useTheme } from "../contexts/ThemeContext";
@@ -25,6 +25,12 @@ const Navbar = () => {
         </a>
         <div className="flex justify-end items-end flex-[1]">
           <div className="flex flex-row items-center gap-4">
+            <a
+              href={contactLink}
+              className="text-xs md:text-sm px-3.5 py-2 rounded-md font-semibold border border-white/80 text-primary bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-primary hover:bg-transparent hover:text-white dark:border-white/80 dark:text-primary dark:bg-white dark:hover:bg-transparent dark:hover:text-white"
+            >
+              Contact Me
+            </a>
             <button
               type="button"
               onClick={toggleTheme}

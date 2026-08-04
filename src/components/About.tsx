@@ -1,14 +1,12 @@
 import { useState } from "react";
 import ReactPopover from "./ReactPopover";
-import { experiences, games, projects } from "../constants";
+import { availability, experiences, games, projects } from "../constants";
 import { FaCodePullRequest } from "react-icons/fa6";
 import { FiExternalLink } from "react-icons/fi";
 import { GoRepoForked, GoStarFill, GoGlobe } from "react-icons/go";
 import { SiPrivateinternetaccess } from "react-icons/si";
 import { FaHandPointer } from "react-icons/fa";
-
 import { SiIos, SiAndroid } from "react-icons/si";
-
 import useIsMobile from "../hooks/useIsMobile";
 import { useContributions } from "../hooks/useContributions";
 import { formatNumber, getYearsOfExperience } from "../utils";
@@ -44,6 +42,11 @@ const About = () => {
 
   const starForkContainer =
     "flex flex-row items-center justify-between px-1 py-1 md:py-0 border-primary border-2 rounded-lg w-[45%]";
+  const projectSections = [
+    { key: "enterprise", title: "Enterprise/Internal" },
+    { key: "mobile", title: "Mobile Apps" },
+    { key: "public", title: "Public Products" },
+  ] as const;
 
   return (
     <div
@@ -51,7 +54,7 @@ const About = () => {
       onMouseOver={() => setIsHoveringTexts(true)}
       onMouseOut={() => setIsHoveringTexts(false)}
     >
-      <div>
+      <div className="w-full">
         <div className="w-[100%] self-start justify-center flex-wrap text-wrap flex">
           <p
             className={`text-white md:text-center md:text-6xl text-xl font-black text-wrap self-center md:w-[70%]`}
@@ -62,16 +65,37 @@ const About = () => {
             </span>
           </p>
 
-          {!isMobile && (
-            <p
-              className={`mt-5 md:mt-10 text-white-100 md:text-3xl text-lg text-center leading-7 w-[100%]`}
-            >
-              I specialize in building scalable web and mobile applications.
-            </p>
-          )}
+          <p
+            className={`mt-5 md:mt-10 text-white-100 md:text-3xl text-lg text-center leading-7 w-[100%]`}
+          >
+            Senior Full-Stack and Mobile Engineer helping teams ship reliable
+            products faster.
+          </p>
+          <p className="mt-3 text-offWhite text-xs md:text-lg text-center w-full">
+            I design, build, and scale web and mobile products for enterprises
+            and high-growth teams.
+          </p>
+        </div>
+        <div className="w-full mt-4 md:mt-8 border border-white/30 rounded-md px-3 py-3">
+          <p className="text-secondary text-xs md:text-sm font-semibold mb-2">
+            Available for
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {availability.map((item) => (
+              <span
+                key={item}
+                className="text-offWhite text-[11px] md:text-sm border border-secondary/40 rounded-md px-2 py-1"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
         </div>
 
-        <div className="flex flex-col justify-between w-full gap-4 md:mt-10 font-normal">
+        <div
+          id="projects"
+          className="flex flex-col justify-between w-full gap-4 md:mt-10 font-normal"
+        >
           <div className="flex flex-row flex-wrap w-full gap-3 md:gap-10">
             <div
               className={`mt-4 text-offWhite text-[14px] md:text-2xl leading-6 md:leading-[3rem]`}
@@ -115,117 +139,139 @@ const About = () => {
                 ariaLabel="Projects showcase"
                 content={
                   <div className="flex flex-col w-full md:min(40vw, 400px)">
-                    <span className="text-secondary font-semibold text-sm md:text-md mb-4">
-                      {"Here are some of the projects I've worked on."}
+                    <span className="text-primary font-semibold text-sm md:text-md mb-3">
+                      Selected work by category, including role, stack, and
+                      outcomes.
                     </span>
-                    <div className="flex flex-row flex-wrap w-full items-center justify-between gap-2">
-                      <div className="flex flex-col gap-2">
-                        <div className="flex flex-row items-center gap-4">
-                          <div className="flex flex-col items-center">
-                            <SiAndroid className="md:h-5 md:w-5 h-4 w-4 text-secondary" />
-                            <SiIos className="md:h-5 md:w-5 h-4 w-4 text-secondary" />
+                    <div className="flex flex-col gap-4 w-full max-h-[36vh] px-2 py-2 overflow-y-auto overflow-x-hidden">
+                      {projectSections.map((section) => {
+                        const sectionProjects = projects.filter(
+                          (project) => project.category === section.key,
+                        );
+                        if (!sectionProjects.length) return null;
+                        return (
+                          <div key={section.key}>
+                            <p className="text-secondary text-lg md:text-md font-semibold mb-2">
+                              {section.title}
+                            </p>
+                            <hr className="border-secondary/30 my-2 border-1 rounded-md" />
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full md:text-xl text-md">
+                              {sectionProjects.map((project, index) => (
+                                <div
+                                  key={`${section.key}-${index}`}
+                                  className="w-full rounded-lg border border-primary/30 bg-darkBlue/30 p-2 flex flex-col gap-2"
+                                >
+                                  <img
+                                    alt={`${project.title} project screenshot`}
+                                    src={project.imagen}
+                                    className="h-[96px] w-full object-contain rounded-lg bg-white border-secondary border-2"
+                                  />
+                                  <div className="min-h-[110px]">
+                                    <p className="text-offWhite text-xs md:text-sm font-semibold leading-4 break-words">
+                                      {project.title}
+                                    </p>
+                                    <p className="text-secondary text-[10px] md:text-xs leading-4 mt-1 break-words">
+                                      {project.role}
+                                    </p>
+                                    <p className="text-offWhite text-[10px] md:text-xs leading-4 mt-1 break-words">
+                                      {project.stack}
+                                    </p>
+                                    <p className="text-primary text-[10px] md:text-xs leading-4 mt-1 break-words">
+                                      {project.impact}
+                                    </p>
+                                    {project.confidentiality && (
+                                      <p className="text-secondary text-[10px] mt-1 leading-4 break-words">
+                                        {project.confidentiality}
+                                      </p>
+                                    )}
+                                  </div>
+                                  <div className="mt-auto flex flex-row items-center justify-center gap-3 w-full pt-1 border-t border-primary/20">
+                                    {project.link && (
+                                      <GoGlobe
+                                        onClick={() =>
+                                          window.open(project.link, "_blank")
+                                        }
+                                        onKeyDown={(e) => {
+                                          if (
+                                            e.key === "Enter" ||
+                                            e.key === " "
+                                          ) {
+                                            e.preventDefault();
+                                            window.open(project.link, "_blank");
+                                          }
+                                        }}
+                                        tabIndex={0}
+                                        role="link"
+                                        aria-label={`Visit ${project.title} website`}
+                                        className="md:h-6 md:w-6 h-5 w-5 text-secondary hover:text-primary cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary rounded"
+                                      />
+                                    )}
+                                    {project.android && (
+                                      <SiAndroid
+                                        onClick={() =>
+                                          window.open(project.android, "_blank")
+                                        }
+                                        onKeyDown={(e) => {
+                                          if (
+                                            e.key === "Enter" ||
+                                            e.key === " "
+                                          ) {
+                                            e.preventDefault();
+                                            window.open(
+                                              project.android,
+                                              "_blank",
+                                            );
+                                          }
+                                        }}
+                                        tabIndex={0}
+                                        role="link"
+                                        aria-label={`Get ${project.title} on Android`}
+                                        className="md:h-6 md:w-6 h-5 w-5 text-secondary hover:text-primary cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary rounded"
+                                      />
+                                    )}
+
+                                    {project.ios && (
+                                      <SiIos
+                                        onClick={() =>
+                                          window.open(project.ios, "_blank")
+                                        }
+                                        onKeyDown={(e) => {
+                                          if (
+                                            e.key === "Enter" ||
+                                            e.key === " "
+                                          ) {
+                                            e.preventDefault();
+                                            window.open(project.ios, "_blank");
+                                          }
+                                        }}
+                                        tabIndex={0}
+                                        role="link"
+                                        aria-label={`Get ${project.title} on iOS`}
+                                        className="md:h-6 md:w-6 h-5 w-5 text-secondary hover:text-primary cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary rounded"
+                                      />
+                                    )}
+
+                                    {project.internal && (
+                                      <SiPrivateinternetaccess
+                                        aria-label={`${project.title} is an internal application`}
+                                        className="md:h-6 md:w-6 h-5 w-5 text-secondary"
+                                      />
+                                    )}
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
                           </div>
-                          <span className="text-secondary text-xs md:text-sm">
-                            Developed mobile apps.
-                          </span>
-                        </div>
-
-                        <div className="flex flex-row items-center gap-4">
-                          <SiPrivateinternetaccess className="md:h-5 md:w-5 h-4 w-4 text-secondary" />
-                          <span className="text-secondary text-xs md:text-sm">
-                            Developed internal apps.
-                          </span>
-                        </div>
-                      </div>
-
-                      <div className="flex flex-row items-center gap-4">
-                        <GoGlobe className="md:h-6 md:w-6 h-5 w-5 text-secondary" />
-                        <span className="text-secondary text-xs md:text-sm">
-                          Visit the main landing page.
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-row flex-wrap gap-4 w-full justify-center md:text-xl text-md max-h-[30vh] px-4 py-4 overflow-y-auto overflow-x-hidden">
-                      {projects.map((project, index) => (
-                        <div key={index} className="h-[160px] w-[130px]">
-                          <img
-                            alt={`${project.title} project screenshot`}
-                            src={project.imagen}
-                            className="h-[80%] w-full object-contain rounded-lg bg-white border-secondary border-4"
-                          />
-
-                          <div className="flex flex-row items-center justify-around gap-2 h-[20%] w-full">
-                            {project.link && (
-                              <GoGlobe
-                                onClick={() =>
-                                  window.open(project.link, "_blank")
-                                }
-                                onKeyDown={(e) => {
-                                  if (e.key === "Enter" || e.key === " ") {
-                                    e.preventDefault();
-                                    window.open(project.link, "_blank");
-                                  }
-                                }}
-                                tabIndex={0}
-                                role="link"
-                                aria-label={`Visit ${project.title} website`}
-                                className="md:h-6 md:w-6 h-5 w-5 text-secondary hover:text-primary cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary rounded"
-                              />
-                            )}
-                            {project.android && (
-                              <SiAndroid
-                                onClick={() =>
-                                  window.open(project.android, "_blank")
-                                }
-                                onKeyDown={(e) => {
-                                  if (e.key === "Enter" || e.key === " ") {
-                                    e.preventDefault();
-                                    window.open(project.android, "_blank");
-                                  }
-                                }}
-                                tabIndex={0}
-                                role="link"
-                                aria-label={`Get ${project.title} on Android`}
-                                className="md:h-6 md:w-6 h-5 w-5 text-secondary hover:text-primary cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary rounded"
-                              />
-                            )}
-
-                            {project.ios && (
-                              <SiIos
-                                onClick={() =>
-                                  window.open(project.ios, "_blank")
-                                }
-                                onKeyDown={(e) => {
-                                  if (e.key === "Enter" || e.key === " ") {
-                                    e.preventDefault();
-                                    window.open(project.ios, "_blank");
-                                  }
-                                }}
-                                tabIndex={0}
-                                role="link"
-                                aria-label={`Get ${project.title} on iOS`}
-                                className="md:h-6 md:w-6 h-5 w-5 text-secondary hover:text-primary cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary rounded"
-                              />
-                            )}
-
-                            {project.internal && (
-                              <SiPrivateinternetaccess
-                                aria-label={`${project.title} is an internal application`}
-                                className="md:h-6 md:w-6 h-5 w-5 text-secondary"
-                              />
-                            )}
-                          </div>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   </div>
                 }
-                before={`I thrive in collaborative environments and have had the privilege of working alongside talented teams. Together, we've enriched our collective knowledge over the years by building various`}
-                after={` while delivering high-quality software solutions and meeting tight deadlines.`}
+                before={`I work across enterprise and startup environments, and I focus on`}
+                after={` with clear ownership, strong engineering standards, and measurable outcomes.`}
               >
                 <span className={hoverableTextStyles}>
-                  client projects
+                  product-focused projects
                   <PopoverIcon isMobile={isMobile} />
                 </span>
               </ReactPopover>

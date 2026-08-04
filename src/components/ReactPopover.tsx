@@ -117,11 +117,16 @@ const ReactPopover = ({
     }, 150);
   };
 
+  const trackOpen = () => {
+    window.umami?.track("popover_open", { popoverId });
+  };
+
   const handleMouseOver = () => {
     if (!isMobile) {
       clearCloseTimeout();
       updatePlacement();
       setShow(true);
+      trackOpen();
     }
   };
   const handleMouseLeft = () => {
@@ -139,6 +144,7 @@ const ReactPopover = ({
         setOpenPopoverId(popoverId);
         updatePlacement();
         setShow(true);
+        trackOpen();
       }
     }
   };
@@ -152,9 +158,11 @@ const ReactPopover = ({
         } else {
           setOpenPopoverId(popoverId);
           setShow(true);
+          trackOpen();
         }
       } else {
         setShow(!show);
+        if (!show) trackOpen();
       }
     } else if (e.key === "Escape") {
       setShow(false);
